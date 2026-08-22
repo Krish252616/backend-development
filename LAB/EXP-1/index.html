@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============ DOCUMENT METADATA ============ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO metadata -->
+  <meta name="description" content="Experiment 1 — a single HTML5 page demonstrating semantic structure, text-level semantics, tables, forms, multimedia, graphics and the DOM.">
+  <meta name="keywords" content="HTML5, semantic elements, forms, multimedia, DOM, accessibility, SEO">
+  <meta name="author" content="Krish Pawar">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://krishpawar.github.io/backend-development/LAB/EXP-1/">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HTML5 Element Specimen — Experiment 1">
+  <meta property="og:description" content="Every major HTML5 element category on one page.">
+
+  <!-- Favicon as an inline SVG data URI, so the page has zero external dependencies -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231b3a6b'/><text x='16' y='23' font-size='18' font-family='monospace' fill='%23e8b73a' text-anchor='middle'>5</text></svg>">
+
+  <title>HTML5 Element Specimen — Experiment 1 | Backend Development Lab</title>
+
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      --paper:    #e9edf1;
+      --card:     #f7f9fb;
+      --ink:      #131c26;
+      --ink-soft: #4d5b6a;
+      --rule:     #c3ccd6;
+      --blue:     #1b3a6b;   /* drafting blue  */
+      --gold:     #a97c12;   /* annotation ink */
+      --grid:     rgba(27, 58, 107, .07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 100% 28px,
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 28px 100%,
+        var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .sheet {
+      max-width: 60rem;
+      margin: 0 auto;
+      padding: 0 1.25rem 5rem;
+    }
+
+    /* ---------- Utility / label type ---------- */
+    .label, .idx, nav a, th, caption, legend, code, kbd, samp, var, pre, output, .meta {
+      font-family: "SF Mono", "IBM Plex Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    }
+
+    .label {
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ---------- Masthead ---------- */
+    .masthead {
+      border-bottom: 3px double var(--blue);
+      padding: 3rem 0 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .masthead h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      line-height: 1.05;
+      margin: .4rem 0 .6rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+    .masthead p { color: var(--ink-soft); margin: 0 0 1rem; max-width: 46ch; }
+    .meta { font-size: .78rem; color: var(--ink-soft); }
+
+    /* ---------- Nav ---------- */
+    nav ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem .5rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav a {
+      display: inline-block;
+      font-size: .74rem;
+      text-decoration: none;
+      color: var(--blue);
+      border: 1px solid var(--rule);
+      background: var(--card);
+      padding: .3rem .55rem;
+    }
+    nav a:hover, nav a:focus-visible { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+    /* ---------- Sections ---------- */
+    section { padding-top: 3rem; }
+    section > h2 {
+      font-size: 1.5rem;
+      margin: .3rem 0 1.25rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 600;
+    }
+    .idx { font-size: .72rem; color: var(--gold); letter-spacing: .1em; }
+
+    h3 { font-size: 1.05rem; margin: 2rem 0 .5rem; }
+    h4 { font-size: .95rem; margin: 1.4rem 0 .4rem; color: var(--ink-soft); }
+    h5, h6 { margin: 1rem 0 .3rem; font-size: .9rem; }
+
+    /* ---------- Boxed specimen ---------- */
+    .box {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--blue);
+      padding: 1rem 1.15rem;
+      margin: 1rem 0;
+    }
+
+    a { color: var(--blue); }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ---------- Text-level ---------- */
+    blockquote {
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    mark { background: #f6e3a8; padding: 0 .15em; }
+    code, kbd, samp, var { font-size: .86em; }
+    code { background: #dde4ec; padding: .1em .35em; border-radius: 2px; }
+    kbd {
+      background: var(--ink); color: var(--paper);
+      padding: .1em .4em; border-radius: 3px; font-size: .78em;
+    }
+    pre {
+      background: var(--ink); color: #d7e2ef;
+      padding: 1rem; overflow-x: auto; font-size: .82rem; line-height: 1.5;
+    }
+    abbr[title] { text-decoration: underline dotted; cursor: help; }
+    ins { background: #cfe8d0; text-decoration: none; }
+    del { background: #f0d0cd; }
+
+    dl { margin: 1rem 0; }
+    dt { font-weight: 700; margin-top: .6rem; }
+    dd { margin: 0 0 0 1.25rem; color: var(--ink-soft); }
+
+    /* ---------- Table ---------- */
+    .scroll { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; background: var(--card); font-size: .9rem; }
+    caption {
+      caption-side: top; text-align: left;
+      font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold); padding-bottom: .5rem;
+    }
+    th, td { border: 1px solid var(--rule); padding: .5rem .65rem; text-align: left; vertical-align: top; }
+    thead th { background: var(--blue); color: #fff; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+    tbody tr:nth-child(even) { background: #eef2f6; }
+    tfoot td { font-weight: 700; background: #e3e9f0; }
+
+    /* ---------- Forms ---------- */
+    fieldset { border: 1px solid var(--rule); background: var(--card); padding: 1rem 1.15rem 1.25rem; margin: 0 0 1.25rem; }
+    legend { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); padding: 0 .4rem; }
+    .field { margin-bottom: .9rem; }
+    .field > label { display: block; font-size: .82rem; margin-bottom: .25rem; font-weight: 600; }
+    input, select, textarea {
+      font: inherit; font-size: .9rem;
+      padding: .45rem .55rem;
+      border: 1px solid var(--rule);
+      background: #fff; color: var(--ink);
+      width: 100%; max-width: 24rem;
+    }
+    input[type="checkbox"], input[type="radio"] { width: auto; margin-right: .4rem; }
+    input[type="color"] { padding: .2rem; width: 4rem; height: 2.4rem; }
+    input[type="range"] { padding: 0; }
+    input:invalid:not(:placeholder-shown) { border-color: #a33; }
+    .inline { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .inline label { font-size: .88rem; display: flex; align-items: center; }
+    button {
+      font: inherit; font-size: .85rem;
+      padding: .5rem 1.1rem;
+      border: 1px solid var(--blue);
+      background: var(--blue); color: #fff;
+      cursor: pointer;
+    }
+    button[type="reset"], .ghost { background: transparent; color: var(--blue); }
+    button:hover { opacity: .88; }
+    output { display: inline-block; font-size: .85rem; color: var(--gold); }
+    progress, meter { width: 100%; max-width: 24rem; height: 1rem; }
+
+    /* ---------- Media ---------- */
+    figure { margin: 1.25rem 0; }
+    figure img, video, iframe { max-width: 100%; display: block; border: 1px solid var(--rule); }
+    figcaption { font-size: .8rem; color: var(--ink-soft); margin-top: .5rem; }
+    audio, video { width: 100%; max-width: 34rem; }
+
+    details {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: .7rem .95rem;
+      margin: .6rem 0;
+    }
+    summary { cursor: pointer; font-weight: 600; font-size: .92rem; }
+
+    dialog {
+      border: 1px solid var(--blue);
+      border-top: 5px solid var(--gold);
+      background: var(--card);
+      color: var(--ink);
+      max-width: 26rem;
+      padding: 1.5rem;
+    }
+    dialog::backdrop { background: rgba(19, 28, 38, .55); }
+
+    #log {
+      background: var(--ink); color: #9fe6b0;
+      padding: .8rem 1rem; font-size: .8rem;
+      min-height: 3rem; white-space: pre-wrap;
+    }
+
+    footer {
+      margin-top: 4rem; padding-top: 1.25rem;
+      border-top: 3px double var(--blue);
+      font-size: .82rem; color: var(--ink-soft);
+    }
+    address { font-style: normal; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="sheet">
+
+  <!-- ================= HEADER ================= -->
+  <header class="masthead">
+    <p class="label">Backend Development Lab &middot; Experiment 01</p>
+    <h1>The HTML5 Element Specimen</h1>
+    <p>One page, every major category of the HTML5 vocabulary — structure, text semantics, tables, forms, multimedia, graphics and the DOM.</p>
+    <p class="meta">
+      Author: Krish Pawar &middot; UPES Dehradun &middot;
+      Published <time datetime="2026-08-22">22 August 2026</time>
+    </p>
+
+    <!-- ================= NAV ================= -->
+    <nav aria-label="Section navigation">
+      <ol>
+        <li><a href="#structure">01 Structure</a></li>
+        <li><a href="#text">02 Text</a></li>
+        <li><a href="#lists">03 Lists</a></li>
+        <li><a href="#tables">04 Tables</a></li>
+        <li><a href="#forms">05 Forms</a></li>
+        <li><a href="#media">06 Media</a></li>
+        <li><a href="#graphics">07 Graphics</a></li>
+        <li><a href="#interactive">08 Interactive</a></li>
+        <li><a href="#dom">09 DOM</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- ---------- 01 STRUCTURE ---------- -->
+    <section id="structure">
+      <p class="idx">01 / Semantic structure</p>
+      <h2>Sectioning &amp; semantic elements</h2>
+
+      <p>
+        HTML5 replaced the endless <code>&lt;div id="header"&gt;</code> soup of HTML4 with elements
+        that <em>name</em> their own role. This document is built from them: a
+        <code>&lt;header&gt;</code> at the top, a <code>&lt;nav&gt;</code> for the section list,
+        this <code>&lt;main&gt;</code> region, nine <code>&lt;section&gt;</code>s, an
+        <code>&lt;aside&gt;</code> below, and a <code>&lt;footer&gt;</code> at the end.
+      </p>
+
+      <article class="box">
+        <h3>An &lt;article&gt; is self-contained</h3>
+        <p>
+          An <code>&lt;article&gt;</code> should still make sense if you cut it out and paste it
+          somewhere else — a blog post, a product card, a forum reply. A
+          <code>&lt;section&gt;</code> is a thematic chunk <em>of</em> something, so it usually
+          does not survive that test.
+        </p>
+        <footer class="meta">Nested footers are legal — this one belongs to the article, not the page.</footer>
+      </article>
+
+      <aside class="box">
+        <p class="label">Aside</p>
+        <p>
+          <code>&lt;aside&gt;</code> holds content that is tangentially related to what surrounds
+          it: pull quotes, glossaries, related links, ad slots.
+        </p>
+      </aside>
+
+      <h3>The six heading levels</h3>
+      <div class="box">
+        <h4>h4 — Sub-heading</h4>
+        <h5>h5 — Minor heading</h5>
+        <h6>h6 — Smallest heading</h6>
+        <p class="meta">
+          <strong>Rule:</strong> exactly one <code>&lt;h1&gt;</code> per page, and never skip a
+          level. Screen-reader users navigate by heading, so the outline <em>is</em> the map.
+        </p>
+      </div>
+    </section>
+
+    <!-- ---------- 02 TEXT ---------- -->
+    <section id="text">
+      <p class="idx">02 / Text-level semantics</p>
+      <h2>Inline &amp; formatting elements</h2>
+
+      <p>
+        This paragraph carries <strong>strong importance</strong>, <em>stressed emphasis</em>,
+        <b>bold styling without importance</b>, <i>an alternate voice</i>,
+        <u>an annotated misspelling</u>, <s>a statement no longer accurate</s>,
+        <small>fine print</small>, <mark>a highlighted run</mark>, H<sub>2</sub>O with a subscript,
+        and E = mc<sup>2</sup> with a superscript.
+      </p>
+
+      <p>
+        <abbr title="HyperText Markup Language">HTML</abbr> is standardised by the
+        <abbr title="World Wide Web Consortium">W3C</abbr> and the
+        <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>.
+        The term <dfn>semantic markup</dfn> means choosing tags for meaning, not appearance.
+      </p>
+
+      <p>
+        A short inline quote sits in <code>&lt;q&gt;</code>:
+        <q cite="https://html.spec.whatwg.org/">The elements of HTML describe the meaning of the content.</q>
+        A long one gets its own block:
+      </p>
+
+      <blockquote cite="https://www.w3.org/standards/webdesign/htmlcss">
+        <p>Structure first, presentation second, behaviour third. Break that order and you break the web for somebody.</p>
+        <footer class="meta">— Paraphrased from <cite>W3C Web Design Standards</cite></footer>
+      </blockquote>
+
+      <p>
+        Edits are tracked with <del datetime="2026-08-20">HTML4 used div-based layouts</del>
+        <ins datetime="2026-08-22">HTML5 uses semantic sectioning elements</ins>.
+      </p>
+
+      <h3>Code, keys and output</h3>
+      <p>
+        Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> to open DevTools. Calling
+        <code>document.querySelector('h1')</code> prints
+        <samp>&lt;h1&gt;The HTML5 Element Specimen&lt;/h1&gt;</samp>, where
+        <var>selector</var> is the argument you passed.
+      </p>
+
+<pre><code>&lt;!-- Preformatted block: whitespace is preserved exactly --&gt;
+&lt;figure&gt;
+  &lt;img src="diagram.png" alt="Box model diagram"&gt;
+  &lt;figcaption&gt;The CSS box model&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+      <h3>Direction, ruby and line control</h3>
+      <p>
+        Bi-directional isolation: user <bdi>محمد</bdi> scored 82 points.<br>
+        Bi-directional override: <bdo dir="rtl">This text is rendered right to left</bdo>.
+      </p>
+      <p>
+        Ruby annotation for pronunciation:
+        <ruby>漢字<rp>(</rp><rt>kanji</rt><rp>)</rp></ruby>.
+        A long identifier with an optional break opportunity:
+        <code>HTML<wbr>Element<wbr>Collection</code>.
+      </p>
+      <hr>
+      <p class="meta">That <code>&lt;hr&gt;</code> above is a thematic break, not a decorative line.</p>
+    </section>
+
+    <!-- ---------- 03 LISTS ---------- -->
+    <section id="lists">
+      <p class="idx">03 / Grouping content</p>
+      <h2>Lists</h2>
+
+      <div class="box">
+        <h4>Unordered — order carries no meaning</h4>
+        <ul>
+          <li>Semantic structure</li>
+          <li>Multimedia support
+            <ul>
+              <li>Native <code>&lt;audio&gt;</code></li>
+              <li>Native <code>&lt;video&gt;</code></li>
+            </ul>
+          </li>
+          <li>Offline storage APIs</li>
+        </ul>
+
+        <h4>Ordered — order is the information</h4>
+        <ol start="1" type="1">
+          <li>Write the markup</li>
+          <li>Validate against the W3C validator</li>
+          <li>Test with a screen reader</li>
+          <li>Deploy to GitHub Pages</li>
+        </ol>
+
+        <h4>Description list — term and definition pairs</h4>
+        <dl>
+          <dt>DOM</dt>
+          <dd>The in-memory tree a browser builds from parsed HTML.</dd>
+          <dt>Semantic element</dt>
+          <dd>An element whose name describes the meaning of its content.</dd>
+          <dt>Viewport</dt>
+          <dd>The visible area of a web page on the current device.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ---------- 04 TABLES ---------- -->
+    <section id="tables">
+      <p class="idx">04 / Tabular data</p>
+      <h2>Tables</h2>
+
+      <div class="scroll">
+        <table>
+          <caption>HTML4 structural patterns vs. their HTML5 replacements</caption>
+          <colgroup>
+            <col span="1">
+            <col span="2">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Purpose</th>
+              <th scope="col">HTML4 approach</th>
+              <th scope="col">HTML5 element</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Page banner</th>
+              <td><code>&lt;div id="header"&gt;</code></td>
+              <td><code>&lt;header&gt;</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Primary links</th>
+              <td><code>&lt;div id="nav"&gt;</code></td>
+              <td><code>&lt;nav&gt;</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Main content</th>
+              <td><code>&lt;div id="content"&gt;</code></td>
+              <td><code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Media playback</th>
+              <td colspan="2">Flash / Silverlight plug-in &rarr; replaced entirely by <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Drawing surface</th>
+              <td>Java applet, <code>&lt;object&gt;</code></td>
+              <td><code>&lt;canvas&gt;</code>, inline <code>&lt;svg&gt;</code></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="2">Form input</th>
+              <td>Text field + JavaScript validation</td>
+              <td><code>type="email"</code>, <code>type="date"</code>, <code>required</code></td>
+            </tr>
+            <tr>
+              <td>Custom autocomplete widget</td>
+              <td><code>&lt;datalist&gt;</code></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Net effect: fewer wrapper divs, less JavaScript, more meaning available to machines.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---------- 05 FORMS ---------- -->
+    <section id="forms">
+      <p class="idx">05 / Forms &amp; validation</p>
+      <h2>Form controls</h2>
+
+      <p>
+        Every control below is wired to a <code>&lt;label&gt;</code>. Submit with a blank required
+        field and the browser blocks it — <strong>no JavaScript involved</strong>. That is the
+        HTML5 constraint validation API doing the work.
+      </p>
+
+      <form id="specimen-form" action="#forms" method="get" autocomplete="on">
+
+        <fieldset>
+          <legend>Text-type inputs</legend>
+
+          <div class="field">
+            <label for="fullname">Full name <span aria-hidden="true">*</span></label>
+            <input type="text" id="fullname" name="fullname" placeholder="Krish Pawar"
+                   required minlength="3" maxlength="60" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@upes.ac.in"
+                   required autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="At least 8 characters, with one uppercase, one lowercase and one digit">
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210"
+                   pattern="[+0-9 ]{10,15}">
+          </div>
+
+          <div class="field">
+            <label for="site">Portfolio URL</label>
+            <input type="url" id="site" name="site" placeholder="https://example.github.io">
+          </div>
+
+          <div class="field">
+            <label for="find">Search this page</label>
+            <input type="search" id="find" name="find" placeholder="e.g. datalist">
+          </div>
+
+          <div class="field">
+            <label for="bio">Short bio</label>
+            <textarea id="bio" name="bio" rows="4" maxlength="300"
+                      placeholder="Two or three lines about yourself."></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Numeric &amp; temporal inputs</legend>
+
+          <div class="field">
+            <label for="sem">Semester</label>
+            <input type="number" id="sem" name="sem" min="1" max="8" step="1" value="5">
+          </div>
+
+          <div class="field">
+            <label for="skill">Confidence with HTML5 — <output id="skillOut" for="skill">7</output>/10</label>
+            <input type="range" id="skill" name="skill" min="0" max="10" step="1" value="7">
+          </div>
+
+          <div class="field"><label for="dob">Date of birth</label>
+            <input type="date" id="dob" name="dob"></div>
+          <div class="field"><label for="slot">Lab slot</label>
+            <input type="time" id="slot" name="slot" value="14:00"></div>
+          <div class="field"><label for="stamp">Submission timestamp</label>
+            <input type="datetime-local" id="stamp" name="stamp"></div>
+          <div class="field"><label for="month">Month of intake</label>
+            <input type="month" id="month" name="month"></div>
+          <div class="field"><label for="week">Academic week</label>
+            <input type="week" id="week" name="week"></div>
+          <div class="field"><label for="theme">Accent colour</label>
+            <input type="color" id="theme" name="theme" value="#1b3a6b"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Choice controls</legend>
+
+          <div class="field">
+            <label for="stack">Preferred stack <small>(free text with suggestions)</small></label>
+            <input type="text" id="stack" name="stack" list="stacks" placeholder="Start typing…">
+            <datalist id="stacks">
+              <option value="React Native + Supabase"></option>
+              <option value="Next.js + FastAPI"></option>
+              <option value="Spring Boot + MySQL"></option>
+              <option value="Flutter + Firebase"></option>
+            </datalist>
+          </div>
+
+          <div class="field">
+            <label for="course">Course</label>
+            <select id="course" name="course">
+              <optgroup label="Core">
+                <option value="dsa">Data Structures</option>
+                <option value="bd" selected>Backend Development</option>
+                <option value="dbms">Database Systems</option>
+              </optgroup>
+              <optgroup label="Elective">
+                <option value="ml">Machine Learning</option>
+                <option value="cn">Computer Networks</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="field">
+            <p class="label">Topics covered (checkbox — many)</p>
+            <div class="inline">
+              <label><input type="checkbox" name="topic" value="semantic" checked> Semantics</label>
+              <label><input type="checkbox" name="topic" value="forms" checked> Forms</label>
+              <label><input type="checkbox" name="topic" value="media"> Multimedia</label>
+              <label><input type="checkbox" name="topic" value="canvas"> Canvas</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <p class="label">Experience level (radio — one)</p>
+            <div class="inline">
+              <label><input type="radio" name="level" value="beginner"> Beginner</label>
+              <label><input type="radio" name="level" value="intermediate" checked> Intermediate</label>
+              <label><input type="radio" name="level" value="advanced"> Advanced</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="upload">Attach your report <small>(.md, .html, .pdf)</small></label>
+            <input type="file" id="upload" name="upload" accept=".md,.html,.pdf" multiple>
+          </div>
+
+          <!-- Hidden input: sent with the form, never shown -->
+          <input type="hidden" name="experiment_id" value="EXP-1">
+        </fieldset>
+
+        <fieldset>
+          <legend>Progress &amp; measurement</legend>
+          <div class="field">
+            <label for="done">Lab completion</label>
+            <progress id="done" value="82" max="100">82%</progress>
+          </div>
+          <div class="field">
+            <label for="disk">Repo size against quota</label>
+            <meter id="disk" value="0.34" min="0" max="1" low="0.3" high="0.75" optimum="0.2">34%</meter>
+          </div>
+        </fieldset>
+
+        <div class="inline">
+          <button type="submit">Validate and submit</button>
+          <button type="reset">Reset fields</button>
+          <button type="button" class="ghost" id="openDialog">Open dialog</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ---------- 06 MEDIA ---------- -->
+    <section id="media">
+      <p class="idx">06 / Embedded content</p>
+      <h2>Multimedia</h2>
+
+      <h3>Audio</h3>
+      <audio controls preload="metadata">
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+        Your browser does not support the <code>audio</code> element.
+        <a href="https://www.w3schools.com/html/horse.mp3">Download the audio file</a>.
+      </audio>
+      <p class="meta">
+        Multiple <code>&lt;source&gt;</code> children let the browser pick the first format it can
+        decode. The text inside the element is the fallback for browsers that support neither.
+      </p>
+
+      <h3>Video</h3>
+      <figure>
+        <video controls width="640" preload="metadata" poster="" muted playsinline>
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+          <track kind="captions" srclang="en" label="English captions">
+          Your browser does not support the <code>video</code> element.
+        </video>
+        <figcaption>
+          <code>&lt;video&gt;</code> with two sources and a <code>&lt;track&gt;</code> for captions.
+          Captions are what make video accessible to deaf and hard-of-hearing users.
+        </figcaption>
+      </figure>
+
+      <h3>Responsive images</h3>
+      <figure>
+        <picture>
+          <source media="(min-width: 720px)" srcset="https://picsum.photos/id/180/900/380">
+          <source media="(min-width: 420px)" srcset="https://picsum.photos/id/180/600/300">
+          <img src="https://picsum.photos/id/180/400/220"
+               alt="A workstation with a laptop and notebook on a wooden desk"
+               width="900" height="380" loading="lazy" decoding="async">
+        </picture>
+        <figcaption>
+          <code>&lt;picture&gt;</code> serves a different file per breakpoint — the browser
+          downloads only the one it needs. <code>alt</code> text is mandatory, not optional.
+        </figcaption>
+      </figure>
+
+      <h3>Image map</h3>
+      <figure>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='120'%3E%3Crect width='420' height='120' fill='%23f7f9fb'/%3E%3Crect x='10' y='10' width='120' height='100' fill='%231b3a6b'/%3E%3Crect x='150' y='10' width='120' height='100' fill='%23a97c12'/%3E%3Crect x='290' y='10' width='120' height='100' fill='%234d5b6a'/%3E%3Ctext x='70' y='66' fill='%23fff' font-family='monospace' font-size='13' text-anchor='middle'%3EHTML%3C/text%3E%3Ctext x='210' y='66' fill='%23fff' font-family='monospace' font-size='13' text-anchor='middle'%3ECSS%3C/text%3E%3Ctext x='350' y='66' fill='%23fff' font-family='monospace' font-size='13' text-anchor='middle'%3EJS%3C/text%3E%3C/svg%3E"
+             alt="Three coloured panels labelled HTML, CSS and JavaScript" usemap="#stack-map" width="420" height="120">
+        <map name="stack-map">
+          <area shape="rect" coords="10,10,130,110" href="#structure" alt="Go to the structure section">
+          <area shape="rect" coords="150,10,270,110" href="#text" alt="Go to the text section">
+          <area shape="rect" coords="290,10,410,110" href="#dom" alt="Go to the DOM section">
+        </map>
+        <figcaption>Clickable regions defined with <code>&lt;map&gt;</code> and <code>&lt;area&gt;</code>.</figcaption>
+      </figure>
+
+      <h3>Nested browsing context</h3>
+      <iframe src="about:blank" title="Empty sandboxed frame used to demonstrate the iframe element"
+              width="100%" height="120" loading="lazy" sandbox></iframe>
+      <p class="meta">An <code>&lt;iframe&gt;</code> embeds a whole separate document. <code>title</code> is required for screen readers; <code>sandbox</code> strips its privileges.</p>
+    </section>
+
+    <!-- ---------- 07 GRAPHICS ---------- -->
+    <section id="graphics">
+      <p class="idx">07 / Graphics</p>
+      <h2>Canvas &amp; SVG</h2>
+
+      <h3>Canvas — raster, drawn with JavaScript</h3>
+      <figure>
+        <canvas id="chart" width="620" height="180">
+          Bar chart showing element counts: structure 12, text 24, forms 21, media 9.
+        </canvas>
+        <figcaption>A bar chart painted pixel-by-pixel via the 2D context. Canvas has no DOM inside it, so the fallback text carries the meaning.</figcaption>
+      </figure>
+
+      <h3>SVG — vector, and part of the DOM</h3>
+      <figure>
+        <svg width="220" height="140" viewBox="0 0 220 140" role="img" aria-label="Diagram of nested HTML5 sectioning elements">
+          <rect x="4" y="4" width="212" height="132" fill="none" stroke="#1b3a6b" stroke-width="2"/>
+          <rect x="18" y="18" width="184" height="28" fill="#1b3a6b"/>
+          <text x="110" y="37" fill="#f7f9fb" font-family="monospace" font-size="12" text-anchor="middle">header</text>
+          <rect x="18" y="54" width="184" height="42" fill="#a97c12"/>
+          <text x="110" y="80" fill="#fff" font-family="monospace" font-size="12" text-anchor="middle">main</text>
+          <rect x="18" y="104" width="184" height="24" fill="#4d5b6a"/>
+          <text x="110" y="120" fill="#fff" font-family="monospace" font-size="11" text-anchor="middle">footer</text>
+        </svg>
+        <figcaption>Inline SVG scales to any size without blurring, and every shape is a stylable, scriptable DOM node.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ---------- 08 INTERACTIVE ---------- -->
+    <section id="interactive">
+      <p class="idx">08 / Interactive elements</p>
+      <h2>Disclosure &amp; dialog</h2>
+
+      <details open>
+        <summary>Why did HTML5 add <code>&lt;details&gt;</code>?</summary>
+        <p>
+          Accordions used to need a div, a click handler and a chunk of JavaScript. HTML5 ships the
+          open/close behaviour natively, keyboard-accessible and announced correctly by screen
+          readers, for free.
+        </p>
+      </details>
+
+      <details>
+        <summary>What is a <code>&lt;template&gt;</code>?</summary>
+        <p>
+          Markup that is parsed but <strong>not rendered</strong> until JavaScript clones it. Use it
+          for repeated UI you will stamp out dynamically — table rows, cards, list items. Open
+          DevTools and you will find the template below sitting inert in the DOM.
+        </p>
+      </details>
+
+      <template id="row-template">
+        <li><strong class="t-name"></strong> — <span class="t-desc"></span></li>
+      </template>
+
+      <dialog id="infoDialog">
+        <p class="label">Native modal</p>
+        <h3 style="margin-top:.3rem">&lt;dialog&gt;</h3>
+        <p>
+          Opened with <code>showModal()</code>. The browser handles the backdrop, focus trapping and
+          the <kbd>Esc</kbd> key — behaviour that used to require a whole modal library.
+        </p>
+        <button id="closeDialog">Close</button>
+      </dialog>
+    </section>
+
+    <!-- ---------- 09 DOM ---------- -->
+    <section id="dom">
+      <p class="idx">09 / Document Object Model</p>
+      <h2>Reading the DOM</h2>
+
+      <p>
+        When the browser parses this file it builds a tree of nodes:
+        <code>document &rarr; html &rarr; body &rarr; div.sheet &rarr; main &rarr; section</code>,
+        and so on. JavaScript then reads and mutates that tree — the HTML file on disk never
+        changes. The counts below are computed live, from this page, at load time.
+      </p>
+
+      <div class="box">
+        <div class="inline" style="margin-bottom:.8rem">
+          <button type="button" id="countBtn">Count elements in this document</button>
+          <button type="button" class="ghost" id="fillList">Stamp rows from &lt;template&gt;</button>
+        </div>
+        <div id="log" role="status" aria-live="polite">Output appears here.</div>
+        <ul id="stamped"></ul>
+      </div>
+
+      <noscript>
+        <p class="box"><strong>JavaScript is disabled.</strong> Everything above still works — the
+        semantics, the form validation and the media players are all native HTML. Only this
+        section's live counters are unavailable.</p>
+      </noscript>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p class="label">Experiment 01 &middot; CO2</p>
+    <p>
+      Built for the Backend Development lab, UPES Dehradun.
+      Validated against the <a href="https://validator.w3.org/">W3C Markup Validation Service</a>.
+    </p>
+    <address>
+      Krish Pawar &middot; B.Tech CSE &middot;
+      <a href="mailto:krish@example.com">krish@example.com</a>
+    </address>
+    <p class="meta">
+      &copy; <time datetime="2026">2026</time> &middot;
+      <a href="./report.md">Read the lab report</a> &middot;
+      <a href="#structure">Back to top</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  /* ---------- Range → output binding ---------- */
+  const skill = document.getElementById('skill');
+  const skillOut = document.getElementById('skillOut');
+  skill.addEventListener('input', () => { skillOut.textContent = skill.value; });
+
+  /* ---------- Dialog ---------- */
+  const dlg = document.getElementById('infoDialog');
+  document.getElementById('openDialog').addEventListener('click', () => dlg.showModal());
+  document.getElementById('closeDialog').addEventListener('click', () => dlg.close());
+
+  /* ---------- DOM inspection ---------- */
+  const log = document.getElementById('log');
+
+  function countElements() {
+    const all = document.getElementsByTagName('*');
+    const tally = {};
+    for (const el of all) {
+      const tag = el.tagName.toLowerCase();
+      tally[tag] = (tally[tag] || 0) + 1;
+    }
+    const unique = Object.keys(tally).sort();
+    const top = unique
+      .sort((a, b) => tally[b] - tally[a])
+      .slice(0, 6)
+      .map(t => `${t} × ${tally[t]}`)
+      .join('   ');
+
+    log.textContent =
+      `Total element nodes : ${all.length}\n` +
+      `Distinct tag names  : ${unique.length}\n` +
+      `Most frequent       : ${top}\n` +
+      `Document title      : ${document.title}`;
+  }
+  document.getElementById('countBtn').addEventListener('click', countElements);
+
+  /* ---------- <template> cloning ---------- */
+  const facts = [
+    { name: '&lt;main&gt;',    desc: 'Allowed only once per document.' },
+    { name: '&lt;figure&gt;',  desc: 'Self-contained content with an optional caption.' },
+    { name: '&lt;time&gt;',    desc: 'Machine-readable dates via the datetime attribute.' },
+    { name: '&lt;dialog&gt;',  desc: 'Native modal with a built-in backdrop.' }
+  ];
+
+  document.getElementById('fillList').addEventListener('click', () => {
+    const tpl = document.getElementById('row-template');
+    const list = document.getElementById('stamped');
+    list.innerHTML = '';
+    facts.forEach(f => {
+      const node = tpl.content.cloneNode(true);
+      node.querySelector('.t-name').innerHTML = f.name;
+      node.querySelector('.t-desc').textContent = f.desc;
+      list.appendChild(node);
+    });
+    log.textContent = `Cloned ${facts.length} list items from <template>. They exist only in the DOM — view source and you will not find them.`;
+  });
+
+  /* ---------- Canvas bar chart ---------- */
+  (function drawChart() {
+    const cvs = document.getElementById('chart');
+    if (!cvs || !cvs.getContext) return;
+    const ctx = cvs.getContext('2d');
+    const data = [
+      { label: 'structure', value: 12 },
+      { label: 'text',      value: 24 },
+      { label: 'lists',     value: 8  },
+      { label: 'tables',    value: 10 },
+      { label: 'forms',     value: 21 },
+      { label: 'media',     value: 9  }
+    ];
+    const max = 26, base = 145, bw = 62, gap = 34;
+
+    ctx.strokeStyle = '#c3ccd6';
+    ctx.beginPath(); ctx.moveTo(20, base + .5); ctx.lineTo(600, base + .5); ctx.stroke();
+
+    data.forEach((d, i) => {
+      const x = 30 + i * (bw + gap);
+      const h = (d.value / max) * 118;
+      ctx.fillStyle = i % 2 ? '#a97c12' : '#1b3a6b';
+      ctx.fillRect(x, base - h, bw, h);
+      ctx.fillStyle = '#131c26';
+      ctx.font = '11px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(d.label, x + bw / 2, base + 16);
+      ctx.fillText(d.value, x + bw / 2, base - h - 6);
+    });
+  })();
+
+  /* Run the count once on load so the panel is never empty. */
+  countElements();
+</script>
+</body>
+</html>
