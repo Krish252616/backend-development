@@ -48,7 +48,7 @@ Backend Development/
 ## Running an experiment locally
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
+git clone https://github.com/<Krish252616>/<backend-development>.git
 cd "<repo-name>/LAB/EXP-1"
 open index.html          # macOS  ·  use  start index.html  on Windows
 ```
