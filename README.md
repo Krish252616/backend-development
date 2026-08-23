@@ -49,7 +49,7 @@ Backend Development/
 
 ```bash
 git clone https://github.com/<Krish252616>/<backend-development>.git
-cd "<repo-name>/LAB/EXP-1"
+cd "<backend-development>/LAB/EXP-1"
 open index.html          # macOS  ·  use  start index.html  on Windows
 ```
 
