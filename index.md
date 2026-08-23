@@ -1,18 +1,31 @@
+---
+title: Backend Development
+layout: default
+---
+
 # Backend Development
 
-Welcome to my Backend Development course repository.
+Coursework repository — **B.Tech CSE, UPES Dehradun**
 
-This repository contains:
+Lab experiments, theory notes and source code for the Backend Development course.
 
-- Lab experiments
-- Backend development source code
-- Theory notes
-- Course material
+**Author:** Krish Pawar
 
-## Labs
+---
 
-Explore the `LAB` folder for practical experiments.
+## Lab experiments
+
+| # | Experiment | CO | Report | Live output |
+|---|---|---|---|---|
+| 1 | Create a web page with all possible elements of HTML5 | CO2 | [Read report](./LAB/EXP-1/report.html) | [Open page](./LAB/EXP-1/index.html) |
+
+---
 
 ## Theory
 
-Explore the `Theory` folder for backend development notes.
+Notes and written assignments live in the `Theory` folder —
+[browse on GitHub](https://github.com/Krish252616/backend-development/tree/main/Theory).
+
+---
+
+[View this repository on GitHub](https://github.com/Krish252616/backend-development)
