@@ -7,7 +7,7 @@ Lab experiments, theory notes and source code for the Backend Development course
 **Author:** Krish Pawar
 **Live site:** https://krish252616.github.io/backend-development/
 
-————
+---
 
 ## Lab experiments
 
@@ -21,9 +21,18 @@ Lab experiments, theory notes and source code for the Backend Development course
 
 ---
 
-## Theory
+## Theory — projects
 
-Notes and written assignments live in [`Theory/`](./Theory).
+| Project | Stack | Source |
+|---|---|---|
+| Express demo | Node.js · Express | [`Theory/Lecture1/express-demo`](./Theory/Lecture1/express-demo) |
+| Sessions | Node.js · Express | [`Theory/Sessions`](./Theory/Sessions) |
+| Flask project | Python · Flask | [`Theory/Flask/backend-project`](./Theory/Flask/backend-project) |
+| FastAPI project | Python · FastAPI | [`Theory/FastAPI/fastapi-project`](./Theory/FastAPI/fastapi-project) |
+| Server-side rendering | Python | [`Theory/ssr-python`](./Theory/ssr-python) |
+| EJS views | Node.js · EJS | [`Theory/views`](./Theory/views) |
+
+Dependencies: [`package.json`](./Theory/package.json) · [`requirements.txt`](./Theory/requirements.txt)
 
 ---
 
@@ -38,23 +47,47 @@ backend-development/
 │       ├── index.html     ← the experiment output
 │       └── report.md      ← the lab report
 ├── Theory/
+│   ├── FastAPI/fastapi-project/
+│   ├── Flask/backend-project/
+│   ├── Lecture1/express-demo/
+│   ├── Sessions/
+│   ├── ssr-python/
+│   ├── views/
+│   ├── package.json
+│   ├── requirements.txt
+│   └── server.js
 └── .gitignore
 ```
 
 ---
 
-## Running an experiment locally
+## Running the code
+
+**Lab experiment**
 
 ```bash
-git clone https://github.com/Krish252616/backend-development.git
-cd backend-development/LAB/EXP-1
+cd LAB/EXP-1
 open index.html          # macOS  ·  use  start index.html  on Windows
 ```
 
-Or open the folder in VS Code and click **Go Live**.
+**Node projects**
+
+```bash
+cd Theory
+npm install
+node server.js
+```
+
+**Python projects**
+
+```bash
+cd Theory
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ---
 
 ## Tech
 
-`HTML5` · `CSS3` · `JavaScript (ES6)` · `Python` · `Git`
+`HTML5` · `CSS3` · `JavaScript (ES6)` · `Node.js` · `Express` · `EJS` · `Python` · `Flask` · `FastAPI` · `Git`
