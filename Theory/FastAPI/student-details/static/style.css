@@ -1,0 +1,198 @@
+:root {
+  --paper:    #eceff3;
+  --card:     #ffffff;
+  --ink:      #151d26;
+  --ink-soft: #55616f;
+  --rule:     #c6cfd9;
+  --blue:     #1b3a6b;
+  --gold:     #a97c12;
+  --red:      #9c2a20;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.6 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+.sheet {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+.mono, .label, th, caption, nav a, input, button, .button, small {
+  font-family: "SF Mono", "IBM Plex Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+}
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+  border-bottom: 3px double var(--blue);
+  padding: 2.5rem 0 1rem;
+  margin-bottom: 2rem;
+}
+
+.label {
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+
+.masthead h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  margin: .35rem 0 1rem;
+}
+
+nav { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+nav a {
+  font-size: .75rem;
+  text-decoration: none;
+  color: var(--blue);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  padding: .35rem .6rem;
+}
+
+nav a:hover, nav a:focus-visible {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+.lede { color: var(--ink-soft); max-width: 52ch; }
+
+/* ---------- Table ---------- */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--card);
+  font-size: .95rem;
+  margin: 1.5rem 0;
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-size: .7rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-bottom: .5rem;
+}
+
+th, td {
+  border: 1px solid var(--rule);
+  padding: .6rem .75rem;
+  text-align: left;
+}
+
+thead th {
+  background: var(--blue);
+  color: #fff;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+tbody tr:nth-child(even) { background: #f2f5f8; }
+
+td.empty { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- Form ---------- */
+
+form {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--blue);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.field { margin-bottom: 1.1rem; }
+
+.field label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  margin-bottom: .3rem;
+  font-family: inherit;
+}
+
+input {
+  font-size: .9rem;
+  padding: .5rem .6rem;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--ink);
+  width: 100%;
+  max-width: 22rem;
+  display: block;
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+small {
+  display: block;
+  font-size: .72rem;
+  color: var(--ink-soft);
+  margin-top: .3rem;
+}
+
+.error {
+  background: #f7e4e2;
+  border-left: 3px solid var(--red);
+  color: var(--red);
+  padding: .7rem 1rem;
+  margin: 1.5rem 0 0;
+  font-size: .9rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+
+button, .button {
+  font-size: .85rem;
+  padding: .55rem 1.1rem;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover, .button:hover { background: #16305a; }
+
+.button.ghost {
+  background: transparent;
+  color: var(--blue);
+}
+
+.button.ghost:hover { background: #dde4ec; }
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 3px double var(--blue);
+  font-size: .8rem;
+  color: var(--ink-soft);
+}

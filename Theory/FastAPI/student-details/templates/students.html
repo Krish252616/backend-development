@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}All students | Student Details{% endblock %}
+
+{% block content %}
+  <p class="lede">
+    The table below is built on the server. View the page source and you'll see
+    the finished rows already in the HTML — the browser runs no JavaScript to
+    produce them.
+  </p>
+
+  <table>
+    <caption>{{ students | length }} student{{ '' if students | length == 1 else 's' }} on record</caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">SAP ID</th>
+        <th scope="col">Batch</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+      <tr>
+        <td>{{ student.name }}</td>
+        <td class="mono">{{ student.sap_id }}</td>
+        <td>{{ student.batch }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3" class="empty">No student details available yet.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="actions">
+    <a class="button" href="/students/add">Add a student</a>
+  </p>
+{% endblock %}

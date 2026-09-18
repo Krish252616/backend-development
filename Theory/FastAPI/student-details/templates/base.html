@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Student Details{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+  <div class="sheet">
+
+    <header class="masthead">
+      <p class="label">Backend Development &middot; FastAPI SSR</p>
+      <h1>Student Details</h1>
+      <nav>
+        <a href="/students">All students</a>
+        <a href="/students/add">Add student</a>
+      </nav>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <p>Rendered on the server by FastAPI + Jinja2.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Add student | Student Details{% endblock %}
+
+{% block content %}
+  <p class="lede">
+    Submitting this form sends a POST request to the server. The server
+    validates it, stores the record, then redirects back to the table.
+  </p>
+
+  {% if error %}
+  <p class="error" role="alert">{{ error }}</p>
+  {% endif %}
+
+  <form method="post" action="/students/add">
+
+    <div class="field">
+      <label for="name">Full name</label>
+      <input type="text" id="name" name="name"
+             value="{{ name | default('', true) }}"
+             placeholder="Krish Pawar"
+             required minlength="2" maxlength="60" autocomplete="name">
+    </div>
+
+    <div class="field">
+      <label for="sap_id">SAP ID</label>
+      <input type="text" id="sap_id" name="sap_id"
+             value="{{ sap_id | default('', true) }}"
+             placeholder="590017543"
+             required pattern="[0-9]{9}"
+             title="Exactly 9 digits"
+             inputmode="numeric">
+      <small>Nine digits, numbers only.</small>
+    </div>
+
+    <div class="field">
+      <label for="batch">Batch</label>
+      <input type="text" id="batch" name="batch"
+             value="{{ batch | default('', true) }}"
+             placeholder="B.Tech CSE Core 5"
+             required maxlength="60" list="batches">
+      <datalist id="batches">
+        <option value="B.Tech CSE Core 1"></option>
+        <option value="B.Tech CSE Core 5"></option>
+        <option value="B.Tech CSE AI/ML"></option>
+        <option value="B.Tech ECE"></option>
+      </datalist>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Save student</button>
+      <a class="button ghost" href="/students">Cancel</a>
+    </div>
+
+  </form>
+{% endblock %}

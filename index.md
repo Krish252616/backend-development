@@ -23,6 +23,7 @@ Lab experiments, theory notes and source code for the Backend Development course
 
 ## Theory — projects
 
+<<<<<<< HEAD
 Server-side code from the lectures. These are runnable projects, not web pages, so each link
 opens the source on GitHub.
 
@@ -40,6 +41,14 @@ Dependencies for the whole Theory folder sit in
 (Node) and
 [`requirements.txt`](https://github.com/Krish252616/backend-development/blob/main/Theory/requirements.txt)
 (Python).
+=======
+| Project | Description |
+|---|---|
+| [Student Details (SSR) — Python · FastAPI · Jinja2](https://github.com/Krish252616/backend-development/tree/main/Theory/FastAPI/student-details) | FastAPI route and Jinja2 templates rendering student details (name, SAP ID, batch) as server-rendered HTML |
+
+Notes and written assignments live in the `Theory` folder —
+[browse on GitHub](https://github.com/Krish252616/backend-development/tree/main/Theory).
+>>>>>>> 711dc93 (Add Student Details SSR lab project and Theory index entries)
 
 ---
 

@@ -23,6 +23,7 @@ Lab experiments, theory notes and source code for the Backend Development course
 
 ## Theory — projects
 
+<<<<<<< HEAD
 | Project | Stack | Source |
 |---|---|---|
 | Express demo | Node.js · Express | [`Theory/Lecture1/express-demo`](./Theory/Lecture1/express-demo) |
@@ -33,6 +34,13 @@ Lab experiments, theory notes and source code for the Backend Development course
 | EJS views | Node.js · EJS | [`Theory/views`](./Theory/views) |
 
 Dependencies: [`package.json`](./Theory/package.json) · [`requirements.txt`](./Theory/requirements.txt)
+=======
+| Project | Description |
+|---|---|
+| [Student Details (SSR) — Python · FastAPI · Jinja2](./Theory/FastAPI/student-details) | FastAPI route and Jinja2 templates rendering student details (name, SAP ID, batch) as server-rendered HTML |
+
+Notes and written assignments live in [`Theory/`](./Theory).
+>>>>>>> 711dc93 (Add Student Details SSR lab project and Theory index entries)
 
 ---
 
