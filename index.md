@@ -34,7 +34,6 @@ opens the source on GitHub.
 | FastAPI project | Python · FastAPI | [FastAPI/fastapi-project](https://github.com/Krish252616/backend-development/tree/main/Theory/FastAPI/fastapi-project) |
 | Server-side rendering | Python | [ssr-python](https://github.com/Krish252616/backend-development/tree/main/Theory/ssr-python) |
 | EJS views | Node.js · EJS | [views](https://github.com/Krish252616/backend-development/tree/main/Theory/views) |
-
 | Student Details (SSR) | Python · FastAPI · Jinja2 | [FastAPI/student-details](https://github.com/Krish252616/backend-development/tree/main/Theory/FastAPI/student-details) |
 
 Dependencies for the whole Theory folder sit in
