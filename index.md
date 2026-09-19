@@ -18,7 +18,7 @@ Lab experiments, theory notes and source code for the Backend Development course
 | # | Experiment | CO | Report | Live output |
 |---|---|---|---|---|
 | 1 | Create a web page with all possible elements of HTML5 | CO2 | [Read report](./LAB/EXP-1/report.html) | [Open page](./LAB/EXP-1/index.html) |
-| 13a | User management with MongoDB and Mongoose | CO_ | [Read report](./LAB/EXP-13a/mongoose-demo/report.html) | [View output](./LAB/EXP-13a/mongoose-demo/report.html#7-output) |
+| 13a | User management with MongoDB and Mongoose | CO_ | [Read report](./LAB/EXP-13a/mongoose-demo/report.md) | [View output](./LAB/EXP-13a/mongoose-demo/report.md#7-output) |
 
 ---
 
