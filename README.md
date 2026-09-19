@@ -14,6 +14,7 @@ Lab experiments, theory notes and source code for the Backend Development course
 | # | Experiment | CO | Report | Live output |
 |---|---|---|---|---|
 | 1 | Create a web page with all possible elements of HTML5 | CO2 | [Report](./LAB/EXP-1/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-1/index.html) |
+| 13a | User management with MongoDB and Mongoose | CO_ | [Report](./LAB/EXP-13a/mongoose-demo/report.md) | [Output](./LAB/EXP-13a/mongoose-demo/report.md#7-output) |
 
 <!-- Add one row per experiment:
 | 2 | Experiment title | CO_ | [Report](./LAB/EXP-2/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-2/index.html) |
