@@ -1,0 +1,22 @@
+<%- include('partials/header', { title: 'All posts' }) %>
+
+<div class="page-head">
+  <h1>Posts</h1>
+  <a class="button" href="/posts/new">New post</a>
+</div>
+
+<% if (posts.length === 0) { %>
+  <p class="empty">There are no posts yet. <a href="/posts/new">Write the first post.</a></p>
+<% } else { %>
+  <ul class="post-list">
+    <% posts.forEach(function (post) { %>
+      <li>
+        <a class="post-title" href="/posts/<%= post._id %>"><%= post.title %></a>
+        <span class="post-meta">By <%= post.author %></span>
+        <time class="post-meta" datetime="<%= isoDate(post.createdAt) %>"><%= formatDate(post.createdAt) %></time>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>
+
+<%- include('partials/footer') %>

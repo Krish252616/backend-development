@@ -1,0 +1,9 @@
+<%- include('partials/header', { title: 'Error ' + status }) %>
+
+<div class="error-page">
+  <h1>Error <%= status %></h1>
+  <p><%= message %></p>
+  <p><a href="/posts">Go to all posts</a></p>
+</div>
+
+<%- include('partials/footer') %>
