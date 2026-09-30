@@ -1,13 +1,13 @@
 # Backend Development
 
-Coursework repository — **B.Tech CSE, UPES Dehradun**
+Coursework repository, B.Tech CSE, UPES Dehradun.
 
 Lab experiments, theory notes and source code for the Backend Development course.
 
 **Author:** Krish Pawar
 **Live site:** https://krish252616.github.io/backend-development/
 
-----
+---
 
 ## Lab experiments
 
@@ -18,31 +18,24 @@ Lab experiments, theory notes and source code for the Backend Development course
 | Exam | Simple CMS with Express, EJS and MongoDB | CO_ | [Report](./LAB/EXP-Examination/report.md) | [Output](./LAB/EXP-Examination/report.md#output) |
 
 <!-- Add one row per experiment:
-| 2 | Experiment title | CO_ | [Report](./LAB/EXP-2/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-2/index.html) |
+| 14 | Experiment title | CO_ | [Report](./LAB/EXP-14/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-14/index.html) |
 -->
 
 ---
 
-## Theory — projects
-
+## Theory projects
 
 | Project | Stack | Source |
 |---|---|---|
-| Express demo | Node.js · Express | [`Theory/Lecture1/express-demo`](./Theory/Lecture1/express-demo) |
-| Sessions | Node.js · Express | [`Theory/Sessions`](./Theory/Sessions) |
-| Flask project | Python · Flask | [`Theory/Flask/backend-project`](./Theory/Flask/backend-project) |
-| FastAPI project | Python · FastAPI | [`Theory/FastAPI/fastapi-project`](./Theory/FastAPI/fastapi-project) |
-| Server-side rendering | Python | [`Theory/ssr-python`](./Theory/ssr-python) |
-| EJS views | Node.js · EJS | [`Theory/views`](./Theory/views) |
+| Express demo | Node.js, Express | [`Theory/Lecture1/express-demo`](https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture1/express-demo) |
+| Sessions | Node.js, Express | [`Theory/Sessions`](https://github.com/Krish252616/backend-development/tree/main/Theory/Sessions) |
+| Flask project | Python, Flask | [`Theory/Lecture 2/Flask/backend-project`](https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture%202/Flask/backend-project) |
+| FastAPI project | Python, FastAPI | [`Theory/Lecture 15/FastAPI/fastapi-project`](https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture%2015/FastAPI/fastapi-project) |
+| Student Details (SSR) | Python, FastAPI, Jinja2 | [`Theory/Lecture 15/FastAPI/student-details`](https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture%2015/FastAPI/student-details) |
+| Server-side rendering | Python | [`Theory/ssr-python`](https://github.com/Krish252616/backend-development/tree/main/Theory/ssr-python) |
+| EJS views | Node.js, EJS | [`Theory/views`](https://github.com/Krish252616/backend-development/tree/main/Theory/views) |
 
-Dependencies: [`package.json`](./Theory/package.json) · [`requirements.txt`](./Theory/requirements.txt)
-
-| Project | Description |
-|---|---|
-| [Student Details (SSR) — Python · FastAPI · Jinja2](./Theory/FastAPI/student-details) | FastAPI route and Jinja2 templates rendering student details (name, SAP ID, batch) as server-rendered HTML |
-
-Notes and written assignments live in [`Theory/`](./Theory).
- (Add Student Details SSR lab project and Theory index entries)
+Dependencies: [`package.json`](https://github.com/Krish252616/backend-development/blob/main/Theory/package.json) and [`requirements.txt`](https://github.com/Krish252616/backend-development/blob/main/Theory/requirements.txt)
 
 ---
 
@@ -50,22 +43,19 @@ Notes and written assignments live in [`Theory/`](./Theory).
 
 ```
 backend-development/
-├── index.md               ← GitHub Pages homepage
-├── README.md              ← this file (GitHub view)
+├── README.md              this file (also the GitHub Pages homepage)
+├── _config.yml            Jekyll settings (excludes Theory/ from the site)
 ├── LAB/
-│   └── EXP-1/
-│       ├── index.html     ← the experiment output
-│       └── report.md      ← the lab report
+│   ├── EXP-1/             HTML5 page and report
+│   ├── EXP-13a/           MongoDB and Mongoose demo
+│   └── EXP-Examination/   Simple CMS
 ├── Theory/
-│   ├── FastAPI/fastapi-project/
-│   ├── Flask/backend-project/
 │   ├── Lecture1/express-demo/
+│   ├── Lecture 2/Flask/backend-project/
+│   ├── Lecture 15/FastAPI/
 │   ├── Sessions/
 │   ├── ssr-python/
-│   ├── views/
-│   ├── package.json
-│   ├── requirements.txt
-│   └── server.js
+│   └── views/
 └── .gitignore
 ```
 
@@ -73,14 +63,23 @@ backend-development/
 
 ## Running the code
 
-**Lab experiment**
+**HTML experiment**
 
 ```bash
 cd LAB/EXP-1
-open index.html          # macOS  ·  use  start index.html  on Windows
+open index.html          # macOS. On Windows: start index.html
 ```
 
-**Node projects**
+**Simple CMS (needs MongoDB running)**
+
+```bash
+brew services start mongodb-community@8.0
+cd LAB/EXP-Examination
+npm install
+npm start
+```
+
+**Node projects in Theory**
 
 ```bash
 cd Theory
@@ -88,7 +87,7 @@ npm install
 node server.js
 ```
 
-**Python projects**
+**Python projects in Theory**
 
 ```bash
 cd Theory
@@ -100,4 +99,4 @@ pip install -r requirements.txt
 
 ## Tech
 
-`HTML5` · `CSS3` · `JavaScript (ES6)` · `Node.js` · `Express` · `EJS` · `Python` · `Flask` · `FastAPI` · `Git`
+`HTML5` `CSS3` `JavaScript` `Node.js` `Express` `EJS` `MongoDB` `Python` `Flask` `FastAPI` `Jinja2` `Git`
