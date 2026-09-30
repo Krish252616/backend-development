@@ -1,7 +1,7 @@
 # Student Details — FastAPI SSR
 
-A FastAPI route and Jinja2 template that serve student details (name, SAP ID,
-batch) as server-rendered HTML. The data lives on the server; the browser
+A FastAPI route and Jinja2 template that serve student details (Krish, 590017543,
+batchv - 5 ) as server-rendered HTML. The data lives on the server; the browser
 receives a finished page.
 
 ## Run
