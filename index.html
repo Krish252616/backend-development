@@ -6,265 +6,80 @@
   <title>Backend Development | Krish Pawar</title>
   <meta name="description" content="Lab experiments, theory projects and source code for the Backend Development course. Krish Pawar, B.Tech CSE, UPES Dehradun.">
   <meta name="author" content="Krish Pawar">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#070a0f" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f1f4f7" media="(prefers-color-scheme: light)">
-  <meta property="og:title" content="Backend Development | Krish Pawar">
-  <meta property="og:description" content="Lab experiments, theory projects and source code for the Backend Development course.">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234ff0b0'/%3E%3Cpath d='M9 8h8a5 5 0 0 1 0 8H9zm0 8h9a5 5 0 0 1 0 8H9z' fill='%2304150e'/%3E%3C/svg%3E">
-
-  <!-- Applies the saved theme before first paint, so there is no flash -->
-  <script>
-    (function () {
-      var r = document.documentElement;
-      r.classList.add('js');
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'light' || t === 'dark') r.setAttribute('data-theme', t);
-      } catch (e) {}
-    })();
-  </script>
-
+  <meta name="theme-color" content="#1b4965">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231b4965'/%3E%3Cpath d='M9 8h8a5 5 0 0 1 0 8H9zm0 8h9a5 5 0 0 1 0 8H9z' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
-<body id="top">
-
-  <!-- Icons used across the page -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
-    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
-    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></symbol>
-  </svg>
+<body>
 
   <a class="skip" href="#labs">Skip to content</a>
 
-  <div class="progress" aria-hidden="true"><span></span></div>
-
-  <div class="bg" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-glow a"></div>
-    <div class="bg-glow b"></div>
-    <div class="bg-follow"></div>
-    <div class="bg-noise"></div>
-  </div>
-
-  <!-- ===================== Navigation ===================== -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Krish Pawar, back to top">
-        <span class="brand-mark" aria-hidden="true">KP</span>
-        <span>Krish Pawar</span>
-        <span class="brand-live" aria-hidden="true"></span>
-      </a>
-
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#flow">How it works</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#top">Krish Pawar</a>
+      <nav aria-label="Sections">
         <a href="#labs">Labs</a>
         <a href="#theory">Theory</a>
-        <a href="#stack">Stack</a>
+        <a href="https://github.com/Krish252616/backend-development">GitHub</a>
       </nav>
-
-      <div class="nav-actions">
-        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme" data-mode="dark">
-          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
-          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
-        </button>
-        <a class="btn btn-ghost btn-sm" href="https://github.com/Krish252616/backend-development">
-          GitHub
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
     </div>
   </header>
 
-  <main>
+  <main id="top">
 
     <!-- ===================== Hero ===================== -->
-    <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="kicker"><i aria-hidden="true"></i> B.Tech CSE, UPES Dehradun</p>
-
-        <h1 class="title" id="hero-title">
-          <span class="t1">Backend</span>
-          <span class="t2">Development</span>
-        </h1>
-
+    <section class="hero">
+      <div class="wrap">
+        <p class="kicker">B.Tech CSE, UPES Dehradun</p>
+        <h1>Backend Development</h1>
         <p class="lead">Lab experiments, theory projects and source code for the Backend Development course.</p>
-        <p class="by">Built and maintained by <strong>Krish Pawar</strong></p>
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#labs">
-            View experiments
-            <svg class="icon" aria-hidden="true"><use href="#i-down"/></svg>
-          </a>
-          <a class="btn btn-ghost" href="https://github.com/Krish252616/backend-development">
-            Source on GitHub
-            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-        </div>
-
-        <dl class="stats">
-          <div><dt>Lab experiments</dt><dd data-count="labs">3</dd></div>
-          <div><dt>Theory projects</dt><dd data-count="theory">7</dd></div>
-          <div><dt>Tools used</dt><dd data-count="tools">13</dd></div>
-        </dl>
-      </div>
-
-      <div class="term-wrap">
-        <div class="term" role="img" aria-label="Terminal output of the Simple CMS lab: npm start connects to MongoDB and starts the server on port 3000, then the four routes are listed.">
-          <div class="term-bar" aria-hidden="true">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span>LAB/EXP-Examination</span>
-          </div>
-          <div class="term-body" aria-hidden="true">
-            <span class="line"><span class="t-prompt">$</span> <span class="typed">npm start</span></span>
-            <span class="line t-dim">&gt; cms-lab@1.0.0 start</span>
-            <span class="line t-dim">&gt; node app.js</span>
-            <span class="line"></span>
-            <span class="line t-ok">Connected to MongoDB (cms_lab.posts)</span>
-            <span class="line">Server running on http://localhost:3000</span>
-            <span class="line"></span>
-            <span class="line route"><span class="m get">GET</span><span class="p">/posts</span><span class="s">200</span><span class="d">list posts, newest first</span></span>
-            <span class="line route"><span class="m get">GET</span><span class="p">/posts/new</span><span class="s">200</span><span class="d">create-post form</span></span>
-            <span class="line route"><span class="m post">POST</span><span class="p">/posts</span><span class="s redirect">303</span><span class="d">validate, save, redirect</span></span>
-            <span class="line route"><span class="m get">GET</span><span class="p">/posts/:id</span><span class="s">200</span><span class="d">one complete post</span></span>
-            <span class="line"><span class="t-prompt">$</span> <span class="cursor"></span></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== Request flow ===================== -->
-    <section class="section wrap" id="flow" aria-labelledby="flow-title">
-      <div class="flow-top" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow"><span class="verb">POST</span> <span class="path">/posts</span> <span class="ok">303</span></p>
-          <h2 id="flow-title">One request, start to finish</h2>
-          <p class="section-note">What happens inside the Simple CMS from the lab examination when a post is submitted.</p>
-        </div>
-        <a class="link" href="./LAB/EXP-Examination/report.html">
-          Read the report
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
-
-      <ol class="flow" data-reveal>
-        <li class="step">
-          <div class="step-card">
-            <span class="step-num">01</span>
-            <h3>Browser</h3>
-            <p>The form is submitted. It has no date field, so the user cannot choose one.</p>
-            <code>POST /posts</code>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-card">
-            <span class="step-num">02</span>
-            <h3>Express route</h3>
-            <p>Every field is trimmed and checked. Empty values send the form back with a 400.</p>
-            <code>validatePost()</code>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-card">
-            <span class="step-num">03</span>
-            <h3>MongoDB</h3>
-            <p>The post is saved. The server sets createdAt, not the user.</p>
-            <code>insertOne()</code>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-card">
-            <span class="step-num">04</span>
-            <h3>Redirect</h3>
-            <p>A 303 sends the browser to the list, so a refresh cannot submit the form twice.</p>
-            <code>303 /posts</code>
-          </div>
-        </li>
-        <li class="step">
-          <div class="step-card">
-            <span class="step-num">05</span>
-            <h3>EJS</h3>
-            <p>posts.ejs builds the HTML on the server, newest post first.</p>
-            <code>res.render()</code>
-          </div>
-        </li>
-      </ol>
-
-      <div class="flow-controls">
-        <button class="btn btn-ghost btn-sm pause-btn" id="flow-toggle" type="button" data-state="playing">
-          <svg class="icon i-pause" aria-hidden="true"><use href="#i-pause"/></svg>
-          <svg class="icon i-play" aria-hidden="true"><use href="#i-play"/></svg>
-          <span id="flow-label">Pause animation</span>
-        </button>
+        <p class="actions">
+          <a class="button" href="#labs">View experiments</a>
+          <a class="button ghost" href="https://github.com/Krish252616/backend-development">Source on GitHub</a>
+        </p>
       </div>
     </section>
 
     <!-- ===================== Labs ===================== -->
     <section class="section wrap" id="labs" aria-labelledby="labs-title">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><span class="verb">GET</span> <span class="path">/labs</span> <span class="ok">200 OK</span></p>
-        <h2 id="labs-title">Lab experiments</h2>
-        <p class="section-note">Experiments that need a server cannot run on GitHub Pages. Their reports include screenshots of the running application.</p>
-      </div>
+      <h2 id="labs-title">Lab experiments</h2>
+      <p class="note">Experiments that need a server cannot run on GitHub Pages. Their reports include screenshots of the running application.</p>
 
-      <div class="grid grid-labs" data-stagger>
+      <div class="grid">
 
-        <article class="card lab">
-          <span class="ghost-num" aria-hidden="true">01</span>
-          <div class="tags">
-            <span class="tag is-accent">EXP-1</span>
-            <span class="tag is-amber">CO2</span>
-            <span class="tag">Live page</span>
-          </div>
+        <article class="card">
+          <p class="tags"><span>EXP-1</span><span>CO2</span></p>
           <h3>Create a web page with all possible elements of HTML5</h3>
-          <p class="card-text">One page that uses every major group of HTML5 elements: semantic sections, forms and input types, tables, audio and video, canvas and SVG, with a script that reads the live DOM.</p>
-          <ul class="chips" aria-label="Technologies">
-            <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
-          </ul>
-          <p class="card-links">
-            <a class="link" href="./LAB/EXP-1/">Live page <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="link" href="./LAB/EXP-1/report.html">Report <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="link" href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-1">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="text">One page that uses every major group of HTML5 elements: semantic sections, forms and input types, tables, audio and video, canvas and SVG, with a script that reads the live DOM.</p>
+          <p class="stack">HTML5, CSS3, JavaScript</p>
+          <p class="links">
+            <a href="./LAB/EXP-1/">Live page</a>
+            <a href="./LAB/EXP-1/report.html">Report</a>
+            <a href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-1">Source</a>
           </p>
         </article>
 
-        <article class="card lab">
-          <span class="ghost-num" aria-hidden="true">13A</span>
-          <div class="tags">
-            <span class="tag is-accent">EXP-13a</span>
-            <span class="tag">Runs locally</span>
-          </div>
+        <article class="card">
+          <p class="tags"><span>EXP-13a</span><span>Runs locally</span></p>
           <h3>User management with MongoDB and Mongoose</h3>
-          <p class="card-text">An Express app with signup, login and a user list stored in MongoDB. Covers schemas, models, validation and duplicate-key handling.</p>
-          <ul class="chips" aria-label="Technologies">
-            <li>Node.js</li><li>Express</li><li>MongoDB</li><li>Mongoose</li>
-          </ul>
-          <p class="card-links">
-            <a class="link" href="./LAB/EXP-13a/mongoose-demo/report.html">Report and screenshots <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="link" href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-13a/mongoose-demo">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="text">An Express app with signup, login and a user list stored in MongoDB. Covers schemas, models, validation and duplicate-key handling.</p>
+          <p class="stack">Node.js, Express, MongoDB, Mongoose</p>
+          <p class="links">
+            <a href="./LAB/EXP-13a/mongoose-demo/report.html">Report and screenshots</a>
+            <a href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-13a/mongoose-demo">Source</a>
           </p>
         </article>
 
-        <article class="card lab">
-          <span class="ghost-num" aria-hidden="true">EX</span>
-          <div class="tags">
-            <span class="tag is-accent">Lab exam</span>
-            <span class="tag">Runs locally</span>
-          </div>
+        <article class="card">
+          <p class="tags"><span>Lab exam</span><span>Runs locally</span></p>
           <h3>Simple CMS with Express, EJS and MongoDB</h3>
-          <p class="card-text">A blog rendered on the server with EJS. Create posts through a validated form, list them newest first and open one by its MongoDB id. Dates are generated on the server.</p>
-          <ul class="chips" aria-label="Technologies">
-            <li>Node.js</li><li>Express</li><li>EJS</li><li>MongoDB</li>
-          </ul>
-          <p class="card-links">
-            <a class="link" href="./LAB/EXP-Examination/report.html">Report <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="link" href="./LAB/EXP-Examination/report.html#output">Screenshots <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="link" href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-Examination">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="text">A blog rendered on the server with EJS. Create posts through a validated form, list them newest first and open one by its MongoDB id. Dates are generated on the server.</p>
+          <p class="stack">Node.js, Express, EJS, MongoDB</p>
+          <p class="links">
+            <a href="./LAB/EXP-Examination/report.html">Report</a>
+            <a href="./LAB/EXP-Examination/report.html#output">Screenshots</a>
+            <a href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-Examination">Source</a>
           </p>
         </article>
 
@@ -273,464 +88,75 @@
 
     <!-- ===================== Theory ===================== -->
     <section class="section wrap" id="theory" aria-labelledby="theory-title">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><span class="verb">GET</span> <span class="path">/theory</span> <span class="ok">200 OK</span></p>
-        <h2 id="theory-title">Theory projects</h2>
-        <p class="section-note">These are server projects, so each card opens the source code on GitHub.</p>
-      </div>
+      <h2 id="theory-title">Theory projects</h2>
+      <p class="note">These are server projects, so each card opens the source code on GitHub.</p>
 
-      <div class="filters" role="group" aria-label="Filter theory projects" data-reveal>
-        <button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="count"></span></button>
-        <button class="filter" type="button" data-filter="node" aria-pressed="false">Node.js <span class="count"></span></button>
-        <button class="filter" type="button" data-filter="python" aria-pressed="false">Python <span class="count"></span></button>
-        <button class="filter" type="button" data-filter="ssr" aria-pressed="false">Server-side rendering <span class="count"></span></button>
-        <span class="filter-status" id="filter-status" role="status" aria-live="polite"></span>
-      </div>
+      <div class="grid">
 
-      <div class="grid grid-theory" data-stagger>
-
-        <article class="card proj" data-tags="node">
-          <div class="tags"><span class="tag is-amber">Lecture 1</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Lecture 1</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture1/express-demo">Express demo</a></h3>
-          <p class="card-text">Five small Express servers, tasks 1 to 5.</p>
-          <ul class="chips" aria-label="Technologies"><li>Node.js</li><li>Express</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">Five small Express servers, tasks 1 to 5.</p>
+          <p class="stack">Node.js, Express</p>
         </article>
 
-        <article class="card proj" data-tags="python">
-          <div class="tags"><span class="tag is-amber">Lecture 2</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Lecture 2</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture%202/Flask/backend-project">Flask project</a></h3>
-          <p class="card-text">A first Flask application with a route.</p>
-          <ul class="chips" aria-label="Technologies"><li>Python</li><li>Flask</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">A first Flask application with a route.</p>
+          <p class="stack">Python, Flask</p>
         </article>
 
-        <article class="card proj" data-tags="node">
-          <div class="tags"><span class="tag">Theory</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Theory</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/Sessions">Sessions</a></h3>
-          <p class="card-text">Login, profile and logout routes that keep the user signed in with express-session.</p>
-          <ul class="chips" aria-label="Technologies"><li>Node.js</li><li>Express</li><li>express-session</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">Login, profile and logout routes that keep the user signed in with express-session.</p>
+          <p class="stack">Node.js, Express, express-session</p>
         </article>
 
-        <article class="card proj" data-tags="python">
-          <div class="tags"><span class="tag is-amber">Lecture 15</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Lecture 15</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture%2015/FastAPI/fastapi-project">FastAPI project</a></h3>
-          <p class="card-text">A JSON REST API with GET, POST, PUT and DELETE routes on /students.</p>
-          <ul class="chips" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>Pydantic</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">A JSON REST API with GET, POST, PUT and DELETE routes on /students.</p>
+          <p class="stack">Python, FastAPI, Pydantic</p>
         </article>
 
-        <article class="card proj" data-tags="python ssr">
-          <div class="tags"><span class="tag is-amber">Lecture 15</span><span class="tag">SSR</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Lecture 15</span><span>Server-side rendering</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture%2015/FastAPI/student-details">Student Details</a></h3>
-          <p class="card-text">FastAPI and Jinja2 render a student table on the server, with a form to add students.</p>
-          <ul class="chips" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>Jinja2</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">FastAPI and Jinja2 render a student table on the server, with a form to add students.</p>
+          <p class="stack">Python, FastAPI, Jinja2</p>
         </article>
 
-        <article class="card proj" data-tags="python ssr">
-          <div class="tags"><span class="tag">Theory</span><span class="tag">SSR</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Theory</span><span>Server-side rendering</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/ssr-python">Server-side rendering with Python</a></h3>
-          <p class="card-text">A FastAPI route that renders a Jinja2 template on the server.</p>
-          <ul class="chips" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>Jinja2</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">A FastAPI route that renders a Jinja2 template on the server.</p>
+          <p class="stack">Python, FastAPI, Jinja2</p>
         </article>
 
-        <article class="card proj" data-tags="node ssr">
-          <div class="tags"><span class="tag">Theory</span><span class="tag">SSR</span></div>
+        <article class="card proj">
+          <p class="tags"><span>Theory</span><span>Server-side rendering</span></p>
           <h3><a href="https://github.com/Krish252616/backend-development/tree/main/Theory/views">EJS views</a></h3>
-          <p class="card-text">An Express server that renders the home and students pages with EJS.</p>
-          <ul class="chips" aria-label="Technologies"><li>Node.js</li><li>Express</li><li>EJS</li></ul>
-          <span class="go">View source <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <p class="text">An Express server that renders the home and students pages with EJS.</p>
+          <p class="stack">Node.js, Express, EJS</p>
         </article>
 
-      </div>
-    </section>
-
-    <!-- ===================== Stack ===================== -->
-    <section class="wrap stack" id="stack" aria-labelledby="stack-title" data-reveal>
-      <h2 class="stack-title" id="stack-title">tools used in this course</h2>
-      <div class="marquee">
-        <ul class="marquee-track">
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>EJS</li>
-          <li>MongoDB</li>
-          <li>Mongoose</li>
-          <li>Python</li>
-          <li>Flask</li>
-          <li>FastAPI</li>
-          <li>Jinja2</li>
-          <li>Git</li>
-        </ul>
       </div>
     </section>
 
   </main>
 
-  <!-- ===================== Footer ===================== -->
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="wrap">
-      <div class="footer-row">
-        <div>
-          <p class="footer-name">Krish Pawar</p>
-          <p class="footer-sub">B.Tech CSE, UPES Dehradun</p>
-        </div>
-        <p class="footer-links">
-          <a class="link" href="https://github.com/Krish252616/backend-development">Coursework repository <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="link" href="https://github.com/Krish252616">GitHub profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="link" href="#top">Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </p>
-      </div>
-      <p class="footer-big" aria-hidden="true">Backend Dev</p>
+      <p>Krish Pawar, B.Tech CSE, UPES Dehradun</p>
+      <p>
+        <a href="https://github.com/Krish252616/backend-development">Coursework repository</a>
+        <a href="https://github.com/Krish252616">GitHub profile</a>
+        <a href="#top">Back to top</a>
+      </p>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      'use strict';
-
-      var root = document.documentElement;
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var fine = window.matchMedia('(pointer: fine)').matches;
-
-      function $(s, c) { return (c || document).querySelector(s); }
-      function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
-
-      // Each feature is isolated, so one failure never breaks the rest of the page.
-      function safe(name, fn) {
-        try { fn(); }
-        catch (err) {
-          if (name === 'reveal') root.classList.add('reveal-off');
-          if (window.console) console.error('[portfolio] ' + name, err);
-        }
-      }
-
-      /* ---------- Theme toggle ---------- */
-      safe('theme', function () {
-        var btn = $('#theme-toggle');
-        var mq = window.matchMedia('(prefers-color-scheme: light)');
-
-        function current() {
-          return root.getAttribute('data-theme') || (mq.matches ? 'light' : 'dark');
-        }
-        function sync() {
-          var t = current();
-          btn.setAttribute('data-mode', t);
-          btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-        }
-
-        btn.addEventListener('click', function () {
-          var next = current() === 'dark' ? 'light' : 'dark';
-          root.setAttribute('data-theme', next);
-          try { localStorage.setItem('theme', next); } catch (e) {}
-          sync();
-        });
-        sync();
-      });
-
-      /* ---------- Scroll progress, nav state ---------- */
-      safe('scroll', function () {
-        var bar = $('.progress span');
-        var nav = $('.nav');
-        var links = $$('.nav-links a');
-        var ticking = false;
-
-        function update() {
-          var max = root.scrollHeight - root.clientHeight;
-          var p = max > 0 ? root.scrollTop / max : 0;
-          bar.style.transform = 'scaleX(' + p + ')';
-          nav.classList.toggle('is-scrolled', root.scrollTop > 8);
-          if (root.scrollTop < 200) {
-            links.forEach(function (a) { a.removeAttribute('aria-current'); });
-          }
-          ticking = false;
-        }
-
-        window.addEventListener('scroll', function () {
-          if (!ticking) { ticking = true; requestAnimationFrame(update); }
-        }, { passive: true });
-        update();
-      });
-
-      /* ---------- Reveal on scroll ---------- */
-      safe('reveal', function () {
-        $$('[data-stagger]').forEach(function (group) {
-          Array.prototype.forEach.call(group.children, function (child, i) {
-            child.setAttribute('data-reveal', '');
-            child.style.setProperty('--d', (i * 80) + 'ms');
-          });
-        });
-
-        var items = $$('[data-reveal]');
-
-        if (reduce || !('IntersectionObserver' in window)) {
-          items.forEach(function (el) { el.classList.add('is-in'); });
-          return;
-        }
-
-        // Once an element has faded in, hand it back to its normal hover styles.
-        function release(el) {
-          el.addEventListener('transitionend', function done(ev) {
-            if (ev.target !== el || ev.propertyName !== 'opacity') return;
-            el.removeEventListener('transitionend', done);
-            el.removeAttribute('data-reveal');
-            el.classList.remove('is-in');
-            el.style.removeProperty('--d');
-          });
-        }
-
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (!e.isIntersecting) return;
-            e.target.classList.add('is-in');
-            release(e.target);
-            io.unobserve(e.target);
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
-
-        items.forEach(function (el) { io.observe(el); });
-      });
-
-      /* ---------- Counters (numbers come from the page itself) ---------- */
-      safe('counters', function () {
-        var totals = {
-          labs: $$('#labs .lab').length,
-          theory: $$('#theory .proj').length,
-          tools: $$('.marquee-track li').length
-        };
-
-        $$('[data-count]').forEach(function (el) {
-          var target = totals[el.getAttribute('data-count')];
-          if (typeof target !== 'number') return;
-          if (reduce) { el.textContent = target; return; }
-
-          var start = null;
-          var duration = 1100;
-          el.textContent = '0';
-
-          function frame(t) {
-            if (start === null) start = t;
-            var p = Math.min((t - start) / duration, 1);
-            el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-            if (p < 1) requestAnimationFrame(frame);
-          }
-          setTimeout(function () { requestAnimationFrame(frame); }, 350);
-        });
-      });
-
-      /* ---------- Terminal typing ---------- */
-      safe('terminal', function () {
-        var body = $('.term-body');
-        if (!body || reduce) return;
-
-        var lines = $$('.line', body);
-        var typed = $('.typed', body);
-        var full = typed.textContent;
-        // Wait (ms) after showing each line before the next one.
-        var wait = [0, 160, 600, 500, 160, 500, 160, 160, 160, 160, 400];
-
-        lines.forEach(function (l) { l.style.visibility = 'hidden'; });
-        lines[0].style.visibility = 'visible';
-        typed.textContent = '';
-
-        var i = 0;
-        function next() {
-          i++;
-          if (i >= lines.length) return;
-          lines[i].style.visibility = 'visible';
-          setTimeout(next, wait[i] || 160);
-        }
-        function type(n) {
-          typed.textContent = full.slice(0, n);
-          if (n < full.length) setTimeout(function () { type(n + 1); }, 70);
-          else setTimeout(next, 450);
-        }
-        setTimeout(function () { type(0); }, 700);
-      });
-
-      /* ---------- Request flow animation ---------- */
-      safe('flow', function () {
-        var steps = $$('.flow .step');
-        var list = $('.flow');
-        var btn = $('#flow-toggle');
-        var label = $('#flow-label');
-        if (!steps.length || !btn) return;
-
-        var total = steps.length;
-        var idx = -1;
-        var timer = null;
-        var playing = !reduce;
-        var visible = false;
-        var hovering = false;
-
-        function show(n) {
-          idx = n;
-          steps.forEach(function (s, i) {
-            s.classList.toggle('is-active', i === n);
-            s.classList.toggle('is-done', i < n);
-          });
-        }
-        function tick() { show((idx + 1) % (total + 1)); }
-
-        function sync() {
-          var run = playing && visible && !hovering;
-          if (run && !timer) {
-            if (idx === -1) tick();
-            timer = setInterval(tick, 2300);
-          } else if (!run && timer) {
-            clearInterval(timer);
-            timer = null;
-          }
-          btn.setAttribute('data-state', playing ? 'playing' : 'paused');
-          label.textContent = playing ? 'Pause animation' : 'Play animation';
-        }
-
-        if (reduce) show(total);
-
-        btn.addEventListener('click', function () {
-          playing = !playing;
-          if (playing && idx === total) show(-1);
-          sync();
-        });
-
-        steps.forEach(function (s, i) {
-          s.addEventListener('pointerenter', function () { hovering = true; show(i); sync(); });
-        });
-        list.addEventListener('pointerleave', function () { hovering = false; sync(); });
-
-        if ('IntersectionObserver' in window) {
-          new IntersectionObserver(function (entries) {
-            visible = entries[0].isIntersecting;
-            sync();
-          }, { threshold: 0.3 }).observe(list);
-        } else {
-          visible = true;
-          sync();
-        }
-        sync();
-      });
-
-      /* ---------- Theory filters ---------- */
-      safe('filters', function () {
-        var chips = $$('.filter');
-        var cards = $$('.proj');
-        var status = $('#filter-status');
-        if (!chips.length) return;
-
-        function matches(card, tag) {
-          return tag === 'all' || (' ' + card.getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1;
-        }
-
-        function apply(tag) {
-          var shown = 0;
-          cards.forEach(function (card) {
-            var ok = matches(card, tag);
-            card.hidden = !ok;
-            if (ok) {
-              shown++;
-              if (!reduce) {
-                card.classList.remove('pop');
-                void card.offsetWidth;
-                card.classList.add('pop');
-              }
-            }
-          });
-          chips.forEach(function (c) {
-            c.setAttribute('aria-pressed', c.getAttribute('data-filter') === tag ? 'true' : 'false');
-          });
-          status.textContent = 'Showing ' + shown + ' of ' + cards.length + ' projects';
-        }
-
-        chips.forEach(function (chip) {
-          var tag = chip.getAttribute('data-filter');
-          var count = cards.filter(function (c) { return matches(c, tag); }).length;
-          $('.count', chip).textContent = count;
-          chip.addEventListener('click', function () { apply(tag); });
-        });
-
-        cards.forEach(function (c) {
-          c.addEventListener('animationend', function () { c.classList.remove('pop'); });
-        });
-
-        status.textContent = 'Showing ' + cards.length + ' of ' + cards.length + ' projects';
-      });
-
-      /* ---------- Tools marquee ---------- */
-      safe('marquee', function () {
-        var track = $('.marquee-track');
-        if (!track || reduce) return;
-        $$('li', track).forEach(function (li) {
-          var copy = li.cloneNode(true);
-          copy.setAttribute('aria-hidden', 'true');
-          track.appendChild(copy);
-        });
-        track.classList.add('is-running');
-      });
-
-      /* ---------- Pointer effects (mouse only) ---------- */
-      safe('pointer', function () {
-        if (!fine || reduce) return;
-
-        var bg = $('.bg');
-        var raf = 0, x = 0, y = 0;
-        window.addEventListener('pointermove', function (e) {
-          x = e.clientX; y = e.clientY;
-          if (!raf) {
-            raf = requestAnimationFrame(function () {
-              raf = 0;
-              bg.style.setProperty('--gx', x + 'px');
-              bg.style.setProperty('--gy', y + 'px');
-            });
-          }
-        }, { passive: true });
-
-        $$('.card').forEach(function (card) {
-          card.addEventListener('pointermove', function (e) {
-            var r = card.getBoundingClientRect();
-            card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-            card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-          });
-        });
-
-        var hero = $('.hero');
-        var term = $('.term');
-        if (hero && term) {
-          hero.addEventListener('pointermove', function (e) {
-            var r = hero.getBoundingClientRect();
-            var px = (e.clientX - r.left) / r.width - 0.5;
-            var py = (e.clientY - r.top) / r.height - 0.5;
-            term.style.transform = 'rotateY(' + (px * 7).toFixed(2) + 'deg) rotateX(' + (-py * 7).toFixed(2) + 'deg)';
-          });
-          hero.addEventListener('pointerleave', function () { term.style.transform = ''; });
-        }
-      });
-
-      /* ---------- Highlight the current section in the nav ---------- */
-      safe('nav', function () {
-        if (!('IntersectionObserver' in window)) return;
-        var links = $$('.nav-links a');
-        var map = {};
-
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (!e.isIntersecting) return;
-            links.forEach(function (a) { a.removeAttribute('aria-current'); });
-            if (map[e.target.id]) map[e.target.id].setAttribute('aria-current', 'true');
-          });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-
-        links.forEach(function (a) {
-          var id = a.getAttribute('href').slice(1);
-          var section = document.getElementById(id);
-          if (section) { map[id] = a; io.observe(section); }
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
