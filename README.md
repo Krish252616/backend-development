@@ -28,7 +28,7 @@
 | **1** | Create a web page with all possible elements of HTML5 | `CO2` | [Report](./LAB/EXP-1/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-1/index.html) |
 | **13a** | User management with MongoDB and Mongoose | `CO_` | [Report](./LAB/EXP-13a/mongoose-demo/report.md) | [Output](./LAB/EXP-13a/mongoose-demo/report.md#7-output) |
 | **Exam** | Simple CMS with Express, EJS and MongoDB | `CO_` | [Report](./LAB/EXP-Examination/report.md) | [Output](./LAB/EXP-Examination/report.md#output) |
-
+| **12a** | 5 tasks | `CO_` | [Report](./LAB/EXP-12a/report.md) | [Output](https://krish252616.github.io/backend-development/LAB/EXP-12a/report.md#Screenshots) |
 <!-- Add one row per experiment:
 | **14** | Experiment title | `CO_` | [Report](./LAB/EXP-14/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-14/index.html) |
 -->

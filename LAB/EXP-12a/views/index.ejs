@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("head", { title }) %>
+</head>
+<body>
+  <%- include("nav") %>
+  <main class="container page-shell">
+    <% if (taskId === null) { %>
+      <section class="hub-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Backend Development Lab · Experiment 12</p>
+          <h1>Node.js, Express.js<br>and EJS Templating</h1>
+          <p class="hero-lede">Five practical tasks, one clear starting point. Explore HTTP routes, JSON APIs, server-rendered templates and form handling.</p>
+          <p class="byline"><strong><%= profile.name %></strong> · B.Tech CSE · SAP ID <%= profile.rollNumber %> · UPES Dehradun</p>
+          <a class="button" href="#tasks">Browse the lab tasks ↓</a>
+        </div>
+        <div class="hero-stamp" aria-label="Five tasks in Experiment 12"><span>Experiment - </span><strong>12</strong><small>Express · EJS</small></div>
+      </section>
+
+      <section class="objective-panel">
+        <div class="objective-mark">AIM</div>
+        <div><p class="eyebrow">Assessment objective</p><p>Build an Express server that returns profile data in different formats, handles calculator and student APIs, and renders timetable and registration pages with EJS.</p></div>
+      </section>
+
+      <section class="section task-section" id="tasks">
+        <div class="section-heading"><div><p class="eyebrow">Task directory</p><h2>Choose a task to explore</h2></div><span class="task-count">01 — 05</span></div>
+        <div class="task-grid">
+          <% tasks.forEach(task => { %>
+            <article class="task-card task-card-<%= task.id %>">
+              <div class="task-card-top"><span class="task-number">Task <%= String(task.id).padStart(2, "0") %></span><span class="task-arrow" aria-hidden="true">↗</span></div>
+              <h3><%= task.title %></h3><p><%= task.summary %></p>
+              <span class="task-concepts"><%= task.concepts %></span>
+              <a class="card-link" href="<%= task.route %>">Open Task <%= task.id %> <span aria-hidden="true">→</span></a>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+
+    <% } else { %>
+      <a class="back-link" href="/#tasks">← All tasks</a>
+      <section class="task-hero task-hero-<%= taskId %>">
+        <span class="eyebrow">Experiment 12 · Task <%= String(taskId).padStart(2, "0") %></span>
+        <h1><%= task.heading %></h1><p><%= task.summary %></p>
+      </section>
+
+      <% if (formError) { %><div class="alert alert-error" role="alert"><%= formError %></div><% } %>
+
+      <% if (taskId === 1) { %>
+        <section class="task-panel">
+          <div class="panel-heading"><div><p class="eyebrow">Three response types</p><h2>Profile endpoints</h2></div><span class="method-pill">GET</span></div>
+          <p class="panel-intro">Each route returns the same student information with a different content type.</p>
+          <div class="endpoint-grid">
+            <a class="endpoint-card" href="/api/profile/text"><span class="response-type">text/plain</span><strong>Plain text</strong><code>/api/profile/text</code><span>Opens the name, roll number and branch as text.</span></a>
+            <a class="endpoint-card" href="/api/profile/html"><span class="response-type">text/html</span><strong>HTML document</strong><code>/api/profile/html</code><span>Shows profile details as a small HTML page.</span></a>
+            <a class="endpoint-card" href="/api/profile/json"><span class="response-type">application/json</span><strong>JSON object</strong><code>/api/profile/json</code><span>Returns the profile as structured JSON data.</span></a>
+          </div>
+          <div class="profile-summary"><span>Profile used by these routes</span><strong><%= profile.name %></strong><span>Roll number <%= profile.rollNumber %> · <%= profile.branch %></span></div>
+        </section>
+      <% } else if (taskId === 2) { %>
+        <section class="task-panel">
+          <div class="panel-heading"><div><p class="eyebrow">Query string input</p><h2>Calculator</h2></div><span class="method-pill">GET API</span></div>
+          <form class="calculator-form" action="/task/2" method="GET">
+            <div class="field"><label for="operation">Operation</label><select id="operation" name="operation" required><option value="">Choose an operation</option><% ["add", "subtract", "multiply", "divide", "modulus", "power"].forEach(operation => { %><option value="<%= operation %>" <%= calculatorValues.operation === operation ? "selected" : "" %>><%= operation.charAt(0).toUpperCase() + operation.slice(1) %></option><% }) %></select></div>
+            <div class="field"><label for="first">First number</label><input id="first" name="first" type="number" step="any" value="<%= calculatorValues.first || "" %>" required></div>
+            <div class="field"><label for="second">Second number</label><input id="second" name="second" type="number" step="any" value="<%= calculatorValues.second || "" %>" required></div>
+            <div class="form-actions"><button class="button" type="submit">Calculate</button><button class="button button-secondary" type="submit" formaction="/api/calculator" formmethod="GET">Return JSON</button></div>
+          </form>
+          <% if (calculatorResult && calculatorResult.error) { %><div class="alert alert-error" role="alert"><%= calculatorResult.error %></div><% } %>
+          <% if (calculatorResult && !calculatorResult.error) { %>
+            <div class="result-panel" aria-live="polite"><span>Result</span><strong><%= calculatorResult.result %></strong><p><%= calculatorResult.first %> <%= calculatorResult.operation %> <%= calculatorResult.second %> = <%= calculatorResult.result %></p><a href="/api/calculator?operation=<%= encodeURIComponent(calculatorResult.operation) %>&amp;first=<%= calculatorResult.first %>&amp;second=<%= calculatorResult.second %>">Open JSON response →</a></div>
+          <% } %>
+          <div class="route-note"><strong>API pattern</strong><code>/api/calculator?operation=add&amp;first=12&amp;second=4</code><span>Division and modulus by zero return a 400 error.</span></div>
+        </section>
+      <% } else if (taskId === 3) { %>
+        <section class="task-panel">
+          <% if (added) { %><div class="alert alert-success" role="status">Student added. The record stays in memory while the server is running.</div><% } %>
+          <div class="panel-heading"><div><p class="eyebrow">GET /students</p><h2>Student directory</h2></div><a class="text-link" href="/students">Open JSON list →</a></div>
+          <div class="student-list">
+            <% students.forEach(student => { %><article class="student-row"><div class="student-avatar"><%= student.name.charAt(0) %></div><div class="student-main"><strong><%= student.name %></strong><span><%= student.course %> · Semester <%= student.semester %></span></div><a class="student-api" href="/students/<%= student.id %>">GET /students/<%= student.id %> →</a></article><% }) %>
+          </div>
+          <div class="add-student-panel"><div><p class="eyebrow">POST /students/add</p><h2>Add a student</h2><p>This form sends URL-encoded data. JSON clients receive a 201 response.</p></div>
+            <form class="stacked-form" action="/students/add" method="POST">
+              <div class="field"><label for="student-name">Name</label><input id="student-name" name="name" value="<%= formValues.name || "" %>" autocomplete="name" required></div>
+              <div class="field"><label for="student-course">Course</label><input id="student-course" name="course" value="<%= formValues.course || "" %>" required></div>
+              <div class="field"><label for="student-semester">Semester</label><input id="student-semester" name="semester" type="number" min="1" max="8" value="<%= formValues.semester || 1 %>" required></div>
+              <button class="button" type="submit">Add student</button>
+            </form>
+          </div>
+        </section>
+      <% } else if (taskId === 4) { %>
+        <section class="task-panel">
+          <div class="panel-heading"><div><p class="eyebrow">Data passed from Express</p><h2>Course timetable</h2></div><span class="method-pill">EJS</span></div>
+          <p class="panel-intro">Express passes schedule records to this template. EJS loops through them to build the timetable.</p>
+          <div class="table-scroll" role="region" aria-label="Course timetable" tabindex="0"><table class="timetable"><thead><tr><th scope="col">Day</th><th scope="col">Time</th><th scope="col">Subject</th><th scope="col">Faculty</th></tr></thead><tbody><% timetable.forEach(entry => { %><tr><td><%= entry.day %></td><td><%= entry.time %></td><td><strong><%= entry.subject %></strong></td><td><%= entry.faculty %></td></tr><% }) %></tbody></table></div>
+          <div class="route-note"><strong>Express route</strong><code>GET /task/4 → res.render("index", { timetable })</code></div>
+        </section>
+      <% } else if (taskId === 5) { %>
+        <section class="task-panel">
+          <% if (registration) { %>
+            <div class="registration-success" role="status"><span class="success-mark">✓</span><p class="eyebrow">POST request complete</p><h2>Registration received</h2><p>Express validated the submitted values and passed them to this EJS result page.</p>
+              <dl class="registration-details"><div><dt>Name</dt><dd><%= registration.name %></dd></div><div><dt>Email</dt><dd><%= registration.email %></dd></div><div><dt>Course</dt><dd><%= registration.course %></dd></div><div><dt>Semester</dt><dd><%= registration.semester %></dd></div></dl>
+              <a class="button button-secondary" href="/task/5">Register another student</a>
+            </div>
+          <% } else { %>
+            <div class="panel-heading"><div><p class="eyebrow">POST /student-registration</p><h2>Student registration</h2></div><span class="method-pill">POST</span></div>
+            <form class="registration-form" action="/student-registration" method="POST">
+              <div class="field"><label for="registration-name">Full name</label><input id="registration-name" name="name" value="<%= registrationValues.name || "" %>" autocomplete="name" minlength="2" required></div>
+              <div class="field"><label for="registration-email">Email address</label><input id="registration-email" name="email" type="email" value="<%= registrationValues.email || "" %>" autocomplete="email" required></div>
+              <div class="field"><label for="registration-course">Course</label><select id="registration-course" name="course" required><option value="">Choose a course</option><% courseOptions.forEach(course => { %><option value="<%= course %>" <%= registrationValues.course === course ? "selected" : "" %>><%= course %></option><% }) %></select></div>
+              <div class="field"><label for="registration-semester">Semester</label><select id="registration-semester" name="semester" required><option value="">Choose a semester</option><% for (let semester = 1; semester <= 8; semester += 1) { %><option value="<%= semester %>" <%= registrationValues.semester === String(semester) ? "selected" : "" %>><%= semester %></option><% } %></select></div>
+              <button class="button" type="submit">Submit registration</button>
+            </form>
+          <% } %>
+        </section>
+      <% } %>
+
+      <nav class="task-pagination" aria-label="Task pages">
+        <% if (taskId > 1) { %><a href="/task/<%= taskId - 1 %>">← Task <%= taskId - 1 %></a><% } else { %><span></span><% } %>
+        <span>Task <%= taskId %> of 5</span>
+        <% if (taskId < 5) { %><a href="/task/<%= taskId + 1 %>">Task <%= taskId + 1 %> →</a><% } else { %><a href="/#tasks">Task directory ↑</a><% } %>
+      </nav>
+    <% } %>
+  </main>
+  <%- include("footer") %>
+</body>
+</html>
