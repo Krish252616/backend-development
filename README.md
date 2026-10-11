@@ -9,6 +9,7 @@
   <a href="https://github.com/Krish252616"><img src="https://img.shields.io/badge/Author-Krish_Pawar-0A66C2?style=flat-square&logo=github&logoColor=white" alt="Author"></a>
   <img src="https://img.shields.io/badge/Lab_experiments-3-2E7D32?style=flat-square" alt="Lab experiments">
   <img src="https://img.shields.io/badge/Theory_projects-7-B45309?style=flat-square" alt="Theory projects">
+  <img src="https://img.shields.io/badge/Assignments-2-6A1B9A?style=flat-square" alt="Assignments">
 </p>
 
 <p align="center">
@@ -17,7 +18,7 @@
 
 ---
 
-**Contents:** [Lab experiments](#lab-experiments) · [Theory projects](#theory-projects) · [Repository structure](#repository-structure) · [Running the code](#running-the-code) · [Tech](#tech)
+**Contents:** [Lab experiments](#lab-experiments) · [Theory projects](#theory-projects) · [Assignments](#assignments) · [Repository structure](#repository-structure) · [Running the code](#running-the-code) · [Tech](#tech)
 
 ---
 
@@ -51,6 +52,19 @@
 
 ---
 
+## Assignments
+
+| # | Assignment | Topic | Report | Source |
+|:---:|---|---|:---:|:---:|
+| **01** | Notes app with localStorage | L07: localStorage, sessionStorage and JSON | [Report](./Theory/ASSIGNMENT_1_notes-app/report.md) | [`Theory/ASSIGNMENT_1_notes-app`](./Theory/ASSIGNMENT_1_notes-app) |
+| **02** | PostgreSQL as SQL + NoSQL: working with JSONB | Unit 2: Database Management | [Report](./Theory/590017543-assignment2.md) | [`Theory/590017543-assignment2.md`](./Theory/590017543-assignment2.md) |
+
+**Assignment 01:** add, edit, delete and complete notes that stay saved after a refresh, plus search, categories, JSON import and export, dark mode and drag to reorder. Frontend only, no server needed. [Screenshots](./Theory/ASSIGNMENT_1_notes-app/report.md#10-screenshots)
+
+**Assignment 02:** a product catalog with fixed columns and one `jsonb` column, JSONB operators (`->`, `->>`, `@>`, `?`), a GIN index compared on 5 and 200,000 rows, and the same queries in MongoDB. [Index results](./Theory/590017543-assignment2.md#task-6-index-and-compare)
+
+---
+
 ## Repository structure
 
 ```
@@ -65,6 +79,8 @@ backend-development/
 │   └── EXP-Examination/      Simple CMS
 │
 ├── Theory/
+│   ├── ASSIGNMENT_1_notes-app/   Assignment 01: notes app and report
+│   ├── 590017543-assignment2.md  Assignment 02: PostgreSQL JSONB
 │   ├── Lecture1/express-demo/
 │   ├── Lecture 2/Flask/backend-project/
 │   ├── Lecture 15/FastAPI/
@@ -97,7 +113,14 @@ npm install
 npm start
 ```
 
-### 3. Node projects in Theory
+### 3. Notes app (Assignment 01)
+
+```bash
+cd Theory/ASSIGNMENT_1_notes-app
+open index.html          # macOS. On Windows: start index.html
+```
+
+### 4. Node projects in Theory
 
 ```bash
 cd Theory
@@ -105,7 +128,7 @@ npm install
 node server.js
 ```
 
-### 4. Python projects in Theory
+### 5. Python projects in Theory
 
 ```bash
 cd Theory
@@ -128,6 +151,10 @@ pip install -r requirements.txt
 ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
 ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=for-the-badge&logo=ejs&logoColor=black)
+
+**Databases**
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
 **Python stack**

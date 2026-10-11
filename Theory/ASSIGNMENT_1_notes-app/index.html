@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App | localStorage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-inner">
+            <div>
+                <h1>Notes</h1>
+                <p class="subtitle">Frontend only. Data is saved in your browser with localStorage.</p>
+            </div>
+            <button id="themeToggle" class="btn btn-ghost" type="button" aria-label="Toggle dark or light mode">Dark mode</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Add note form -->
+        <section class="card">
+            <form id="noteForm" autocomplete="off">
+                <label for="noteInput" class="label">New note</label>
+                <textarea id="noteInput" rows="3" placeholder="Type a note..." maxlength="1000"></textarea>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="categorySelect" class="label">Category</label>
+                        <select id="categorySelect">
+                            <option value="General">General</option>
+                            <option value="Study">Study</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Note</button>
+                </div>
+                <p id="formError" class="error" role="alert"></p>
+            </form>
+        </section>
+
+        <!-- Toolbar: search, filters, import/export -->
+        <section class="toolbar">
+            <input id="searchInput" type="search" placeholder="Search notes..." aria-label="Search notes">
+            <select id="filterCategory" aria-label="Filter by category">
+                <option value="All">All categories</option>
+                <option value="General">General</option>
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+            </select>
+            <select id="filterStatus" aria-label="Filter by status">
+                <option value="all">All notes</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+            </select>
+            <button id="exportBtn" class="btn btn-ghost" type="button">Export JSON</button>
+            <label class="btn btn-ghost file-label">
+                Import JSON
+                <input id="importInput" type="file" accept="application/json,.json" hidden>
+            </label>
+            <button id="clearBtn" class="btn btn-danger" type="button">Clear all</button>
+        </section>
+
+        <p id="stats" class="stats"></p>
+
+        <!-- Notes list rendered by app.js -->
+        <section id="notesList" class="notes-list" aria-live="polite"></section>
+    </main>
+
+    <footer class="app-footer">
+        Backend Development, Unit 1, L07: localStorage, sessionStorage and JSON. Assignment 01.
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
