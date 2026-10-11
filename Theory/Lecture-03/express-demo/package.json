@@ -1,0 +1,20 @@
+{
+  "name": "express-demo",
+  "version": "1.0.0",
+  "description": "Lecture 3: Express servers, tasks 1 to 5",
+  "scripts": {
+    "task1": "node task1/server.js",
+    "task2": "node task2/server.js",
+    "task3": "node task3/server.js",
+    "task4": "node task4/server.js",
+    "task5": "node task5/server.js"
+  },
+  "keywords": [],
+  "author": "Krish Pawar",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  }
+}

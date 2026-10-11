@@ -1,12 +1,12 @@
 ---
-title: "Experiment 1 — Create a web page with all possible elements of HTML5"
+title: "Experiment 1: Create a web page with all possible elements of HTML5"
 layout: default
 ---
 
-# Experiment 1 — Create a web page with all possible elements of HTML5
+# Experiment 1: Create a web page with all possible elements of HTML5
 
 **Course:** Backend Development Lab
-**Course Outcome Mapped:** CO2 — Create and build web pages and applications
+**Course Outcome Mapped:** CO2 (Create and build web pages and applications)
 **Student:** Krish Pawar · B.Tech CSE · UPES Dehradun
 **Date:** 22 August 2026
 
@@ -17,7 +17,7 @@ layout: default
 ## 1. Aim
 
 To design and build a single, standards-compliant HTML5 document that demonstrates every major
-category of the HTML5 element vocabulary — semantic sectioning, text-level semantics, grouping
+category of the HTML5 element vocabulary: semantic sectioning, text-level semantics, grouping
 content, tabular data, forms and native validation, embedded multimedia, graphics, interactive
 elements, and scripted access to the Document Object Model.
 
@@ -53,7 +53,7 @@ HTML5 became a W3C Recommendation in October 2014 and is now maintained as a *li
 the WHATWG. Its three headline shifts were:
 
 1. **Meaning over markup.** HTML4 layouts were built from generic `<div>` containers distinguished
-   only by `id` or `class` names — strings that mean something to the developer and nothing to a
+   only by `id` or `class` names: strings that mean something to the developer and nothing to a
    machine. HTML5 introduced elements whose *names* declare their role, so a browser, a search
    crawler and a screen reader all agree on what a region is without reading any CSS.
 2. **Native capability instead of plug-ins.** Audio, video, vector graphics, raster drawing surfaces,
@@ -76,7 +76,7 @@ the WHATWG. Its three headline shifts were:
 
 ---
 
-## 5. Objective 2 — HTML4 vs HTML5 structural elements
+## 5. Objective 2: HTML4 vs HTML5 structural elements
 
 | Purpose | HTML4 approach | HTML5 element | Why it matters |
 |---|---|---|---|
@@ -106,7 +106,7 @@ the WHATWG. Its three headline shifts were:
 
 ---
 
-## 6. Objective 3 — Form input types and attributes used
+## 6. Objective 3: Form input types and attributes used
 
 ### 6.1 Input types demonstrated
 
@@ -145,20 +145,20 @@ The password field is a good example of `pattern` doing work that used to need J
        title="At least 8 characters, with one uppercase, one lowercase and one digit">
 ```
 
-The `title` is not decoration here — it is the message the browser shows when the pattern fails.
+The `title` is not decoration here: it is the message the browser shows when the pattern fails.
 
 ### 6.3 Related form elements
 
-- `<datalist>` — attaches a suggestion list to a free-text input, so the user may pick a suggestion
+- `<datalist>`: attaches a suggestion list to a free-text input, so the user may pick a suggestion
   *or* type their own value. A `<select>` allows neither.
-- `<output>` — a live result region; here it mirrors the range slider's value.
-- `<progress>` — how far along a known task is.
-- `<meter>` — a scalar measurement inside a known range, with `low`, `high` and `optimum`
+- `<output>`: a live result region; here it mirrors the range slider's value.
+- `<progress>`: how far along a known task is.
+- `<meter>`: a scalar measurement inside a known range, with `low`, `high` and `optimum`
   thresholds that colour the bar. *Progress is a journey; meter is a gauge.*
 
 ---
 
-## 7. Objective 4 — Multimedia implementation
+## 7. Objective 4: Multimedia implementation
 
 ```html
 <video controls width="640" preload="metadata" muted playsinline>
@@ -177,15 +177,15 @@ Three layers of graceful degradation are at work:
 2. `<track kind="captions">` supplies a WebVTT caption file. Captions are the single most important
    accessibility feature of video.
 3. The text node inside `<video>` is the fallback for any browser that does not know the element at
-   all — it renders only in that case.
+   all: it renders only in that case.
 
 Key attributes: `controls`, `autoplay`, `muted`, `loop`, `poster`, `preload`, `playsinline`.
-Note that browsers block `autoplay` **unless** the video is also `muted` — a deliberate policy
+Note that browsers block `autoplay` **unless** the video is also `muted`: a deliberate policy
 change made after auto-playing audio became a usability problem.
 
 ---
 
-## 8. Objective 5 — The Document Object Model
+## 8. Objective 5: The Document Object Model
 
 When the browser parses the HTML file, it builds an in-memory tree of **nodes**. Every element,
 attribute, text run and comment becomes a node. JavaScript manipulates that tree; the `.html` file
@@ -196,7 +196,7 @@ document
 └── html (lang="en")
     ├── head
     │   ├── meta (charset)
-    │   ├── title  →  "HTML5 Element Specimen — Experiment 1"
+    │   ├── title  →  "HTML5 Element Specimen: Experiment 1"
     │   └── style
     └── body
         └── div.sheet
@@ -248,13 +248,13 @@ View Source shows the original file while DevTools shows the live DOM.
 
 ---
 
-## 9. Objective 6 — Accessibility and SEO
+## 9. Objective 6: Accessibility and SEO
 
 ### 9.1 Accessibility measures applied
 
 | Measure | Implementation |
 |---|---|
-| Language declared | `<html lang="en">` — tells screen readers which voice to use |
+| Language declared | `<html lang="en">`: tells screen readers which voice to use |
 | Landmark regions | `<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>` |
 | Logical heading order | One `<h1>`, then `h2 → h6` with no skipped levels |
 | Labelled controls | Every input has a `<label for="…">` matching its `id` |
@@ -270,7 +270,7 @@ View Source shows the original file while DevTools shows the live DOM.
 ### 9.2 SEO measures applied
 
 - A descriptive, keyword-bearing `<title>`.
-- `<meta name="description">` — the snippet a search engine shows under the result.
+- `<meta name="description">`: the snippet a search engine shows under the result.
 - `<meta name="keywords">`, `<meta name="author">`, `<meta name="robots">`.
 - `<link rel="canonical">` to prevent duplicate-content penalties.
 - Open Graph tags (`og:title`, `og:description`, `og:type`) for social previews.
@@ -278,7 +278,7 @@ View Source shows the original file while DevTools shows the live DOM.
   sitelinks in results.
 - `<time datetime="2026-08-22">` for machine-readable dates.
 - Native lazy loading (`loading="lazy"`) and explicit `width`/`height` on images to prevent layout
-  shift — both are ranking signals under Google's Core Web Vitals.
+  shift: both are ranking signals under Google's Core Web Vitals.
 
 ---
 
@@ -286,7 +286,7 @@ View Source shows the original file while DevTools shows the live DOM.
 
 1. Created the folder `LAB/EXP-1/` inside the course repository.
 2. Wrote the HTML5 skeleton: doctype, `<html lang>`, `<head>` with metadata, `<body>`.
-3. Laid out the semantic frame — header, nav, main, nine sections, footer.
+3. Laid out the semantic frame: header, nav, main, nine sections, footer.
 4. Populated each section with the elements belonging to its family (Section 4.2 above).
 5. Built the form with all 19 input types plus `<datalist>`, `<output>`, `<progress>` and `<meter>`.
 6. Embedded audio, video with captions, a `<picture>` element, an image map and an `<iframe>`.
@@ -305,7 +305,7 @@ Opening `index.html` renders a nine-section reference sheet. Observable behaviou
 
 - The nav links jump smoothly to each section.
 - Submitting the form with an empty **Full name** produces the browser's own error bubble; entering
-  `abc` in the email field produces a format error — no JavaScript is involved in either.
+  `abc` in the email field produces a format error: no JavaScript is involved in either.
 - Dragging the confidence slider updates the `<output>` value live.
 - The audio and video players expose native controls; the video's caption track is listed in the
   player menu.
@@ -327,7 +327,7 @@ Opening `index.html` renders a nine-section reference sheet. Observable behaviou
    media playback are all native now.
 3. `<article>` vs `<section>` is settled by one test: would the content still make sense if you
    lifted it out of the page? If yes, it is an article.
-4. `<b>`/`<i>` are not deprecated — they were *redefined*. `<b>` is stylistic bold with no added
+4. `<b>`/`<i>` are not deprecated: they were *redefined*. `<b>` is stylistic bold with no added
    importance, `<strong>` is importance; `<i>` is an alternate voice, `<em>` is stress emphasis.
 5. Native form validation is a convenience, not a security control. It runs on the client and can be
    bypassed, so server-side validation is still mandatory.
@@ -353,7 +353,7 @@ screen readers and crawlers.
 
 **Q4. Difference between `<progress>` and `<meter>`?**
 `<progress>` shows completion of a task over time. `<meter>` shows a static scalar measurement
-within a known range — disk usage, a score, a temperature.
+within a known range: disk usage, a score, a temperature.
 
 **Q5. Why does `<video>` need multiple `<source>` elements?**
 Codec support differs across browsers. The browser plays the first source it can decode, so shipping
@@ -395,10 +395,10 @@ or warnings.
 
 ## 15. References
 
-1. WHATWG — *HTML Living Standard*. <https://html.spec.whatwg.org/>
-2. MDN Web Docs — *HTML elements reference*. <https://developer.mozilla.org/en-US/docs/Web/HTML/Element>
-3. W3C — *HTML5 Recommendation*, 28 October 2014. <https://www.w3.org/TR/html5/>
-4. W3C — *Web Content Accessibility Guidelines (WCAG) 2.2*. <https://www.w3.org/TR/WCAG22/>
+1. WHATWG: *HTML Living Standard*. <https://html.spec.whatwg.org/>
+2. MDN Web Docs: *HTML elements reference*. <https://developer.mozilla.org/en-US/docs/Web/HTML/Element>
+3. W3C: *HTML5 Recommendation*, 28 October 2014. <https://www.w3.org/TR/html5/>
+4. W3C: *Web Content Accessibility Guidelines (WCAG) 2.2*. <https://www.w3.org/TR/WCAG22/>
 5. W3C Markup Validation Service. <https://validator.w3.org/>
 
 ---

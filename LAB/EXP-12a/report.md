@@ -1,12 +1,12 @@
 ---
-title: "Experiment 12 — Node.js, Express.js and EJS"
+title: "Experiment 12: Node.js, Express.js and EJS"
 layout: default
 ---
 
-# Experiment 12 — Node.js, Express.js and EJS
+# Experiment 12: Node.js, Express.js and EJS
 
 **Course:** Backend Development Lab  
-**Student:** Gopal Aggarwal · B.Tech CSE · SAP ID 590018885 · UPES Dehradun  
+**Student:** Krish Pawar · B.Tech CSE · SAP ID 590017543 · UPES Dehradun  
 **Date:** 1 October 2026
 
 **Application:** [`app.js`](./app.js) · **EJS view:** [`views/index.ejs`](./views/index.ejs) · **Stylesheet:** [`public/style.css`](./public/style.css)
@@ -17,11 +17,11 @@ layout: default
 |---|---|
 | Experiment 12 overview | [View screenshot](./screenshots/1.png) |
 | Task directory | [View screenshot](./screenshots/2.png) |
-| Task 1 — Basic Server | [View screenshot](./screenshots/3.png) |
-| Task 2 — Calculator API | [View screenshot](./screenshots/4.png) |
-| Task 3 — Student Management | [View screenshot](./screenshots/5.png) |
-| Task 4 — EJS Timetable | [View screenshot](./screenshots/6.png) |
-| Task 5 — Student Registration | [View screenshot](./screenshots/7.png) |
+| Task 1: Basic Server | [View screenshot](./screenshots/3.png) |
+| Task 2: Calculator API | [View screenshot](./screenshots/4.png) |
+| Task 3: Student Management | [View screenshot](./screenshots/5.png) |
+| Task 4: EJS Timetable | [View screenshot](./screenshots/6.png) |
+| Task 5: Student Registration | [View screenshot](./screenshots/7.png) |
 
 ---
 
@@ -294,10 +294,10 @@ This experiment demonstrates how Node.js and Express can handle web requests and
 
 ## 11. References
 
-1. Node.js — [Introduction to Node.js](https://nodejs.org/learn/getting-started/introduction-to-nodejs)
-2. Express.js — [Routing](https://expressjs.com/en/guide/routing/)
-3. Express.js — [Using template engines](https://expressjs.com/en/guide/using-template-engines/)
-4. EJS — [Embedded JavaScript templates](https://ejs.co/)
+1. Node.js: [Introduction to Node.js](https://nodejs.org/learn/getting-started/introduction-to-nodejs)
+2. Express.js: [Routing](https://expressjs.com/en/guide/routing/)
+3. Express.js: [Using template engines](https://expressjs.com/en/guide/using-template-engines/)
+4. EJS: [Embedded JavaScript templates](https://ejs.co/)
 
 ---
 

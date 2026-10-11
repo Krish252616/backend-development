@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 const profile = {
-  name: "Gopal Aggarwal",
-  rollNumber: "590018885",
+  name: "Krish Pawar",
+  rollNumber: "590017543",
   branch: "B.Tech Computer Science Engineering"
 };
 

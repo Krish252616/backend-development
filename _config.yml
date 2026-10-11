@@ -3,18 +3,18 @@ exclude:
   # not published. Only the assignments inside Theory/ are published:
   #   Theory/ASSIGNMENT_1_notes-app/   (live app + report)
   #   Theory/590017543-assignment2.md  (report)
-  # When you add a new server project to Theory/, add its folder here too.
-  - "Theory/Lecture 15/"
-  - "Theory/Lecture 2/"
-  - Theory/Lecture1/
-  - Theory/Sessions/
-  - Theory/ssr-python/
-  - Theory/views/
-  - Theory/package.json
-  - Theory/package-lock.json
+  #
+  # Every lecture folder is named Lecture-NN (Lecture-03, Lecture-05, ...),
+  # so "Theory/Lecture-*" also covers lectures you add later.
+  # The explicit folder lines below it are a backup for the pattern.
+  - "Theory/Lecture-*"
+  - Theory/Lecture-03/
+  - Theory/Lecture-05/
+  - Theory/Lecture-06/
+  - Theory/Lecture-08/
   - Theory/requirements.txt
-  - Theory/server.js
   - node_modules/
+  - "**/node_modules/"
   - "**/venv/"
   - "**/.venv/"
   - "**/__pycache__/"

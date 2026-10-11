@@ -1,9 +1,9 @@
 ---
-title: "Experiment — User management with MongoDB and Mongoose"
+title: "Experiment: User management with MongoDB and Mongoose"
 layout: default
 ---
 
-# Experiment — Build a user management system with MongoDB and Mongoose
+# Experiment: Build a user management system with MongoDB and Mongoose
 
 **Course:** Backend Development Lab
 **Student:** Krish Pawar · B.Tech CSE · UPES Dehradun · 590017543
@@ -50,7 +50,7 @@ After completing this experiment, I am able to:
 ### 4.1 Why MongoDB is different
 
 MongoDB is a **document database**. Instead of tables with fixed columns, it stores **documents**
-in **collections**. Each document is a BSON object — essentially JSON with extra data types — and
+in **collections**. Each document is a BSON object (essentially JSON with extra data types) and
 documents in the same collection need not share the same fields.
 
 | Relational (SQL) | MongoDB |
@@ -67,12 +67,12 @@ this experiment is enforced by **Mongoose**, not by the database engine.
 
 ### 4.2 What Mongoose adds
 
-Mongoose is an **ODM** — Object Document Mapper. It sits between the application and the MongoDB
+Mongoose is an **ODM**: Object Document Mapper. It sits between the application and the MongoDB
 driver and provides three things the raw driver does not:
 
-1. **Schemas** — a declared structure with types, so `age` cannot accidentally be saved as a string.
-2. **Validation** — `required`, `min`, `max`, `match` and custom validators, checked before a write.
-3. **Models** — a class-like interface (`User.find()`, `user.save()`) instead of raw collection calls.
+1. **Schemas**: a declared structure with types, so `age` cannot accidentally be saved as a string.
+2. **Validation**: `required`, `min`, `max`, `match` and custom validators, checked before a write.
+3. **Models**: a class-like interface (`User.find()`, `user.save()`) instead of raw collection calls.
 
 ### 4.3 The three-layer chain
 
@@ -94,7 +94,7 @@ await newUser.save();                               //    persisted
 ```
 
 **Note on collection naming:** `mongoose.model('User', ...)` creates a collection called
-**`users`** — Mongoose lowercases the model name and pluralises it automatically. This catches
+**`users`**: Mongoose lowercases the model name and pluralises it automatically. This catches
 people out when they go looking for a `User` collection in the database and find nothing.
 
 ---
@@ -113,7 +113,7 @@ people out when they go looking for a `User` collection in the database and find
    cd mongoose-demo
    npm init -y
    ```
-   `npm init` does not install Node — it creates `package.json`, which records the project's
+   `npm init` does not install Node: it creates `package.json`, which records the project's
    metadata and its dependency list.
 4. Installed the dependencies:
    ```bash
@@ -145,7 +145,7 @@ mongoose.connect(DB_URL)
 ```
 
 The URI breaks down as `mongodb://` (protocol) + `localhost:27017` (host and default MongoDB port)
-+ `/userdb` (database name). The database does not need to exist beforehand — MongoDB creates it
++ `/userdb` (database name). The database does not need to exist beforehand: MongoDB creates it
 lazily, on the first write.
 
 ### 6.2 The schema
@@ -163,7 +163,7 @@ const userSchema = new mongoose.Schema({
 |---|---|
 | `type` | The expected data type; Mongoose casts or rejects on mismatch |
 | `required: true` | Save is rejected if the field is missing |
-| `unique: true` | Builds a unique **index** — see the note below |
+| `unique: true` | Builds a unique **index**: see the note below |
 | `default: Date.now` | Sets the value automatically if none is supplied |
 
 `default: Date.now` passes the **function**, not `Date.now()`. Calling it would freeze the value at
@@ -173,10 +173,10 @@ server start-up so every user would share the same timestamp.
 
 | Method | Path | Mongoose operation |
 |---|---|---|
-| GET | `/` | none — serves the HTML form |
+| GET | `/` | none: serves the HTML form |
 | POST | `/signup` | `new User({...})` then `.save()` |
 | POST | `/login` | `User.findOne({ username })` |
-| GET | `/users` | `User.find()` — no filter, returns all |
+| GET | `/users` | `User.find()`: no filter, returns all |
 
 Every database call is `await`ed inside a `try…catch`, because database operations are
 asynchronous and can fail.
@@ -212,11 +212,11 @@ Server started on port 3000 with `Connected to MongoDB successfully` logged to t
 
 ![Home page with signup, login and view-users forms](./screenshots/home.png)
 
-*Home page served by `GET /` — three forms rendered by Express.*
+*Home page served by `GET /`: three forms rendered by Express.*
 
 ![Registered users list showing one user with username, email and join date](./screenshots/users.png)
 
-*`GET /users` — data read back from MongoDB via `User.find()`, proving the document persisted.*
+*`GET /users`: data read back from MongoDB via `User.find()`, proving the document persisted.*
 
 The data survived a server restart, confirming it was written to disk rather than held in memory.
 
@@ -232,14 +232,14 @@ The data survived a server restart, confirming it was written to disk rather tha
    duplicate documents already exist in the collection, the index silently fails to build.
 
 3. **Passwords are stored in plain text, and that is a real flaw.** This version stores whatever the
-   user typed and compares with `user.password !== password`. Anyone with database access — or
-   anyone who obtains a dump of it — reads every password directly. Production code hashes the
+   user typed and compares with `user.password !== password`. Anyone with database access (or
+   anyone who obtains a dump of it) reads every password directly. Production code hashes the
    password with **bcrypt** or **argon2** before saving and compares with the library's own
    `compare()` function. Worth fixing in the next iteration.
 
 4. **Homebrew's versioned formula name must be used exactly.** The package installed was
    `mongodb-community@8.0`, so `brew services start mongodb-community` fails with "Formula not
-   installed" — the `@8.0` suffix is part of the name.
+   installed": the `@8.0` suffix is part of the name.
 
 5. **Running `mongod` manually is not the same as starting the service.** A bare `mongod` looks for
    the default data directory `/data/db`, which does not exist on macOS, and exits with code 100.
@@ -275,7 +275,7 @@ The data survived a server restart, confirming it was written to disk rather tha
 | `Model.deleteOne(filter)` | Deletes the first match |
 | `Model.countDocuments(filter)` | Counts matches without fetching them |
 
-`find()` returning an empty array while `findOne()` returns `null` is a common source of bugs —
+`find()` returning an empty array while `findOne()` returns `null` is a common source of bugs:
 `if (!result)` works for `findOne` but not for `find`, where the check must be `result.length === 0`.
 
 ---
@@ -295,10 +295,10 @@ hashing before this pattern is used anywhere real.
 
 ## 11. References
 
-1. MongoDB — *Manual*. <https://www.mongodb.com/docs/manual/>
-2. Mongoose — *Documentation*. <https://mongoosejs.com/docs/>
-3. Express — *Guide*. <https://expressjs.com/>
-4. MongoDB — *Install on macOS with Homebrew*. <https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/>
+1. MongoDB: *Manual*. <https://www.mongodb.com/docs/manual/>
+2. Mongoose: *Documentation*. <https://mongoosejs.com/docs/>
+3. Express: *Guide*. <https://expressjs.com/>
+4. MongoDB: *Install on macOS with Homebrew*. <https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/>
 
 ---
 
