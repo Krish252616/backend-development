@@ -1,5 +1,19 @@
 exclude:
-  - Theory/
+  # Theory/ holds server projects that cannot run on GitHub Pages, so they are
+  # not published. Only the assignments inside Theory/ are published:
+  #   Theory/ASSIGNMENT_1_notes-app/   (live app + report)
+  #   Theory/590017543-assignment2.md  (report)
+  # When you add a new server project to Theory/, add its folder here too.
+  - "Theory/Lecture 15/"
+  - "Theory/Lecture 2/"
+  - Theory/Lecture1/
+  - Theory/Sessions/
+  - Theory/ssr-python/
+  - Theory/views/
+  - Theory/package.json
+  - Theory/package-lock.json
+  - Theory/requirements.txt
+  - Theory/server.js
   - node_modules/
   - "**/venv/"
   - "**/.venv/"

@@ -1,3 +1,8 @@
+---
+title: "Assignment 01: Notes App with localStorage"
+layout: default
+---
+
 # Assignment 01: Notes App with localStorage
 
 **Course:** Backend Development, Unit 1

@@ -71,7 +71,7 @@
 backend-development/
 │
 ├── README.md                 this file (also the GitHub Pages homepage)
-├── _config.yml               Jekyll settings (excludes Theory/ from the site)
+├── _config.yml               Jekyll settings (publishes only the assignments from Theory/)
 │
 ├── LAB/
 │   ├── EXP-1/                HTML5 page and report
