@@ -1,31 +1,51 @@
-# Student Details: FastAPI Server-Side Rendering
+---
+title: "Lecture 8: Student Details, FastAPI Server-Side Rendering"
+layout: default
+---
 
+# Lecture 8: Student Details, FastAPI Server-Side Rendering
+
+**Course:** Backend Development, Unit 1
 **Lecture:** 8, Server-Side Rendering and Templating Engines
-**Student:** Krish Pawar, SAP ID 590017543, B.Tech CSE Core, Batch 5
+**Student:** Krish Pawar · B.Tech CSE · SAP ID 590017543 · Batch 5 · UPES Dehradun
 
-A FastAPI app that keeps a list of students on the server and uses Jinja2 to turn it into a finished HTML page. The browser receives ready HTML, not JSON. A form lets you add new students, and the server validates every field before saving.
+**Source:** [`main.py`](https://github.com/Krish252616/backend-development/blob/main/Theory/Lecture-08/student-details/main.py) · [`templates/`](https://github.com/Krish252616/backend-development/tree/main/Theory/Lecture-08/student-details/templates) · [`static/style.css`](https://github.com/Krish252616/backend-development/blob/main/Theory/Lecture-08/student-details/static/style.css)
 
-## Run
+---
 
-```bash
-python3 -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
+## 1. Aim
 
-Open http://127.0.0.1:8000
+To build a small FastAPI app that keeps a list of students on the server and uses Jinja2 to turn it into finished HTML pages. A form lets you add students, and the server checks every field before saving.
 
-## Routes
+## 2. Routes
 
-| Method | Path | What it does |
+| Method | Route | What it does |
 |---|---|---|
 | GET | `/` | Student table (same as `/students`) |
 | GET | `/students` | Student table |
 | GET | `/students/add` | Blank form |
-| POST | `/students/add` | Validates, saves, then redirects to the table |
+| POST | `/students/add` | Validates the form, saves the student, then redirects to the table |
 
-## Structure
+## 3. How to run
+
+```bash
+cd Theory
+source .venv/bin/activate          # the venv from Theory/requirements.txt
+cd Lecture-08/student-details
+uvicorn main:app --reload
+```
+
+Open http://127.0.0.1:8000.
+
+| Step | macOS (Terminal, zsh) | Windows |
+|---|---|---|
+| Create the venv (once) | `python3 -m venv .venv` | `python -m venv .venv` |
+| Activate it | `source .venv/bin/activate` | `.venv\Scripts\activate` |
+| Install packages | `pip install -r requirements.txt` | Same |
+| Run | `uvicorn main:app --reload` | Same |
+| View page source | `Cmd + Option + U` in Chrome | `Ctrl + U` in Chrome |
+
+## 4. Structure
 
 ```
 student-details/
@@ -40,21 +60,42 @@ student-details/
     └── style.css
 ```
 
-## How the rendering works
+## 5. How the rendering works
 
-1. `Jinja2Templates(directory="templates")` tells FastAPI where the templates are.
+1. `Jinja2Templates(directory="templates")` tells FastAPI where the templates are, and `app.mount("/static", StaticFiles(directory="static"))` serves the CSS.
 2. A route returns `templates.TemplateResponse(request=request, name="students.html", context={"students": students})`.
-3. Jinja2 fills the placeholders with the data, and FastAPI sends the result with `Content-Type: text/html`.
+3. Jinja2 fills the template with the data, and FastAPI sends the result as `text/html`.
 
-`request` must be passed because Starlette (the toolkit FastAPI is built on) uses it to build `url_for()` links. This is how `base.html` finds the stylesheet: `{{ url_for('static', path='/style.css') }}`.
+**Template inheritance.** `base.html` holds the header, navigation and footer once. The other pages only fill in the content block:
 
-`students.html` and `add_student.html` both start with `{% extends "base.html" %}`, so the header, navigation and footer are written only once.
+<pre><code>&#123;% extends "base.html" %&#125;
 
-The table uses `{% for %} ... {% else %} ... {% endfor %}`. In Jinja2, the `{% else %}` part runs when the list is empty, so the page shows "No student details available yet." instead of an empty table.
+&#123;% block content %&#125;
+  ... page content ...
+&#123;% endblock %&#125;
+</code></pre>
 
-## Validation
+**Loop with an empty case.** In Jinja2, the `else` part of a `for` loop runs when the list is empty:
 
-The form already uses `required` and `pattern="[0-9]{9}"`, but browser checks can be skipped (for example with curl or Postman). So `main.py` checks every field again on the server:
+<pre><code>&#123;% for student in students %&#125;
+  &lt;tr&gt;
+    &lt;td&gt;&#123;&#123; student.name &#125;&#125;&lt;/td&gt;
+    &lt;td class="mono"&gt;&#123;&#123; student.sap_id &#125;&#125;&lt;/td&gt;
+    &lt;td&gt;&#123;&#123; student.batch &#125;&#125;&lt;/td&gt;
+  &lt;/tr&gt;
+&#123;% else %&#125;
+  &lt;tr&gt;&lt;td colspan="3"&gt;No student details available yet.&lt;/td&gt;&lt;/tr&gt;
+&#123;% endfor %&#125;
+</code></pre>
+
+**Stylesheet link.** `request` must be passed to the template because Starlette (the toolkit FastAPI is built on) uses it to build links:
+
+<pre><code>&lt;link rel="stylesheet" href="&#123;&#123; url_for('static', path='/style.css') &#125;&#125;"&gt;
+</code></pre>
+
+## 6. Validation
+
+The form uses `required` and `pattern="[0-9]{9}"`, but browser checks can be skipped (for example with curl or Postman), so `main.py` checks every field again:
 
 | Check | Error shown |
 |---|---|
@@ -62,16 +103,67 @@ The form already uses `required` and `pattern="[0-9]{9}"`, but browser checks ca
 | SAP ID not exactly 9 digits | SAP ID must be exactly 9 digits. |
 | SAP ID already in the list | A student with SAP ID ... already exists. |
 
-On an error, the form is shown again with the message and the typed values kept.
+On an error, the form is shown again with the message, and the values already typed are kept.
 
-## Post, redirect, get
+**Post, redirect, get.** After a successful save, the server answers `303 See Other` and sends the browser to `/students`:
 
-After a successful save, the server replies with `303 See Other` and sends the browser to `/students`. Because the last request is then a GET, refreshing the page does not submit the form a second time.
+```text
+$ curl -i -X POST 127.0.0.1:8000/students/add -d name=Aarav+Sharma -d sap_id=590011111 -d batch=B.Tech
+HTTP/1.1 303 See Other
+location: /students
+```
 
-## How to show it is SSR
+Because the last request is a GET, refreshing the page does not submit the form again.
 
-Open the page, right-click and choose **View Page Source**. The student names are already inside the `<td>` tags, which proves the HTML was built on the server.
+## 7. Output
 
-## Limitation
+**1. Student table**
 
-The data is kept in a Python list, so it resets every time the server restarts. A real app would store it in a database.
+![Student table](screenshots/1-student-table.png)
+
+**2. Add student form**
+
+![Add student form](screenshots/2-add-form.png)
+
+**3. Server-side validation:** an SAP ID that is already in the list is rejected, and the typed values stay in the form
+
+![Duplicate SAP ID error](screenshots/3-duplicate-sap-error.png)
+
+**4. After adding a student:** the server redirected back to the table, which now has one more row
+
+![After adding a student](screenshots/4-after-adding.png)
+
+**Proof that it is server-side rendering:** the rows are already inside the HTML the server sends.
+
+```text
+$ curl -s 127.0.0.1:8000/students
+...
+    <tbody>
+      <tr>
+        <td>Krish Pawar</td>
+        <td class="mono">590017543</td>
+...
+```
+
+## 8. What I learned
+
+1. A template engine lets me write the page once and fill it with different data on every request.
+2. Template inheritance (`extends` and `block`) removes repeated HTML: the header and footer live in one file.
+3. Reading form data in FastAPI needs `Form(...)` and the `python-multipart` package. JSON bodies use Pydantic models instead.
+4. Browser validation is only for convenience. The server must check everything again, because anyone can send a request without the browser.
+5. Redirecting after a POST (status `303`) stops the "resubmit form?" problem when the user refreshes.
+6. `url_for()` builds the correct link to static files, so the CSS still loads if the app is moved to another path.
+
+## 9. Problems I faced and how I fixed them
+
+| Problem | Cause | Fix |
+|---|---|---|
+| The app would not start: `RuntimeError: Form data requires "python-multipart" to be installed.` | FastAPI needs `python-multipart` to read form fields, and it was missing from `Theory/requirements.txt` | Added `python-multipart==0.0.32` to `Theory/requirements.txt` (this project's own `requirements.txt` already had it) |
+| Typing a 5-digit SAP ID in the browser showed a browser message instead of my server message | The `pattern="[0-9]{9}"` attribute stops the form before it is sent | Correct behaviour. To test the server check, I submitted an SAP ID that is 9 digits but already exists, or sent the request with curl |
+| Refreshing after adding a student asked to resubmit the form | The last request was a POST | Redirect with `303 See Other` to `/students`, so the last request is a GET |
+| New students disappeared after restarting the server | The list is stored in memory | Expected in this demo. A database would keep the data |
+| On macOS, `python` was not found when creating the venv | macOS uses `python3` | Used `python3 -m venv .venv`. Inside the venv, `python` works |
+
+## 10. Result
+
+The table and the form are rendered on the server with Jinja2, shared layout comes from `base.html`, every form field is validated on the server, and a successful save redirects back to the updated table.

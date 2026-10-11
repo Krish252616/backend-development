@@ -1,17 +1,24 @@
 exclude:
-  # Theory/ holds server projects that cannot run on GitHub Pages, so they are
-  # not published. Only the assignments inside Theory/ are published:
-  #   Theory/ASSIGNMENT_1_notes-app/   (live app + report)
-  #   Theory/590017543-assignment2.md  (report)
+  # Theory/ holds server projects that cannot run on GitHub Pages.
+  # From each Theory/Lecture-NN/<project>/ folder, only report.md (shown as
+  # report.html) and the screenshots/ folder are published. The code stays on
+  # GitHub only. These patterns also cover lecture folders you add later.
   #
-  # Every lecture folder is named Lecture-NN (Lecture-03, Lecture-05, ...),
-  # so "Theory/Lecture-*" also covers lectures you add later.
-  # The explicit folder lines below it are a backup for the pattern.
-  - "Theory/Lecture-*"
-  - Theory/Lecture-03/
-  - Theory/Lecture-05/
-  - Theory/Lecture-06/
-  - Theory/Lecture-08/
+  # In these patterns * also matches "/", so "Theory/Lecture-*.py" matches
+  # every .py file at any depth inside every Lecture-NN folder.
+  - "Theory/Lecture-*.py"
+  - "Theory/Lecture-*.js"
+  - "Theory/Lecture-*.ejs"
+  - "Theory/Lecture-*.json"
+  - "Theory/Lecture-*.txt"
+  - "Theory/Lecture-*.css"
+  - "Theory/Lecture-*/templates"
+  - "Theory/Lecture-*/views"
+  - "Theory/Lecture-*/static"
+  - "Theory/Lecture-*/node_modules"
+  - "Theory/Lecture-*/venv"
+  - "Theory/Lecture-*/__pycache__"
+  - "Theory/Lecture-*Pipfile*"
   - Theory/requirements.txt
   - node_modules/
   - "**/node_modules/"

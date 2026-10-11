@@ -38,16 +38,16 @@
 
 ## Theory projects
 
-Each lecture folder is named after the lecture it belongs to: `Theory/Lecture-03`, `Theory/Lecture-05`, and so on.
+Each lecture folder is named after the lecture it belongs to: `Theory/Lecture-03`, `Theory/Lecture-05`, and so on. Every project has a `report.md` with the code explained, screenshots of the running app, what I learned, and the problems I faced (including Windows vs macOS differences).
 
-| Lecture | Project | Stack | Source |
-|:---:|---|---|---|
-| **3** | **Express demo** (tasks 1 to 5) | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=flat-square&logo=ejs&logoColor=black) | [`Theory/Lecture-03/express-demo`](./Theory/Lecture-03/express-demo) |
-| **3** | **Flask demo** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white) | [`Theory/Lecture-03/flask-demo`](./Theory/Lecture-03/flask-demo) |
-| **5** | **FastAPI CRUD API** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | [`Theory/Lecture-05/fastapi-crud`](./Theory/Lecture-05/fastapi-crud) |
-| **6** | **Sessions** | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) | [`Theory/Lecture-06/sessions`](./Theory/Lecture-06/sessions) |
-| **8** | **Student Details (SSR)** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [`Theory/Lecture-08/student-details`](./Theory/Lecture-08/student-details) ([report](./Theory/Lecture-08/student-details/report.md)) |
-| **8** | **Server-side rendering with Python** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [`Theory/Lecture-08/ssr-python`](./Theory/Lecture-08/ssr-python) |
+| Lecture | Project | Stack | Report | Source |
+|:---:|---|---|:---:|---|
+| **3** | **Express demo** (tasks 1 to 5) | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=flat-square&logo=ejs&logoColor=black) | [Report](./Theory/Lecture-03/express-demo/report.md) · [Screenshots](./Theory/Lecture-03/express-demo/report.md#5-output) | [`Theory/Lecture-03/express-demo`](./Theory/Lecture-03/express-demo) |
+| **3** | **Flask demo** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white) | [Report](./Theory/Lecture-03/flask-demo/report.md) · [Screenshots](./Theory/Lecture-03/flask-demo/report.md#5-output) | [`Theory/Lecture-03/flask-demo`](./Theory/Lecture-03/flask-demo) |
+| **5** | **FastAPI CRUD API** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | [Report](./Theory/Lecture-05/fastapi-crud/report.md) · [Screenshots](./Theory/Lecture-05/fastapi-crud/report.md#5-output) | [`Theory/Lecture-05/fastapi-crud`](./Theory/Lecture-05/fastapi-crud) |
+| **6** | **Sessions** | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) | [Report](./Theory/Lecture-06/sessions/report.md) · [Screenshots](./Theory/Lecture-06/sessions/report.md#5-output) | [`Theory/Lecture-06/sessions`](./Theory/Lecture-06/sessions) |
+| **8** | **Student Details (SSR)** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [Report](./Theory/Lecture-08/student-details/report.md) · [Screenshots](./Theory/Lecture-08/student-details/report.md#7-output) | [`Theory/Lecture-08/student-details`](./Theory/Lecture-08/student-details) |
+| **8** | **Server-side rendering with Python** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [Report](./Theory/Lecture-08/ssr-python/report.md) · [Screenshots](./Theory/Lecture-08/ssr-python/report.md#5-output) | [`Theory/Lecture-08/ssr-python`](./Theory/Lecture-08/ssr-python) |
 
 > **Python dependencies for all Theory projects:** [`Theory/requirements.txt`](./Theory/requirements.txt). Each Node project has its own `package.json`.
 
@@ -74,7 +74,7 @@ backend-development/
 ├── index.html                GitHub Pages homepage
 ├── style.css                 styles for the homepage
 ├── README.md                 this file
-├── _config.yml               Jekyll settings (publishes only the assignments from Theory/)
+├── _config.yml               Jekyll settings (publishes Theory reports and screenshots, not the code)
 │
 ├── LAB/
 │   ├── EXP-1/                HTML5 page and report
@@ -84,7 +84,7 @@ backend-development/
 │
 ├── Theory/
 │   ├── Lecture-03/
-│   │   ├── express-demo/     Express tasks 1 to 5
+│   │   ├── express-demo/     Express tasks 1 to 5 (each project has report.md and screenshots/)
 │   │   └── flask-demo/       first Flask app
 │   ├── Lecture-05/
 │   │   └── fastapi-crud/     REST API with FastAPI
