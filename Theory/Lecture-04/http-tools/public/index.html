@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch() Client | Lecture 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <p class="label">Backend Development · Lecture 4</p>
+    <h1>fetch() client</h1>
+    <p class="lead">Each button sends a real HTTP request to this Express server with <code>fetch()</code>. Open DevTools (Network or Console) to watch the same requests.</p>
+
+    <section>
+      <h2>Requests</h2>
+      <div class="buttons">
+        <button type="button" id="btnAll">GET /students</button>
+        <button type="button" id="btnOne">GET /students/1</button>
+        <button type="button" id="btnMissing">GET /students/99</button>
+        <button type="button" id="btnCse">Exercise 4: CSE students</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>POST /students</h2>
+      <form id="addForm" autocomplete="off">
+        <label>Name <input id="name" value="Priya" required></label>
+        <label>Branch <input id="branch" value="CSE" required></label>
+        <button type="submit">Send POST</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Result</h2>
+      <p id="status" class="status">Click a button to send a request.</p>
+      <pre id="output"></pre>
+    </section>
+
+    <section>
+      <h2>Students (rendered with JavaScript)</h2>
+      <ul id="student-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

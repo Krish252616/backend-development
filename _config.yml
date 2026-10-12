@@ -15,6 +15,7 @@ exclude:
   - "Theory/Lecture-*/templates"
   - "Theory/Lecture-*/views"
   - "Theory/Lecture-*/static"
+  - "Theory/Lecture-*/public"
   - "Theory/Lecture-*/node_modules"
   - "Theory/Lecture-*/venv"
   - "Theory/Lecture-*/__pycache__"

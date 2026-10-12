@@ -1,0 +1,16 @@
+{
+  "name": "http-tools",
+  "version": "1.0.0",
+  "description": "Lecture 4: students API and fetch() page for DevTools, curl, Postman and fetch practice",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Krish Pawar",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
