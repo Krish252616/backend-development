@@ -42,8 +42,8 @@ Each lecture folder is named after the lecture it belongs to: `Theory/Lecture-03
 
 | Lecture | Project | Stack | Report | Source |
 |:---:|---|---|:---:|---|
-| **3** | **Express demo** (tasks 1 to 5) | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=flat-square&logo=ejs&logoColor=black) | [Report](./Theory/Lecture-03/express-demo/report.md) · [Screenshots](./Theory/Lecture-03/express-demo/report.md#5-output) | [`Theory/Lecture-03/express-demo`](./Theory/Lecture-03/express-demo) |
-| **3** | **Flask demo** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white) | [Report](./Theory/Lecture-03/flask-demo/report.md) · [Screenshots](./Theory/Lecture-03/flask-demo/report.md#5-output) | [`Theory/Lecture-03/flask-demo`](./Theory/Lecture-03/flask-demo) |
+| **3** | **Express demo** (tasks 1 to 5, labs 3 and 5) | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=flat-square&logo=ejs&logoColor=black) | [Report](./Theory/Lecture-03/express-demo/report.md) · [Screenshots](./Theory/Lecture-03/express-demo/report.md#5-output) | [`Theory/Lecture-03/express-demo`](./Theory/Lecture-03/express-demo) |
+| **3** | **Flask demo** (tasks 6 and 7, lab 4) | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white) | [Report](./Theory/Lecture-03/flask-demo/report.md) · [Screenshots](./Theory/Lecture-03/flask-demo/report.md#5-output) | [`Theory/Lecture-03/flask-demo`](./Theory/Lecture-03/flask-demo) |
 | **5** | **FastAPI CRUD API** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | [Report](./Theory/Lecture-05/fastapi-crud/report.md) · [Screenshots](./Theory/Lecture-05/fastapi-crud/report.md#5-output) | [`Theory/Lecture-05/fastapi-crud`](./Theory/Lecture-05/fastapi-crud) |
 | **6** | **Sessions** | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) | [Report](./Theory/Lecture-06/sessions/report.md) · [Screenshots](./Theory/Lecture-06/sessions/report.md#5-output) | [`Theory/Lecture-06/sessions`](./Theory/Lecture-06/sessions) |
 | **8** | **Student Details (SSR)** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [Report](./Theory/Lecture-08/student-details/report.md) · [Screenshots](./Theory/Lecture-08/student-details/report.md#7-output) | [`Theory/Lecture-08/student-details`](./Theory/Lecture-08/student-details) |
@@ -84,8 +84,8 @@ backend-development/
 │
 ├── Theory/
 │   ├── Lecture-03/
-│   │   ├── express-demo/     Express tasks 1 to 5 (each project has report.md and screenshots/)
-│   │   └── flask-demo/       first Flask app
+│   │   ├── express-demo/     Express tasks 1 to 5, lab 3 (each project has report.md and screenshots/)
+│   │   └── flask-demo/       Flask tasks 6 and 7, lab 4
 │   ├── Lecture-05/
 │   │   └── fastapi-crud/     REST API with FastAPI
 │   ├── Lecture-06/
@@ -135,7 +135,7 @@ open index.html          # macOS. On Windows: start index.html
 # Lecture 3: Express tasks
 cd Theory/Lecture-03/express-demo
 npm install
-npm run task3            # any of task1 to task5, then open http://localhost:3000
+npm run task3            # any of task1 to task5, or lab3, then open http://localhost:3000
 
 # Lecture 6: sessions
 cd Theory/Lecture-06/sessions
@@ -157,7 +157,7 @@ Then run any project from its own folder:
 
 | Project | Command | Open |
 |---|---|---|
-| Lecture 3: Flask demo | `cd Lecture-03/flask-demo && python app.py` | http://127.0.0.1:5000 |
+| Lecture 3: Flask demo | `cd Lecture-03/flask-demo/task7 && python app.py` (or `task6`, `lab4`) | http://127.0.0.1:5000/students |
 | Lecture 5: FastAPI CRUD API | `cd Lecture-05/fastapi-crud && python main.py` | http://127.0.0.1:5000/docs |
 | Lecture 8: Student Details | `cd Lecture-08/student-details && uvicorn main:app --reload` | http://127.0.0.1:8000 |
 | Lecture 8: SSR with Python | `cd Lecture-08/ssr-python && uvicorn main:app --reload` | http://127.0.0.1:8000 |
