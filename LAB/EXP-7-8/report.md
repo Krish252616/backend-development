@@ -152,7 +152,7 @@ list.addEventListener("click", (event) => {
 
 Concepts used in the app: `const`/`let`, arrow functions, template literals, destructuring, spread, a class, DOM selection, `createElement`, `classList`, `dataset`, `closest`, `addEventListener`, the `keydown` event and event delegation.
 
-## 7. Output
+<!-- ## 7. Output
 
 ### 7.1 To-Do app
 
@@ -258,9 +258,9 @@ On submit, `preventDefault()` stopped the page reload (the URL stayed the same) 
 
 **5.9 Event delegation.** One listener on the `<ul>`. "Task 4 (added later)" was created after the listener and clicking it still worked:
 
-![Delegation](screenshots/events-5-9-delegation.png)
+![Delegation](screenshots/events-5-9-delegation.png) -->
 
-## 8. Observations (what I learned)
+## 7. Observations (what I learned)
 
 1. `const` is the default choice. It stops reassignment, but a `const` array or object can still be changed inside (`tasks.push` would work), which is why the app replaces the array instead (`tasks = [...tasks, task]`).
 2. `typeof blockVar` outside its block gives `undefined`, while `funcVar` declared with `var` inside the same `if` block is still visible. `let` respects blocks, `var` does not.
@@ -274,7 +274,7 @@ On submit, `preventDefault()` stopped the page reload (the URL stayed the same) 
 10. A double-click also fires two `click` events. Code that handles both must expect that.
 11. `dataset` values are always strings, so the id had to be converted with `Number()` before comparing with `===`.
 
-## 9. Problems faced and how I fixed them
+## 8. Problems faced and how I fixed them
 
 | # | Problem | Cause | Fix |
 |---|---|---|---|
@@ -291,7 +291,7 @@ Problem 2, `es6.html` opened from `file://`. The other cards worked, only the mo
 
 ![Module blocked on file://](screenshots/es6-3-8-file-protocol-error.png)
 
-## 10. Viva questions
+<!-- ## 9. Viva questions
 
 **Q1. Difference between `var`, `let` and `const`?**
 `var` is function scoped and can be redeclared. `let` is block scoped and can be reassigned. `const` is block scoped and cannot be reassigned (but an object or array behind it can still be changed).
@@ -327,7 +327,7 @@ One listener on a parent handles events from its children by checking `event.tar
 It allows several handlers for the same event, can listen in the capture phase, and can be removed with `removeEventListener`. The `onclick` property holds only one handler.
 
 **Q12. What is `dataset`?**
-It reads and writes `data-*` attributes. `li.dataset.id = 5` creates `data-id="5"`. Values are always strings.
+It reads and writes `data-*` attributes. `li.dataset.id = 5` creates `data-id="5"`. Values are always strings. -->
 
 ## 11. Result
 
