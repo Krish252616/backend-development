@@ -8,7 +8,7 @@
   <a href="https://krish252616.github.io/backend-development/"><img src="https://img.shields.io/badge/Live_site-GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" alt="Live site"></a>
   <a href="https://github.com/Krish252616"><img src="https://img.shields.io/badge/Author-Krish_Pawar-0A66C2?style=flat-square&logo=github&logoColor=white" alt="Author"></a>
   <img src="https://img.shields.io/badge/Lab_experiments-4-2E7D32?style=flat-square" alt="Lab experiments">
-  <img src="https://img.shields.io/badge/Theory_projects-7-B45309?style=flat-square" alt="Theory projects">
+  <img src="https://img.shields.io/badge/Theory_projects-8-B45309?style=flat-square" alt="Theory projects">
   <img src="https://img.shields.io/badge/Assignments-2-6A1B9A?style=flat-square" alt="Assignments">
 </p>
 
@@ -47,6 +47,7 @@ Each lecture folder is named after the lecture it belongs to: `Theory/Lecture-03
 | **4** | **HTTP tools** (DevTools, curl, Postman, `fetch()`, labs 1 to 5) | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white) | [Report](./Theory/Lecture-04/http-tools/report.md) · [Screenshots](./Theory/Lecture-04/http-tools/report.md#5-output) | [`Theory/Lecture-04/http-tools`](./Theory/Lecture-04/http-tools) |
 | **5** | **FastAPI CRUD API** (task 1, Course API lab) | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) | [Report](./Theory/Lecture-05/fastapi-crud/report.md) · [Screenshots](./Theory/Lecture-05/fastapi-crud/report.md#5-output) | [`Theory/Lecture-05/fastapi-crud`](./Theory/Lecture-05/fastapi-crud) |
 | **6** | **Sessions** | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) | [Report](./Theory/Lecture-06/sessions/report.md) · [Screenshots](./Theory/Lecture-06/sessions/report.md#5-output) | [`Theory/Lecture-06/sessions`](./Theory/Lecture-06/sessions) |
+| **6** | **Cookies and query strings** (security check) | ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) | [Report](./Theory/Lecture-06/cookies-querystrings/report.md) · [Screenshots](./Theory/Lecture-06/cookies-querystrings/report.md#5-output) | [`Theory/Lecture-06/cookies-querystrings`](./Theory/Lecture-06/cookies-querystrings) |
 | **8** | **Student Details (SSR)** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [Report](./Theory/Lecture-08/student-details/report.md) · [Screenshots](./Theory/Lecture-08/student-details/report.md#7-output) | [`Theory/Lecture-08/student-details`](./Theory/Lecture-08/student-details) |
 | **8** | **Server-side rendering with Python** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [Report](./Theory/Lecture-08/ssr-python/report.md) · [Screenshots](./Theory/Lecture-08/ssr-python/report.md#5-output) | [`Theory/Lecture-08/ssr-python`](./Theory/Lecture-08/ssr-python) |
 
@@ -92,7 +93,8 @@ backend-development/
 │   ├── Lecture-05/
 │   │   └── fastapi-crud/     REST API with FastAPI, lab/ has the Course API
 │   ├── Lecture-06/
-│   │   └── sessions/         express-session login
+│   │   ├── sessions/         express-session login
+│   │   └── cookies-querystrings/  cookie-parser, req.query, security check
 │   ├── Lecture-08/
 │   │   ├── student-details/  FastAPI + Jinja2 SSR with a form
 │   │   └── ssr-python/       FastAPI + Jinja2 hello world
@@ -150,6 +152,11 @@ npx newman run postman/Student-Management-API.postman_collection.json   # option
 cd Theory/Lecture-06/sessions
 npm install
 npm start                # then open http://localhost:3000/login
+
+# Lecture 6: cookies and query strings
+cd Theory/Lecture-06/cookies-querystrings
+npm install
+npm run cookies          # http://localhost:3000, or: npm run query
 ```
 
 ### 5. Python projects in Theory

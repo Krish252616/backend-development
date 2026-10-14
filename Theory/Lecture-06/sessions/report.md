@@ -11,6 +11,8 @@ layout: default
 
 **Source:** [`app.js`](https://github.com/Krish252616/backend-development/blob/main/Theory/Lecture-06/sessions/app.js)
 
+The cookies and query strings part of this lecture is in a separate report: [Lecture 6: Cookies and Query Strings](../cookies-querystrings/report.md).
+
 ---
 
 ## 1. Aim
