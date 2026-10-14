@@ -122,7 +122,7 @@ Parts A to F use the code from the lab sheet. Four changes were made to it after
 
 These pages have no modules and no server code, so double-clicking works. Live Server is still useful because it reloads the page on every save.
 
-## 7. Output
+<!-- ## 7. Output
 
 ### 7.1 Lab pages
 
@@ -311,9 +311,9 @@ Fix: wrapped the table in `<div style="overflow-x: auto;">`, as in Part C. Now o
 |---|---|
 | In Part D, `a:visited` moved before `a:hover` and `a:active` | Link states should be written in the order link, visited, hover, active ("LoVe HAte"). All four rules have the same specificity, so a later `:visited` rule would override the hover color on visited links |
 | Added a small `document.pdf` | Part D links to `document.pdf` to show the `[href$=".pdf"]` selector, but the file did not exist, so the link gave a 404 |
-| A small SVG favicon added to every page | Without it Chrome requests `/favicon.ico`, gets a 404 and shows a red error count in DevTools |
+| A small SVG favicon added to every page | Without it Chrome requests `/favicon.ico`, gets a 404 and shows a red error count in DevTools | -->
 
-## 9. Observations (what I learned)
+## 8. Observations (what I learned)
 
 1. External CSS is the best choice for a real site: one file, cached by the browser, shared by every page. Inline CSS is the hardest to maintain. Part C needed the same `padding: 10px 15px` typed into every single table cell.
 2. The cascade is decided by importance, then inline vs stylesheet, then specificity, then order. "Internal beats external" is only true when the `<style>` block comes after the `<link>`.
@@ -327,7 +327,7 @@ Fix: wrapped the table in `<div style="overflow-x: auto;">`, as in Part C. Now o
 10. CSS custom properties make theming simple: the dark theme only changes the values, not the rules.
 11. Animations should respect `prefers-reduced-motion`, because some users get dizzy from moving content.
 
-## 10. Problems and Windows vs macOS differences
+## 9. Problems and Windows vs macOS differences
 
 | # | Problem | Cause | Fix |
 |---|---|---|---|
@@ -340,7 +340,7 @@ Fix: wrapped the table in `<div style="overflow-x: auto;">`, as in Part C. Now o
 | 7 | Emoji icons in the sheet's pages (for example in Part A's benefit cards) look different on macOS, Windows and Android | Each system draws emoji with its own font | Kept them in Parts A to F as in the sheet. The practice pages use CSS shapes and text instead |
 | 8 | Font in the sheet (`'Segoe UI'`) is not on a Mac | Segoe UI ships only with Windows | The font list falls back to Tahoma, Geneva, Verdana or `sans-serif`. The practice pages use `system-ui`, which picks San Francisco on macOS and Segoe UI on Windows |
 
-## 11. Viva questions
+<!-- ## 11. Viva questions
 
 **Basic**
 
@@ -379,7 +379,7 @@ Fix: wrapped the table in `<div style="overflow-x: auto;">`, as in Part C. Now o
 27. **How do you build dark mode?** Put colors in custom properties, change their values for a `[data-theme="dark"]` selector or inside `@media (prefers-color-scheme: dark)`. Task 5 does both.
 28. **What is `object-fit`?** It sets how an image or video fills its box: `cover` crops to fill, `contain` fits the whole image.
 29. **What is grid auto-placement?** Items without a set position are placed in the next free cell, row by row (or column by column with `grid-auto-flow: column`).
-30. **What is `will-change`?** A hint that a property will change soon, so the browser can prepare (for example a separate layer for `transform`). It should be used only where needed.
+30. **What is `will-change`?** A hint that a property will change soon, so the browser can prepare (for example a separate layer for `transform`). It should be used only where needed. -->
 
 ## 12. Result
 
