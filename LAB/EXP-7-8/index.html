@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 07 and 08: an interactive to-do list built with ES6, DOM manipulation and event handling.">
+  <meta name="author" content="Krish Pawar">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><path d='M9 16l5 5 9-10' stroke='white' stroke-width='3' fill='none'/></svg>">
+  <title>ES6 To-Do App | Experiment 07 and 08</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .todo-form { display: flex; gap: 8px; margin-bottom: 6px; }
+    .todo-form input { flex: 1; min-width: 0; }
+    .summary { margin: 10px 0 0; color: var(--ink-soft); font-size: 0.9rem; }
+    #taskList { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+    #taskList li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 4px;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+    }
+    #taskList li:hover { background: var(--accent-soft); }
+    #taskList li span { overflow-wrap: anywhere; }
+    .done { text-decoration: line-through; color: #8a94a1; }
+    .delete-btn { border-color: var(--danger); color: var(--danger); padding: 4px 10px; font-size: 0.85rem; }
+    .delete-btn:hover { background: #fbeceb; }
+    .empty { color: var(--ink-soft); padding: 14px 4px; margin: 0; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="label">Backend Development Lab · Experiment 07 and 08</p>
+      <h1>ES6, DOM Manipulation and Event Handling</h1>
+      <ul class="pages">
+        <li><a href="index.html" aria-current="page">To-Do app (practical exercise)</a></li>
+        <li><a href="es6.html">Part A: ES6 features</a></li>
+        <li><a href="dom-events.html">Part B and C: DOM and events</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="lead">Type a task and press <kbd>Enter</kbd> or <strong>Add</strong>. Click a task to mark it done, click <strong>Delete</strong> to remove it. The list is kept in this browser, so it survives a reload.</p>
+
+    <section class="card" aria-labelledby="todo-title">
+      <h2 id="todo-title">My To-Do List</h2>
+      <div class="todo-form">
+        <input type="text" id="taskInput" placeholder="Enter a task..." aria-label="New task" maxlength="120" autocomplete="off">
+        <button type="button" id="addBtn" class="primary">Add</button>
+      </div>
+      <ul id="taskList"></ul>
+      <p id="empty" class="empty">No tasks yet.</p>
+      <p id="summary" class="summary" aria-live="polite"></p>
+    </section>
+
+    <p class="footer">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+  </main>
+
+  <!-- At the end of body, so every element above already exists when app.js runs -->
+  <script src="app.js"></script>
+</body>
+</html>

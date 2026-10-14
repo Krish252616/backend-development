@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 07 and 08, Part A: ES6 features with the code that ran and its output.">
+  <meta name="author" content="Krish Pawar">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><path d='M9 16l5 5 9-10' stroke='white' stroke-width='3' fill='none'/></svg>">
+  <title>Part A: ES6 Features | Experiment 07 and 08</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="label">Backend Development Lab · Experiment 07 and 08</p>
+      <h1>ES6, DOM Manipulation and Event Handling</h1>
+      <ul class="pages">
+        <li><a href="index.html">To-Do app (practical exercise)</a></li>
+        <li><a href="es6.html" aria-current="page">Part A: ES6 features</a></li>
+        <li><a href="dom-events.html">Part B and C: DOM and events</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="lead">Each card shows the code that ran in this page and what it printed. The same lines also go to the browser console (<kbd>F12</kbd> on Windows, <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>J</kbd> on macOS).</p>
+
+    <div id="demos"></div>
+
+    <!-- Modules need type="module", so this demo has its own script tag -->
+    <section class="card" id="demo-3-8">
+      <h2>3.8 Modules (import / export)</h2>
+      <p class="hint">math.js</p>
+      <pre>export const PI = 3.14159;
+
+export function add(a, b) {
+    return a + b;
+}
+
+export default function multiply(a, b) {
+    return a * b;
+}</pre>
+      <p class="hint">main.js, loaded with <code>&lt;script type="module" src="main.js"&gt;</code></p>
+      <pre>import multiply, { PI, add } from "./math.js";</pre>
+      <p class="hint">Output:</p>
+      <pre class="out" id="module-out">Module did not load. Open this page through a web server (GitHub Pages or VS Code Live Server), not by double-clicking the file.</pre>
+    </section>
+
+    <p class="footer">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+  </main>
+
+  <script src="es6.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 07 and 08, Parts B and C: DOM manipulation and event handling demos.">
+  <meta name="author" content="Krish Pawar">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><path d='M9 16l5 5 9-10' stroke='white' stroke-width='3' fill='none'/></svg>">
+  <title>Parts B and C: DOM and Events | Experiment 07 and 08</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .stage { border: 1px dashed #b9c2ce; border-radius: 6px; padding: 10px 12px; margin-bottom: 10px; background: #fbfcfd; }
+    .stage p { margin: 4px 0; }
+    .box { width: 100%; max-width: 260px; padding: 14px; border: 1px solid var(--rule); border-radius: 6px; background: #fff; transition: background-color 0.2s; }
+    .highlight { background: #fff3cd; border-color: #c9a227; }
+    .rounded { border-radius: 18px; }
+    .muted { color: var(--ink-soft); }
+    #moveArea { min-height: 70px; display: grid; place-items: center; user-select: none; cursor: pointer; }
+    #outer { padding: 18px; border: 2px solid var(--accent); border-radius: 6px; background: var(--accent-soft); }
+    #outer > p { margin: 0 0 8px; font-size: 0.9rem; }
+    #delegateList { margin: 0; padding-left: 20px; }
+    #delegateList li { cursor: pointer; padding: 3px 0; }
+    #delegateList li.done { text-decoration: line-through; color: #8a94a1; }
+    .hidden-part { display: none; }
+    label.check { font-size: 0.9rem; display: inline-flex; gap: 6px; align-items: center; }
+    h2.part { font-size: 1.2rem; margin: 28px 0 10px; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="label">Backend Development Lab · Experiment 07 and 08</p>
+      <h1>ES6, DOM Manipulation and Event Handling</h1>
+      <ul class="pages">
+        <li><a href="index.html">To-Do app (practical exercise)</a></li>
+        <li><a href="es6.html">Part A: ES6 features</a></li>
+        <li><a href="dom-events.html" aria-current="page">Part B and C: DOM and events</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="lead">Every button below runs real DOM code on the dashed area above it, and the result is printed under it. The code is in <code>dom-events.js</code>.</p>
+
+    <h2 class="part">Part B: DOM manipulation</h2>
+
+    <!-- 4.2 -->
+    <section class="card" id="sec-4-2">
+      <h2>4.2 Selecting elements</h2>
+      <p class="hint">getElementById, getElementsByClassName, getElementsByTagName, querySelector, querySelectorAll. Then one more paragraph is added to see which lists update.</p>
+      <div class="stage" id="container">
+        <p class="text">First paragraph</p>
+        <p class="text">Second paragraph</p>
+      </div>
+      <div class="row">
+        <button type="button" id="btnSelect">Run the selectors</button>
+        <button type="button" id="btnAddPara">Add a .text paragraph, then count again</button>
+      </div>
+      <pre class="out" id="out-4-2"></pre>
+    </section>
+
+    <!-- 4.3 -->
+    <section class="card" id="sec-4-3">
+      <h2>4.3 Modifying content</h2>
+      <p class="hint">The same string set three ways. The heading also contains a hidden span, to show the difference between textContent and innerText.</p>
+      <div class="stage">
+        <h3 id="contentHeading">Original <span class="hidden-part">(hidden part)</span>heading</h3>
+      </div>
+      <div class="row">
+        <button type="button" id="btnReadText">Read textContent and innerText</button>
+        <button type="button" id="btnSetText">textContent = "&lt;em&gt;Italic Heading&lt;/em&gt;"</button>
+        <button type="button" id="btnSetHTML">innerHTML = "&lt;em&gt;Italic Heading&lt;/em&gt;"</button>
+      </div>
+      <pre class="out" id="out-4-3"></pre>
+    </section>
+
+    <!-- 4.4 -->
+    <section class="card" id="sec-4-4">
+      <h2>4.4 Modifying attributes</h2>
+      <div class="stage">
+        <a id="demoLink" href="es6.html">A link to es6.html</a>
+      </div>
+      <div class="row">
+        <button type="button" id="btnGetAttr">getAttribute vs .href</button>
+        <button type="button" id="btnSetAttr">setAttribute href and target</button>
+        <button type="button" id="btnRemoveAttr">removeAttribute("target")</button>
+      </div>
+      <pre class="out" id="out-4-4"></pre>
+    </section>
+
+    <!-- 4.5 -->
+    <section class="card" id="sec-4-5">
+      <h2>4.5 Modifying styles</h2>
+      <div class="stage">
+        <div class="box" id="styleBox">I am the .box</div>
+      </div>
+      <div class="row">
+        <button type="button" id="btnInline">Inline style (style.fontSize, style.marginTop)</button>
+        <button type="button" id="btnToggle">classList.toggle("highlight")</button>
+        <button type="button" id="btnRound">classList.toggle("rounded")</button>
+        <button type="button" id="btnResetStyle">Reset</button>
+      </div>
+      <pre class="out" id="out-4-5"></pre>
+    </section>
+
+    <!-- 4.6 and 4.7 -->
+    <section class="card" id="sec-4-6">
+      <h2>4.6 and 4.7 Creating, adding and removing elements</h2>
+      <div class="stage">
+        <ul id="buildList">
+          <li>Existing item</li>
+        </ul>
+      </div>
+      <div class="row">
+        <button type="button" id="btnAppend">append (end)</button>
+        <button type="button" id="btnPrepend">prepend (start)</button>
+        <button type="button" id="btnAfter">after the first item</button>
+        <button type="button" id="btnMoveFirst">appendChild the first item again</button>
+        <button type="button" id="btnRemoveLast">remove() the last item</button>
+      </div>
+      <pre class="out" id="out-4-6"></pre>
+    </section>
+
+    <!-- 4.8 -->
+    <section class="card" id="sec-4-8">
+      <h2>4.8 Traversing the DOM</h2>
+      <div class="stage">
+        <ul id="travList">
+          <li>Apple</li>
+          <li class="item">Banana (.item)</li>
+          <li>Cherry</li>
+        </ul>
+      </div>
+      <div class="row">
+        <button type="button" id="btnTraverse">Walk from .item</button>
+      </div>
+      <pre class="out" id="out-4-8"></pre>
+    </section>
+
+    <h2 class="part">Part C: Event handling</h2>
+
+    <!-- 5.2 -->
+    <section class="card" id="sec-5-2">
+      <h2>5.2 Three ways to attach a handler</h2>
+      <p class="hint">Each test button gets two handlers. With the onclick property the second one replaces the first. With addEventListener both run.</p>
+      <div class="row">
+        <button type="button" id="btnAttr" onclick="document.getElementById('out-5-2').textContent = 'Method 1, HTML onclick attribute: ran'">Method 1: onclick attribute</button>
+        <button type="button" id="btnProp">Method 2: onclick property (set twice)</button>
+        <button type="button" id="btnListener">Method 3: addEventListener (added twice)</button>
+      </div>
+      <pre class="out" id="out-5-2"></pre>
+    </section>
+
+    <!-- 5.3 and 5.4 -->
+    <section class="card" id="sec-5-3">
+      <h2>5.3 and 5.4 Mouse events and the event object</h2>
+      <p class="hint">Move into the box, click, double-click and move out. Each event prints its type, target and position.</p>
+      <div class="stage box" id="moveArea">Click, double-click or hover here</div>
+      <pre class="out" id="out-5-3"></pre>
+    </section>
+
+    <!-- 5.5 -->
+    <section class="card" id="sec-5-5">
+      <h2>5.5 Keyboard events</h2>
+      <div class="row">
+        <input type="text" id="keyInput" placeholder="Type here, try Shift and Ctrl" aria-label="Keyboard test" autocomplete="off">
+      </div>
+      <pre class="out" id="out-5-5"></pre>
+    </section>
+
+    <!-- 5.6 -->
+    <section class="card" id="sec-5-6">
+      <h2>5.6 Form events (submit with preventDefault, input)</h2>
+      <form id="myForm" class="row">
+        <input type="text" id="username" placeholder="Username" aria-label="Username" required autocomplete="off">
+        <button type="submit" class="primary">Submit</button>
+      </form>
+      <p class="muted" id="livePreview">Live value: (empty)</p>
+      <pre class="out" id="out-5-6"></pre>
+    </section>
+
+    <!-- 5.7 and 5.8 -->
+    <section class="card" id="sec-5-7">
+      <h2>5.7 and 5.8 Bubbling, capturing, stopPropagation and preventDefault</h2>
+      <div class="stage">
+        <div id="outer">
+          <p>#outer (listens in the capture phase and in the bubble phase)</p>
+          <button type="button" id="inner">#inner: Click Me</button>
+        </div>
+      </div>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="stopCheck"> call event.stopPropagation() in #inner</label>
+      </div>
+      <div class="row">
+        <a href="https://example.com" id="blockedLink">A link to example.com (preventDefault stops it)</a>
+      </div>
+      <pre class="out" id="out-5-7"></pre>
+    </section>
+
+    <!-- 5.9 -->
+    <section class="card" id="sec-5-9">
+      <h2>5.9 Event delegation</h2>
+      <p class="hint">One listener on the &lt;ul&gt;. Items added later work too, without adding new listeners.</p>
+      <div class="stage">
+        <ul id="taskList">
+          <li>Task 1</li>
+          <li>Task 2</li>
+          <li>Task 3</li>
+        </ul>
+      </div>
+      <div class="row">
+        <button type="button" id="btnAddDelegate">Add a new task</button>
+      </div>
+      <pre class="out" id="out-5-9"></pre>
+    </section>
+
+    <p class="footer">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+  </main>
+
+  <script src="dom-events.js"></script>
+</body>
+</html>
