@@ -1,0 +1,32 @@
+/* Experiment 2, Practice Task 1: EXTERNAL CSS
+   Linked from task1-css-types.html with <link rel="stylesheet" href="task1-external.css">.
+   It styles the footer, and takes part in three of the "which one wins" tests. */
+
+.site-footer {
+  background: #17202c;
+  color: #d5dbe3;
+  text-align: center;
+  padding: 18px 16px;
+  margin-top: 8px;
+  border-top: 4px solid #1b3a6b;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Test 1: same selector as the internal rule, but this file is linked later, so it wins */
+.order-test {
+  color: #1b3a6b;
+}
+
+/* Test 3: !important beats even an inline style */
+.important-test {
+  color: #1b3a6b !important;
+}
+
+/* Test 4: comes later, but a class (0,1,0) loses to the internal ID rule (1,0,0) */
+.spec-test {
+  color: #1b3a6b;
+}

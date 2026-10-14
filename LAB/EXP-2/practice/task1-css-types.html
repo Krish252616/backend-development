@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 2, Practice Task 1: inline, internal and external CSS on one page, and a test of which one wins.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='white' font-family='monospace'>{}</text></svg>">
+  <title>Task 1: All Three CSS Types | Experiment 2</title>
+
+  <!-- INTERNAL CSS: styles the main content. It comes BEFORE the external file on purpose (see test 1). -->
+  <style>
+    body {
+      margin: 0;
+      background: #f4f6f9;
+      color: #17202c;
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+    main h2 {
+      font-size: 1.2rem;
+      margin: 0 0 8px;
+      color: #2f6b3a;
+      border-bottom: 2px solid #2f6b3a;
+      padding-bottom: 6px;
+    }
+    .panel {
+      background: #ffffff;
+      border: 1px solid #d5dbe3;
+      border-left: 4px solid #2f6b3a;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .panel table { width: 100%; border-collapse: collapse; }
+    .panel th, .panel td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #d5dbe3; vertical-align: top; }
+    .panel th { background: #eef5ef; }
+    .table-wrap { overflow-x: auto; }
+    .sample { font-weight: 600; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em; }
+
+    /* --- the four "which one wins" tests --- */
+    .order-test     { color: #2f6b3a; }   /* green. external.css sets blue later in the page */
+    .inline-test    { color: #2f6b3a; }   /* green. the element also has an inline style */
+    #spec-test      { color: #2f6b3a; }   /* green, an ID selector. external.css uses only a class */
+  </style>
+
+  <!-- EXTERNAL CSS: styles the footer. Linked AFTER the <style> block. -->
+  <link rel="stylesheet" href="task1-external.css">
+</head>
+<body>
+
+  <!-- INLINE CSS: every style of the header is in style="..." attributes -->
+  <header style="background: #1b3a6b; color: #ffffff; padding: 22px 16px; border-bottom: 4px solid #a97c12;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <p style="margin: 0; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85;">Experiment 2 · Practice Task 1 · Header styled with inline CSS</p>
+      <h1 style="margin: 4px 0 6px; font-size: 1.6rem; line-height: 1.2;">All three types of CSS on one page</h1>
+      <a href="../index.html" style="color: #ffffff; font-size: 0.92rem;">Back to all Experiment 2 pages</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Main content: internal CSS</h2>
+      <p>This section is styled only by the <code>&lt;style&gt;</code> block in the <code>&lt;head&gt;</code>. The header above uses <code>style="..."</code> attributes, and the footer below is styled only by <code>task1-external.css</code>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Part of page</th><th>CSS type</th><th>Where the rules are</th></tr></thead>
+          <tbody>
+            <tr><td>Header</td><td>Inline</td><td><code>style</code> attribute on each element</td></tr>
+            <tr><td>Main content</td><td>Internal</td><td><code>&lt;style&gt;</code> in the head</td></tr>
+            <tr><td>Footer</td><td>External</td><td><code>task1-external.css</code>, linked with <code>&lt;link&gt;</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Which one wins? Four tests</h2>
+      <p>Each sentence below gets a color from two places. The real color the browser used is printed after it.</p>
+      <div class="table-wrap">
+        <table id="tests">
+          <thead><tr><th>Test</th><th>Sample</th><th>Rules that compete</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>1. Internal vs external, same selector</td>
+              <td><span class="sample order-test" data-expect="Blue">Order test</span></td>
+              <td>Internal <code>.order-test</code> green, then external <code>.order-test</code> blue</td>
+              <td class="result"></td>
+            </tr>
+            <tr>
+              <td>2. Inline vs internal</td>
+              <td><span class="sample inline-test" style="color: #a3271f;" data-expect="Red">Inline test</span></td>
+              <td>Internal <code>.inline-test</code> green, inline <code>style</code> red</td>
+              <td class="result"></td>
+            </tr>
+            <tr>
+              <td>3. Inline vs <code>!important</code></td>
+              <td><span class="sample important-test" style="color: #a3271f;" data-expect="Blue">Important test</span></td>
+              <td>Inline <code>style</code> red, external <code>.important-test</code> blue <code>!important</code></td>
+              <td class="result"></td>
+            </tr>
+            <tr>
+              <td>4. Specificity vs order</td>
+              <td><span class="sample spec-test" id="spec-test" data-expect="Green">Specificity test</span></td>
+              <td>Internal <code>#spec-test</code> (ID) green, external <code>.spec-test</code> (class, later) blue</td>
+              <td class="result"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Footer styled with external CSS · Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+  </footer>
+
+  <script>
+    // Read the color the browser really used for each sample and name it
+    const names = { "rgb(47, 107, 58)": "Green", "rgb(27, 58, 107)": "Blue", "rgb(163, 39, 31)": "Red" };
+    document.querySelectorAll("#tests tbody tr").forEach(row => {
+      const sample = row.querySelector(".sample");
+      const color = getComputedStyle(sample).color;
+      const name = names[color] || color;
+      const ok = name === sample.dataset.expect;
+      row.querySelector(".result").textContent = `${name} (${color})${ok ? "" : "  unexpected"}`;
+      console.log(sample.textContent, "->", name, color);
+    });
+  </script>
+</body>
+</html>

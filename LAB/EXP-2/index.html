@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 2: a web page with all types of Cascading Style Sheets. Six lab pages and five practice tasks.">
+  <meta name="author" content="Krish Pawar">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='white' font-family='monospace'>{}</text></svg>">
+  <title>Experiment 2: Types of CSS | Backend Development Lab</title>
+  <link rel="stylesheet" href="practice/base.css">
+  <style>
+    .list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .list a {
+      display: block;
+      height: 100%;
+      padding: 14px 16px;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .list a:hover { border-color: var(--accent); }
+    .list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .list .tag { display: block; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+    .list strong { display: block; margin: 2px 0 4px; color: var(--accent); }
+    .list span.d { font-size: 0.92rem; color: var(--ink-soft); }
+    h2.group { font-size: 1.15rem; margin: 28px 0 12px; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="label">Backend Development Lab · Experiment 2 · CO2</p>
+      <h1>Create a web page with all types of Cascading Style Sheets</h1>
+      <p class="sub">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2 class="group">Lab pages (Parts A to F)</h2>
+    <ul class="list">
+      <li><a href="index-external.html"><span class="tag">Part A</span><strong>External CSS</strong><span class="d">All styles come from styles.css, linked with &lt;link&gt;.</span></a></li>
+      <li><a href="index-internal.html"><span class="tag">Part B</span><strong>Internal CSS</strong><span class="d">Styles in a &lt;style&gt; block in the head of the page.</span></a></li>
+      <li><a href="index-inline.html"><span class="tag">Part C</span><strong>Inline CSS</strong><span class="d">Every style written in a style="..." attribute.</span></a></li>
+      <li><a href="index-selectors.html"><span class="tag">Part D</span><strong>CSS selectors</strong><span class="d">Element, class, id, descendant, child, sibling, attribute, pseudo-class, pseudo-element.</span></a></li>
+      <li><a href="index-layout.html"><span class="tag">Part E</span><strong>Flexbox and Grid</strong><span class="d">Direction, alignment, grow, wrap, columns, spans and auto-fit.</span></a></li>
+      <li><a href="index-animations.html"><span class="tag">Part F</span><strong>Animations and transitions</strong><span class="d">Hover transitions, @keyframes animations and timing functions.</span></a></li>
+    </ul>
+
+    <h2 class="group">Practice tasks</h2>
+    <ul class="list">
+      <li><a href="practice/task1-css-types.html"><span class="tag">Task 1</span><strong>All three CSS types on one page</strong><span class="d">Inline header, internal main, external footer, and a test of which one wins.</span></a></li>
+      <li><a href="practice/task2-selectors.html"><span class="tag">Task 2</span><strong>Selector challenge</strong><span class="d">Twelve selectors, each shown on its own sample, plus a specificity contest.</span></a></li>
+      <li><a href="practice/task3-layout.html"><span class="tag">Task 3</span><strong>Website layout</strong><span class="d">Flexbox navigation bar, Grid content area, one column on phones.</span></a></li>
+      <li><a href="practice/task4-gallery.html"><span class="tag">Task 4</span><strong>Animation gallery</strong><span class="d">Hover transitions on cards, a loading spinner and a slow background animation.</span></a></li>
+      <li><a href="practice/task5-theme.html"><span class="tag">Task 5</span><strong>Theme creator</strong><span class="d">A dark mode toggle built with CSS custom properties.</span></a></li>
+    </ul>
+
+    <p class="footer"><a href="report.html">Read the report</a> · <a href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-2">Source on GitHub</a></p>
+  </main>
+</body>
+</html>

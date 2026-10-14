@@ -1,0 +1,71 @@
+/* Shared base for the hub page and practice tasks 2 to 5 of Experiment 2 */
+
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --ink: #17202c;
+  --ink-soft: #4e5a68;
+  --rule: #d5dbe3;
+  --accent: #1b3a6b;
+  --accent-soft: #e8eef7;
+  --code-bg: #17202c;
+  --code-ink: #e6e9ef;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px 56px; }
+
+.top { background: var(--card); border-bottom: 1px solid var(--rule); }
+.top .wrap { padding-top: 20px; padding-bottom: 16px; }
+.label { margin: 0; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.top h1 { margin: 4px 0 6px; font-size: 1.6rem; line-height: 1.2; }
+.top p.sub { margin: 0; color: var(--ink-soft); }
+.back { display: inline-block; margin-top: 10px; color: var(--accent); font-size: 0.92rem; }
+
+.lead { color: var(--ink-soft); margin: 22px 0 18px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.card h2 { margin: 0 0 6px; font-size: 1.1rem; }
+
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.88em; }
+pre {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+button {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 7px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--accent);
+  cursor: pointer;
+}
+button:hover { background: var(--accent-soft); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { background: var(--accent-soft); font-weight: 600; }
+.table-wrap { overflow-x: auto; }
+
+.footer { color: var(--ink-soft); font-size: 0.85rem; margin-top: 28px; }

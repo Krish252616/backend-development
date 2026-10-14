@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 2, Practice Task 5: a dark mode toggle built with CSS custom properties.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='white' font-family='monospace'>{}</text></svg>">
+  <title>Task 5: Theme Creator | Experiment 2</title>
+  <style>
+    /* ---------- Light theme: the default values of the custom properties ---------- */
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --ink: #17202c;
+      --ink-soft: #4e5a68;
+      --rule: #d5dbe3;
+      --accent: #1b3a6b;
+      --accent-ink: #ffffff;
+      --code-bg: #e8eef7;
+      color-scheme: light;
+    }
+
+    /* ---------- Dark theme: only the values change, every rule below stays the same ---------- */
+    :root[data-theme="dark"] {
+      --bg: #11161d;
+      --card: #1a212b;
+      --ink: #e6e9ef;
+      --ink-soft: #a8b3c1;
+      --rule: #2e3846;
+      --accent: #8fb3e8;
+      --accent-ink: #11161d;
+      --code-bg: #232c38;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px 48px; }
+    header { border-bottom: 1px solid var(--rule); background: var(--card); transition: background-color 0.3s ease; }
+    header .wrap { padding-top: 20px; padding-bottom: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+    .label { margin: 0; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+    h1 { margin: 4px 0 4px; font-size: 1.6rem; }
+    a { color: var(--accent); }
+
+    .toggle {
+      font: inherit;
+      padding: 8px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      cursor: pointer;
+    }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 22px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 14px 16px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .card h2 { margin: 0 0 6px; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--ink-soft); }
+    code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em; }
+    .footer { color: var(--ink-soft); font-size: 0.85rem; margin-top: 28px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      body, header, .card { transition: none; }
+    }
+  </style>
+  <script>
+    // Runs in <head>, before the page is drawn, so a saved dark theme does not flash white first
+    (function () {
+      let theme = null;
+      try { theme = localStorage.getItem("exp2-theme"); } catch (e) { /* storage blocked */ }
+      if (!theme) theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div>
+        <p class="label">Experiment 2 · Practice Task 5</p>
+        <h1>Theme creator</h1>
+        <a href="../index.html">Back to all Experiment 2 pages</a>
+      </div>
+      <button type="button" class="toggle" id="toggle" aria-pressed="false">Switch to dark mode</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cards">
+      <section class="card">
+        <h2>Background colors</h2>
+        <p>The page uses <code>var(--bg)</code>. The button changes only the value of <code>--bg</code>.</p>
+      </section>
+      <section class="card">
+        <h2>Text colors</h2>
+        <p>Headings use <code>var(--ink)</code> and this text uses <code>var(--ink-soft)</code>.</p>
+      </section>
+      <section class="card">
+        <h2>Card styles</h2>
+        <p>Cards use <code>var(--card)</code> and <code>var(--rule)</code> for the border.</p>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>How it works</h2>
+      <p>The button sets <code>data-theme="dark"</code> on the <code>&lt;html&gt;</code> element. The rule <code>:root[data-theme="dark"]</code> then gives new values to the same custom properties, so every element changes at once. The choice is saved in the browser, and on the first visit the page follows the system setting (<code>prefers-color-scheme</code>).</p>
+      <p style="margin-top: 8px;">Current theme: <strong id="current"></strong></p>
+    </section>
+
+    <p class="footer">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const button = document.getElementById("toggle");
+    const current = document.getElementById("current");
+
+    const show = () => {
+      const dark = root.dataset.theme === "dark";
+      button.textContent = dark ? "Switch to light mode" : "Switch to dark mode";
+      button.setAttribute("aria-pressed", String(dark));
+      current.textContent = dark ? "dark" : "light";
+    };
+
+    button.addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("exp2-theme", root.dataset.theme); } catch (e) { /* storage blocked */ }
+      show();
+    });
+
+    show();
+  </script>
+</body>
+</html>

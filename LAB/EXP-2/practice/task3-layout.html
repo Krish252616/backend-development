@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 2, Practice Task 3: a website layout with a Flexbox navigation bar and a CSS Grid content area.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='white' font-family='monospace'>{}</text></svg>">
+  <title>Task 3: Website Layout | Experiment 2</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --ink: #17202c;
+      --ink-soft: #4e5a68;
+      --rule: #d5dbe3;
+      --accent: #1b3a6b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    a { color: var(--accent); }
+
+    /* ---------- FLEXBOX: navigation bar ---------- */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;   /* logo on the left, links on the right */
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      padding: 14px 20px;
+      background: var(--accent);
+      color: #fff;
+    }
+    .logo { font-weight: 700; letter-spacing: 0.02em; color: #fff; text-decoration: none; }
+    .nav-links {
+      display: flex;                    /* a flex container inside a flex item */
+      flex-wrap: wrap;
+      gap: 4px 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav-links a { color: #e6ecf5; text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: #fff; border-bottom-color: #a97c12; }
+
+    /* ---------- GRID: page and content ---------- */
+    .page {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 220px 1fr 240px;
+      grid-template-areas:
+        "side  main  aside"
+        "foot  foot  foot";
+      gap: 20px;
+    }
+    .sidebar { grid-area: side; }
+    .content { grid-area: main; }
+    .aside   { grid-area: aside; }
+    .page-footer { grid-area: foot; }
+
+    .box { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; }
+    .box h2 { margin: 0 0 8px; font-size: 1rem; }
+    .sidebar ul { margin: 0; padding-left: 18px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .cards article h3 { margin: 0 0 6px; font-size: 1rem; }
+    .cards article p { margin: 0; color: var(--ink-soft); font-size: 0.93rem; }
+    .cards .wide { grid-column: 1 / -1; }   /* spans every column */
+
+    .page-footer { text-align: center; color: var(--ink-soft); font-size: 0.88rem; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "main  main"
+          "side  aside"
+          "foot  foot";
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .page {
+        grid-template-columns: 1fr;
+        grid-template-areas: "main" "side" "aside" "foot";
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" aria-label="Main">
+    <a class="logo" href="../index.html">Experiment 2 · Course Portal</a>
+    <ul class="nav-links">
+      <li><a href="#" aria-current="page">Home</a></li>
+      <li><a href="#lectures">Lectures</a></li>
+      <li><a href="#labs">Labs</a></li>
+      <li><a href="#notes">Notes</a></li>
+      <li><a href="../index.html">All pages</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <main class="content">
+      <section class="box">
+        <h2>Practice Task 3: website layout</h2>
+        <p>The navigation bar is a <strong>Flexbox</strong> row: the logo and the link list are pushed apart with <code>justify-content: space-between</code>. The page below is a <strong>CSS Grid</strong> with named areas. Narrow the window to see it change from three columns to two, then to one.</p>
+      </section>
+
+      <div class="cards" id="lectures">
+        <article class="box"><h3>Unit 1</h3><p>HTTP, Express, Flask, REST APIs with FastAPI.</p></article>
+        <article class="box" id="labs"><h3>Lab experiments</h3><p>HTML5, CSS, JavaScript, Node.js, MongoDB.</p></article>
+        <article class="box" id="notes"><h3>Notes</h3><p>Short notes for every lecture, ready for revision.</p></article>
+        <article class="box wide"><h3>This card spans every column</h3><p><code>grid-column: 1 / -1</code> runs from the first grid line to the last.</p></article>
+      </div>
+    </main>
+
+    <aside class="sidebar box" aria-label="Sections">
+      <h2>Sidebar (grid area "side")</h2>
+      <ul>
+        <li>Flexbox for one direction</li>
+        <li>Grid for rows and columns</li>
+        <li>Media queries for phones</li>
+      </ul>
+    </aside>
+
+    <aside class="aside box" aria-label="Breakpoints">
+      <h2>Breakpoints</h2>
+      <p>Wider than 900px: 3 columns. 600 to 900px: 2 columns. Below 600px: 1 column and a stacked navigation bar.</p>
+    </aside>
+
+    <footer class="page-footer">Krish Pawar · B.Tech CSE · UPES Dehradun</footer>
+  </div>
+</body>
+</html>

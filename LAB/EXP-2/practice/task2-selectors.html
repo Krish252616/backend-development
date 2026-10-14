@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 2, Practice Task 2: twelve CSS selectors, each on its own sample, and a specificity contest.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231b3a6b'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='white' font-family='monospace'>{}</text></svg>">
+  <title>Task 2: Selector Challenge | Experiment 2</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .demo { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 10px 16px; align-items: start; }
+    .demo > .sel { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9rem; color: var(--accent); padding-top: 6px; }
+    .demo > .stage { border: 1px dashed #b9c2ce; border-radius: 6px; padding: 8px 12px; background: #fbfcfd; }
+    .demo > .stage p, .demo > .stage ul { margin: 4px 0; }
+    @media (max-width: 600px) { .demo { grid-template-columns: 1fr; } .demo > .sel { padding-top: 10px; } }
+
+    /* 1. Universal: inside the stage only, so the rest of the page keeps its spacing */
+    .s-universal * { outline: 1px dotted #a97c12; }
+
+    /* 2. Element */
+    .s-element em { color: #a3271f; font-style: normal; font-weight: 600; }
+
+    /* 3. Class */
+    .tag-new { background: #fff3cd; padding: 1px 6px; border-radius: 4px; }
+
+    /* 4. ID */
+    #only-one { border-left: 4px solid var(--accent); padding-left: 8px; }
+
+    /* 5. Descendant: every a inside .s-desc, at any depth */
+    .s-desc a { color: #2f6b3a; font-weight: 600; }
+
+    /* 6. Child: only li elements directly inside .s-child */
+    .s-child > li { list-style: square; color: var(--accent); }
+
+    /* 7. Adjacent sibling: only the p right after an h4 */
+    .s-adj h4 + p { background: #e8eef7; padding: 2px 6px; }
+    .s-adj h4 { margin: 0; font-size: 0.95rem; }
+
+    /* 8. General sibling: every p after the h4 */
+    .s-gen h4 ~ p { color: var(--ink-soft); font-style: italic; }
+    .s-gen h4 { margin: 0; font-size: 0.95rem; }
+
+    /* 9. Attribute: links that start with https, and inputs of type email */
+    .s-attr a[href^="https"] { color: #2f6b3a; }
+    .s-attr a[href^="https"]::after { content: " (secure)"; font-size: 0.8rem; }
+    .s-attr input[type="email"] { border: 2px solid var(--accent); border-radius: 6px; padding: 5px 8px; font: inherit; }
+
+    /* 10. Pseudo-classes: hover, focus, nth-child */
+    .s-pseudo li:nth-child(even) { background: #eef1f5; }
+    .s-pseudo li:hover { background: #fff3cd; }
+    .s-pseudo input:focus { outline: 3px solid #a97c12; outline-offset: 1px; }
+
+    /* 11. Pseudo-elements: ::first-letter and ::before */
+    .s-pel p::first-letter { font-size: 1.6em; font-weight: 700; color: var(--accent); }
+    .s-pel li::before { content: "> "; color: #a97c12; font-weight: 700; }
+    .s-pel ul { list-style: none; padding-left: 0; }
+
+    /* 12. :not() and grouping */
+    .s-not li:not(.skip), .s-not .note { color: #2f6b3a; }
+
+    /* Specificity contest: all three rules target the same element */
+    #contest p.target { color: #2f6b3a; }   /* 1 ID + 1 class + 1 element = (1,1,1) */
+    .card .target     { color: #a3271f; }   /* 2 classes                  = (0,2,0) */
+    .target           { color: #1b3a6b; }   /* 1 class, written LAST      = (0,1,0) */
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="label">Experiment 2 · Practice Task 2</p>
+      <h1>Selector challenge</h1>
+      <p class="sub">Twelve selectors. Each row shows the selector on the left and the elements it styles on the right.</p>
+      <a class="back" href="../index.html">Back to all Experiment 2 pages</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="demo">
+        <div class="sel">1. *</div>
+        <div class="stage s-universal"><p>Every element in this box gets a <span>dotted outline</span>, even <b>this</b>.</p></div>
+
+        <div class="sel">2. em</div>
+        <div class="stage s-element"><p>Only the <em>em</em> elements are red: <em>here</em> and <em>here</em>.</p></div>
+
+        <div class="sel">3. .tag-new</div>
+        <div class="stage"><p>A class can be used many times: <span class="tag-new">new</span> and <span class="tag-new">new again</span>.</p></div>
+
+        <div class="sel">4. #only-one</div>
+        <div class="stage"><p id="only-one">An ID is used for one element on the page only.</p></div>
+
+        <div class="sel">5. .s-desc a</div>
+        <div class="stage s-desc"><p><a href="#a">Direct link</a> and <span>a <a href="#b">nested link</a> inside a span</span>. Both match.</p></div>
+
+        <div class="sel">6. .s-child &gt; li</div>
+        <div class="stage">
+          <ul class="s-child">
+            <li>Direct child (square, blue)
+              <ul><li>Grandchild (not matched)</li></ul>
+            </li>
+            <li>Direct child (square, blue)</li>
+          </ul>
+        </div>
+
+        <div class="sel">7. h4 + p</div>
+        <div class="stage s-adj"><h4>Heading</h4><p>Right after the heading: matched.</p><p>Second paragraph: not matched.</p></div>
+
+        <div class="sel">8. h4 ~ p</div>
+        <div class="stage s-gen"><p>Before the heading: not matched.</p><h4>Heading</h4><p>After: matched.</p><p>Also after: matched.</p></div>
+
+        <div class="sel">9. [href^="https"], [type="email"]</div>
+        <div class="stage s-attr"><p><a href="https://example.com">https link</a> · <a href="http://example.com">http link</a></p><input type="email" placeholder="you@example.com" aria-label="Email"></div>
+
+        <div class="sel">10. :nth-child(even), :hover, :focus</div>
+        <div class="stage s-pseudo"><ul><li>One</li><li>Two (even)</li><li>Three</li><li>Four (even)</li></ul><input type="text" placeholder="Click here to focus" aria-label="Focus test"></div>
+
+        <div class="sel">11. ::first-letter, ::before</div>
+        <div class="stage s-pel"><p>First letter is large.</p><ul><li>Marker added with ::before</li><li>No extra HTML needed</li></ul></div>
+
+        <div class="sel">12. li:not(.skip), .note</div>
+        <div class="stage s-not"><ul><li>Matched</li><li class="skip">Has .skip, not matched</li><li>Matched</li></ul><p class="note">Grouping with a comma: this .note is also green.</p></div>
+      </div>
+    </section>
+
+    <section class="card" id="contest">
+      <h2>Specificity contest</h2>
+      <p class="target" id="target">Which color am I?</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rule</th><th>Specificity (ID, class, element)</th><th>Color</th></tr></thead>
+          <tbody>
+            <tr><td><code>#contest p.target</code></td><td>(1, 1, 1)</td><td>Green</td></tr>
+            <tr><td><code>.card .target</code></td><td>(0, 2, 0)</td><td>Red</td></tr>
+            <tr><td><code>.target</code> (written last)</td><td>(0, 1, 0)</td><td>Blue</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="contest-result"></p>
+    </section>
+
+    <p class="footer">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+  </main>
+
+  <script>
+    const names = { "rgb(47, 107, 58)": "Green", "rgb(27, 58, 107)": "Blue", "rgb(163, 39, 31)": "Red" };
+    const color = getComputedStyle(document.getElementById("target")).color;
+    document.getElementById("contest-result").textContent =
+      `Browser result: ${names[color] || color}. The ID rule wins even though .target is written after it.`;
+  </script>
+</body>
+</html>
