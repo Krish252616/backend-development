@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://krish252616.github.io/backend-development/"><img src="https://img.shields.io/badge/Live_site-GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" alt="Live site"></a>
   <a href="https://github.com/Krish252616"><img src="https://img.shields.io/badge/Author-Krish_Pawar-0A66C2?style=flat-square&logo=github&logoColor=white" alt="Author"></a>
-  <img src="https://img.shields.io/badge/Lab_experiments-9-2E7D32?style=flat-square" alt="Lab experiments">
+  <img src="https://img.shields.io/badge/Lab_experiments-10-2E7D32?style=flat-square" alt="Lab experiments">
   <img src="https://img.shields.io/badge/Theory_projects-8-B45309?style=flat-square" alt="Theory projects">
   <img src="https://img.shields.io/badge/Assignments-2-6A1B9A?style=flat-square" alt="Assignments">
 </p>
@@ -33,6 +33,7 @@
 | **5** | Programs to demonstrate JavaScript array, object and functions | `CO2` | [Report](./LAB/EXP-5/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-5/index.html) |
 | **7, 8** | ES6, DOM manipulation and event handling (To-Do app) | `CO_` | [Report](./LAB/EXP-7-8/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-7-8/index.html) |
 | **12** | Node.js, Express.js and EJS (5 tasks) | `CO_` | [Report](./LAB/EXP-12a/report.md) | [Screenshots](./LAB/EXP-12a/report.md#screenshots) |
+| **13** | Installation of MongoDB, Mongoose connection and CRUD | `CO_` | [Report](./LAB/EXP-13/report.md) | [Output](./LAB/EXP-13/report.md#7-output) |
 | **13a** | User management with MongoDB and Mongoose | `CO_` | [Report](./LAB/EXP-13a/mongoose-demo/report.md) | [Output](./LAB/EXP-13a/mongoose-demo/report.md#7-output) |
 | **Exam** | Simple CMS with Express, EJS and MongoDB | `CO_` | [Report](./LAB/EXP-Examination/report.md) | [Output](./LAB/EXP-Examination/report.md#output) |
 <!-- Add one row per experiment:
@@ -91,6 +92,7 @@ backend-development/
 │   ├── EXP-5/                JavaScript arrays, objects, functions, library with tests
 │   ├── EXP-7-8/              ES6, DOM and events: To-Do app and demo pages
 │   ├── EXP-12a/              Node.js, Express.js and EJS: 5 tasks
+│   ├── EXP-13/               MongoDB install, mongosh, Mongoose CRUD and queries, authentication
 │   ├── EXP-13a/              MongoDB and Mongoose demo
 │   └── EXP-Examination/      Simple CMS
 │
@@ -144,7 +146,15 @@ node --test                         # PBL tests
 
 ### 2. Lab experiments with a server
 
-EXP-13a and the Simple CMS need MongoDB running. EXP-12a does not.
+EXP-13, EXP-13a and the Simple CMS need MongoDB running. EXP-12a does not.
+
+```bash
+cd LAB/EXP-13
+mongosh --file shell/basics.mongosh.js      # shell examples
+cd mongoose-basics && npm install
+npm run crud                                # Mongoose CRUD
+npm run queries                             # operators, sort, limit, projection
+```
 
 ```bash
 brew services start mongodb-community@8.0   # only for EXP-13a and the Simple CMS

@@ -1,0 +1,16 @@
+{
+  "name": "mongoose-basics",
+  "version": "1.0.0",
+  "description": "Experiment 13: connect to MongoDB with Mongoose, define a model, run CRUD and queries",
+  "main": "crud.js",
+  "scripts": {
+    "crud": "node crud.js",
+    "queries": "node queries.js"
+  },
+  "author": "Krish Pawar",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mongoose": "^9.12.3"
+  }
+}

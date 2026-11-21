@@ -1,0 +1,22 @@
+show dbs
+use mydatabase
+db.users.insertOne({
+  name: "John Doe",
+  age: 30,
+  email: "john@example.com"
+})
+show dbs
+db.users.insertMany([
+  { name: "Jane Smith", age: 25, email: "jane@example.com" },
+  { name: "Bob Johnson", age: 35, email: "bob@example.com" }
+])
+db.users.find()
+db.users.find({ age: { $gt: 25 } })
+db.users.updateOne(
+  { name: "John Doe" },
+  { $set: { age: 31 } }
+)
+db.users.deleteOne({ name: "Bob Johnson" })
+db.users.createIndex({ email: 1 })
+db.users.getIndexes()
+db.users.find({}, { _id: 0, name: 1, age: 1 })

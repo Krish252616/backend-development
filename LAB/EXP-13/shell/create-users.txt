@@ -1,0 +1,23 @@
+use admin
+db.createUser({
+  user: "adminUser",
+  pwd: "securePassword123",
+  roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+})
+db.createUser({
+  user: "admin",
+  pwd: "your-secure-password",
+  roles: ["root"]
+})
+use mydatabase
+db.createUser({
+  user: "myuser",
+  pwd: "user-password",
+  roles: ["readWrite"]
+})
+use admin
+db.createUser({
+  user: "schoolapp",
+  pwd: "school-app-password",
+  roles: [ { role: "readWrite", db: "schoolDB" } ]
+})
