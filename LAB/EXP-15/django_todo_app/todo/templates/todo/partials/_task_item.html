@@ -1,0 +1,13 @@
+<li class="task{% if task.completed %} done{% endif %}">
+    <span class="task-title">{% if task.completed %}<s>{{ task.title }}</s>{% else %}{{ task.title }}{% endif %}</span>
+    <span class="task-actions">
+        <form method="post" action="{% url 'toggle_task' task.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">{% if task.completed %}Undo{% else %}Done{% endif %}</button>
+        </form>
+        <form method="post" action="{% url 'delete_task' task.id %}" class="delete-form" data-title="{{ task.title }}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </span>
+</li>

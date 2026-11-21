@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://krish252616.github.io/backend-development/"><img src="https://img.shields.io/badge/Live_site-GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" alt="Live site"></a>
   <a href="https://github.com/Krish252616"><img src="https://img.shields.io/badge/Author-Krish_Pawar-0A66C2?style=flat-square&logo=github&logoColor=white" alt="Author"></a>
-  <img src="https://img.shields.io/badge/Lab_experiments-10-2E7D32?style=flat-square" alt="Lab experiments">
+  <img src="https://img.shields.io/badge/Lab_experiments-11-2E7D32?style=flat-square" alt="Lab experiments">
   <img src="https://img.shields.io/badge/Theory_projects-8-B45309?style=flat-square" alt="Theory projects">
   <img src="https://img.shields.io/badge/Assignments-2-6A1B9A?style=flat-square" alt="Assignments">
 </p>
@@ -35,6 +35,7 @@
 | **12** | Node.js, Express.js and EJS (5 tasks) | `CO_` | [Report](./LAB/EXP-12a/report.md) | [Screenshots](./LAB/EXP-12a/report.md#screenshots) |
 | **13** | Installation of MongoDB, Mongoose connection and CRUD | `CO_` | [Report](./LAB/EXP-13/report.md) | [Output](./LAB/EXP-13/report.md#7-output) |
 | **13a** | User management with MongoDB and Mongoose | `CO_` | [Report](./LAB/EXP-13a/mongoose-demo/report.md) | [Output](./LAB/EXP-13a/mongoose-demo/report.md#7-output) |
+| **15** | Django To-Do application (static files, `extends` and `include`) | `CO_` | [Report](./LAB/EXP-15/report.md) | [Screenshots](./LAB/EXP-15/report.md#7-output) |
 | **Exam** | Simple CMS with Express, EJS and MongoDB | `CO_` | [Report](./LAB/EXP-Examination/report.md) | [Output](./LAB/EXP-Examination/report.md#output) |
 <!-- Add one row per experiment:
 | **14** | Experiment title | `CO_` | [Report](./LAB/EXP-14/report.md) | [Open page](https://krish252616.github.io/backend-development/LAB/EXP-14/index.html) |
@@ -94,6 +95,7 @@ backend-development/
 │   ├── EXP-12a/              Node.js, Express.js and EJS: 5 tasks
 │   ├── EXP-13/               MongoDB install, mongosh, Mongoose CRUD and queries, authentication
 │   ├── EXP-13a/              MongoDB and Mongoose demo
+│   ├── EXP-15/               Django To-Do app with static files, extends and include
 │   └── EXP-Examination/      Simple CMS
 │
 ├── Theory/
@@ -161,6 +163,19 @@ brew services start mongodb-community@8.0   # only for EXP-13a and the Simple CM
 cd LAB/EXP-Examination                      # or LAB/EXP-12a, LAB/EXP-13a/mongoose-demo
 npm install
 npm start
+```
+
+EXP-15 is a Django app. It needs Python 3.10 or newer (Django 6 needs 3.12+, on older Python pip installs Django 5.2, which also works):
+
+```bash
+cd LAB/EXP-15/django_todo_app
+python3 -m venv venv
+source venv/bin/activate          # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser  # optional, for /admin/
+python manage.py runserver        # http://127.0.0.1:8000/
+python manage.py test             # 12 tests
 ```
 
 ### 3. Notes app (Assignment 01)
@@ -237,11 +252,13 @@ On macOS, port 5000 may be taken by AirPlay Receiver. If the Flask demo will not
 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
 **Python stack**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=for-the-badge&logo=jinja&logoColor=white)
 

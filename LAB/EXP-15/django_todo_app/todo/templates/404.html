@@ -1,0 +1,9 @@
+{% extends "todo/base.html" %}
+
+{% block title %}Not found{% endblock %}
+
+{% block content %}
+<h1>Page not found</h1>
+<p>That task or page does not exist. It may have been deleted already.</p>
+<p><a class="btn btn-primary" href="{% url 'task_list' %}">Back to the list</a></p>
+{% endblock %}

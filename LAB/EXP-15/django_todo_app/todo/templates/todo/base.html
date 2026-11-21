@@ -1,0 +1,22 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}To-Do{% endblock %} | Django To-Do</title>
+    <link rel="icon" href="{% static 'todo/img/logo.svg' %}" type="image/svg+xml">
+    <link rel="stylesheet" href="{% static 'todo/css/style.css' %}">
+</head>
+<body>
+    {% include "todo/partials/_header.html" %}
+
+    <main class="wrap">
+        {% include "todo/partials/_messages.html" %}
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "todo/partials/_footer.html" %}
+
+    <script src="{% static 'todo/js/app.js' %}"></script>
+</body>
+</html>
