@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 3: a responsive web page with HTML, CSS Grid, Flexbox and media queries. Task 5 with the three exercises.">
+  <meta name="author" content="Krish Pawar">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23333'/><rect x='6' y='8' width='8' height='16' fill='white'/><rect x='18' y='8' width='8' height='16' fill='white'/></svg>">
+  <title>Responsive Page | Experiment 3</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* --- Navigation --- */
+    nav {
+      background-color: #222;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    nav ul li a:hover {
+      background-color: #555;
+    }
+    /* --- Header --- */
+    .header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    /* --- Cards with Grid --- */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+      /* FIX: the container grows to fill the page (flex: 1), and by default the grid
+         stretches its rows to that height, so the cards became 635px tall.
+         align-content: start keeps each row only as tall as its content. */
+      align-content: start;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .card p {
+      line-height: 1.6;
+      color: #666;
+    }
+    /* --- Exercise 2: responsive image --- */
+    .card img {
+      max-width: 100%;   /* never wider than the card */
+      height: auto;      /* keep the width to height ratio */
+      display: block;
+      margin-bottom: 12px;
+      border-radius: 4px;
+    }
+    /* --- Footer --- */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+    footer p + p {
+      margin-top: 6px;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #ddd;
+    }
+
+    /* --- Exercise 1: desktop (wider than 1024px), 4 columns --- */
+    @media (min-width: 1025px) {
+      .container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* --- Tablet: 2 columns --- */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .header h1 {
+        font-size: 1.2rem;
+      }
+      nav ul {
+        gap: 10px;
+      }
+    }
+
+    /* --- Phone: 1 column --- */
+    @media (max-width: 480px) {
+      .container {
+        grid-template-columns: 1fr;  /* single column */
+      }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* --- Exercise 3: dark mode, follows the operating system setting --- */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+      }
+      /* The cards set their own colors, so they need dark values too,
+         otherwise they stay as bright white boxes on the dark page. */
+      .card {
+        background-color: #262626;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      .card h2 {
+        color: #e0e0e0;
+      }
+      .card p {
+        color: #b5b5b5;
+      }
+      nav, .header, footer {
+        border-bottom: 1px solid #2c2c2c;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MySite</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="header">
+    <h1>My Responsive Page</h1>
+    <p>Resize the browser window to see the layout change</p>
+  </div>
+  <div class="container">
+    <div class="card">
+      <img src="images/breakpoints.svg" width="1200" height="600" alt="Card layout at each breakpoint: 4 columns on desktop, 2 on tablet, 1 on phone">
+      <h2>Card 1</h2>
+      <p>On a wide desktop, I am in a 4-column grid. Between 769 and 1024px the grid has 3 columns, on tablet 2, and on phone I take full width.</p>
+    </div>
+    <div class="card">
+      <h2>Card 2</h2>
+      <p>Media queries let us redefine the grid at every breakpoint.</p>
+    </div>
+    <div class="card">
+      <h2>Card 3</h2>
+      <p>This approach uses pure CSS, no framework needed.</p>
+    </div>
+    <div class="card">
+      <h2>Card 4</h2>
+      <p>Added for Exercise 1. Above 1024px all four cards fit in one row.</p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2026 My Responsive Page</p>
+    <p>Step by step: <a href="tasks/task1.html">Task 1</a> · <a href="tasks/task2.html">Task 2</a> · <a href="tasks/task3.html">Task 3</a> · <a href="tasks/task4.html">Task 4</a> · <a href="tasks/task5.html">Task 5</a> · <a href="report.html">Report</a></p>
+  </footer>
+</body>
+</html>
