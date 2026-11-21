@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 4: the same responsive page built with Bootstrap 5 and with Tailwind CSS, step by step, with a contact form in each.">
+  <meta name="author" content="Krish Pawar">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23212529'/><rect x='6' y='7' width='20' height='5' fill='white'/><rect x='6' y='15' width='9' height='10' fill='white'/><rect x='17' y='15' width='9' height='10' fill='white'/></svg>">
+  <title>Experiment 4: Bootstrap and Tailwind | Backend Development Lab</title>
+  <style>
+    :root { --bg: #f4f6f9; --card: #fff; --ink: #17202c; --soft: #4e5a68; --rule: #d5dbe3; --accent: #1b3a6b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px 56px; }
+    header { background: var(--card); border-bottom: 1px solid var(--rule); }
+    header .wrap { padding-top: 20px; padding-bottom: 16px; }
+    .label { margin: 0; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); }
+    h1 { margin: 4px 0 6px; font-size: 1.6rem; line-height: 1.2; }
+    .sub { margin: 0; color: var(--soft); }
+    h2 { font-size: 1.15rem; margin: 28px 0 12px; }
+    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; }
+    .card h3 { margin: 0 0 4px; font-size: 1.05rem; }
+    .card p { margin: 0 0 10px; color: var(--soft); font-size: 0.95rem; }
+    .open { display: inline-block; font-weight: 600; color: var(--accent); }
+    ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 2px 0; }
+    a { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; background: var(--card); }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+    th { background: #e8eef7; }
+    td.n { text-align: right; font-variant-numeric: tabular-nums; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; }
+    .footer { color: var(--soft); font-size: 0.85rem; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="label">Backend Development Lab · Experiment 4</p>
+      <h1>Responsive web pages with Bootstrap and Tailwind CSS</h1>
+      <p class="sub">Krish Pawar · B.Tech CSE · UPES Dehradun</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2>Final pages</h2>
+    <div class="cols">
+      <section class="card">
+        <h3>Part A: Bootstrap 5.3.3</h3>
+        <p>Navbar with a menu button below 992px, two-column hero, three service cards and the contact form from Exercise 1.</p>
+        <a class="open" href="exp04-bootstrap.html">Open the Bootstrap page</a>
+        <ol>
+          <li><a href="steps/task1-bootstrap.html">Task 1: setup</a></li>
+          <li><a href="steps/task2-bootstrap.html">Task 2: responsive navbar</a></li>
+          <li><a href="steps/task3-bootstrap.html">Task 3: hero with grid columns</a></li>
+          <li><a href="steps/task4-bootstrap.html">Task 4: card grid and footer</a></li>
+        </ol>
+      </section>
+      <section class="card">
+        <h3>Part B: Tailwind CSS 3</h3>
+        <p>The same page built only with utility classes, with a menu button below 768px and the contact form from Exercise 2.</p>
+        <a class="open" href="exp04-tailwind.html">Open the Tailwind page</a>
+        <ol start="5">
+          <li><a href="steps/task5-tailwind.html">Task 5: setup</a></li>
+          <li><a href="steps/task6-tailwind.html">Task 6: navbar</a></li>
+          <li><a href="steps/task7-tailwind.html">Task 7: hero section</a></li>
+          <li><a href="steps/task8-tailwind.html">Task 8: card grid and footer</a></li>
+        </ol>
+      </section>
+    </div>
+
+    <h2>Exercise 3: class count</h2>
+    <p class="sub">Counted with <code>node count-classes.js</code> in this folder.</p>
+    <div class="table-wrap" style="margin-top: 10px;">
+      <table>
+        <thead><tr><th>Page</th><th>Elements with classes</th><th>Total classes</th><th>Different classes</th><th>Per element</th><th>Most on one element</th></tr></thead>
+        <tbody>
+          <tr><td>Bootstrap, whole page</td><td class="n">75</td><td class="n">126</td><td class="n">67</td><td class="n">1.7</td><td class="n">5</td></tr>
+          <tr><td>Tailwind, whole page</td><td class="n">57</td><td class="n">266</td><td class="n">97</td><td class="n">4.7</td><td class="n">12</td></tr>
+          <tr><td>Bootstrap, contact form only</td><td class="n">24</td><td class="n">35</td><td class="n">23</td><td class="n">1.5</td><td class="n">5</td></tr>
+          <tr><td>Tailwind, contact form only</td><td class="n">21</td><td class="n">117</td><td class="n">49</td><td class="n">5.6</td><td class="n">12</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footer"><a href="report.html">Read the report</a> · <a href="https://github.com/Krish252616/backend-development/tree/main/LAB/EXP-4">Source on GitHub</a></p>
+  </main>
+</body>
+</html>

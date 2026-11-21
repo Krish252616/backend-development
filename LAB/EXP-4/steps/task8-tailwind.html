@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23212529'/><rect x='6' y='7' width='20' height='5' fill='white'/><rect x='6' y='15' width='9' height='10' fill='white'/><rect x='17' y='15' width='9' height='10' fill='white'/></svg>">
+  <title>Tailwind Responsive Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <span class="text-xl font-bold">MySite</span>
+      <ul class="flex gap-6">
+        <li><a href="#" class="hover:text-gray-300">Home</a></li>
+        <li><a href="#" class="hover:text-gray-300">About</a></li>
+        <li><a href="#" class="hover:text-gray-300">Services</a></li>
+        <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 py-16 flex flex-col lg:flex-row items-center gap-12">
+    <div class="lg:w-1/2">
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Welcome to MySite
+      </h1>
+      <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+        Tailwind lets you build custom designs by composing utility classes.
+        Every style is right here in the HTML, no separate CSS file needed.
+      </p>
+      <div class="flex gap-4">
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
+          Get Started
+        </a>
+        <a href="#" class="border-2 border-gray-900 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white">
+          Learn More
+        </a>
+      </div>
+    </div>
+    <div class="lg:w-1/2">
+      <img src="../images/hero.svg" width="500" height="300" class="w-full rounded-xl shadow-lg" alt="Hero Image">
+    </div>
+  </section>
+
+  <!-- Card Grid -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-semibold text-blue-600 mb-3">Web Design</h3>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Beautiful, responsive websites built with modern frameworks and best practices.
+        </p>
+        <a href="#" class="text-blue-600 font-semibold hover:underline">Learn More →</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-semibold text-green-600 mb-3">Development</h3>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Full-stack development with Node.js, Python, and cloud deployment.
+        </p>
+        <a href="#" class="text-green-600 font-semibold hover:underline">Learn More →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-semibold text-red-600 mb-3">SEO</h3>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Optimize your site for search engines and drive organic traffic growth.
+        </p>
+        <a href="#" class="text-red-600 font-semibold hover:underline">Learn More →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-4">
+    <p>&copy; 2026 MySite · Built with Tailwind CSS</p>
+  </footer>
+</body>
+</html>

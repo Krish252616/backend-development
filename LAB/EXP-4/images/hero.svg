@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300" role="img" aria-labelledby="t d">
+  <title id="t">Wireframe of a responsive page</title>
+  <desc id="d">A desktop browser window with a navigation bar, a two-column hero and three cards, next to a phone showing the same parts stacked in one column.</desc>
+  <rect width="500" height="300" fill="#e9edf2"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="24" y="30" width="300" height="220" rx="8" fill="#fff" stroke="#212529" stroke-width="3"/>
+    <rect x="24" y="30" width="300" height="24" rx="8" fill="#212529"/><rect x="24" y="44" width="300" height="10" fill="#212529"/>
+    <rect x="40" y="70" width="120" height="12" rx="3" fill="#212529"/>
+    <rect x="40" y="90" width="110" height="7" rx="3" fill="#adb5bd"/><rect x="40" y="102" width="96" height="7" rx="3" fill="#adb5bd"/>
+    <rect x="40" y="118" width="46" height="16" rx="4" fill="#0d6efd"/><rect x="92" y="118" width="46" height="16" rx="4" fill="none" stroke="#6c757d" stroke-width="2"/>
+    <rect x="182" y="68" width="126" height="70" rx="6" fill="#ced4da"/>
+    <g fill="#f8f9fa" stroke="#ced4da" stroke-width="2">
+      <rect x="40" y="160" width="82" height="70" rx="5"/><rect x="133" y="160" width="82" height="70" rx="5"/><rect x="226" y="160" width="82" height="70" rx="5"/>
+    </g>
+    <rect x="360" y="40" width="116" height="210" rx="16" fill="#fff" stroke="#212529" stroke-width="3"/>
+    <rect x="372" y="56" width="92" height="16" rx="3" fill="#212529"/>
+    <rect x="372" y="82" width="70" height="9" rx="3" fill="#212529"/>
+    <rect x="372" y="96" width="88" height="6" rx="3" fill="#adb5bd"/>
+    <rect x="372" y="110" width="92" height="40" rx="5" fill="#ced4da"/>
+    <g fill="#f8f9fa" stroke="#ced4da" stroke-width="2">
+      <rect x="372" y="158" width="92" height="24" rx="4"/><rect x="372" y="188" width="92" height="24" rx="4"/><rect x="372" y="218" width="92" height="20" rx="4"/>
+    </g>
+    <text x="174" y="280" font-size="14" text-anchor="middle" fill="#212529">Desktop: columns side by side</text>
+    <text x="418" y="280" font-size="14" text-anchor="middle" fill="#212529">Phone: stacked</text>
+  </g>
+</svg>
