@@ -1,0 +1,14 @@
+{
+  "name": "service-discovery-prototype",
+  "version": "1.0.0",
+  "description": "Working prototype of service discovery: a Eureka-style registry, self-registering service instances, and an API gateway with lb:// routing.",
+  "main": "demo.js",
+  "scripts": {
+    "start": "node demo.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Krish",
+  "license": "MIT"
+}
