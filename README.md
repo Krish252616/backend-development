@@ -9,7 +9,7 @@
   <a href="https://github.com/Krish252616"><img src="https://img.shields.io/badge/Author-Krish_Pawar-0A66C2?style=flat-square&logo=github&logoColor=white" alt="Author"></a>
   <img src="https://img.shields.io/badge/Lab_experiments-11-2E7D32?style=flat-square" alt="Lab experiments">
   <img src="https://img.shields.io/badge/Theory_projects-8-B45309?style=flat-square" alt="Theory projects">
-  <img src="https://img.shields.io/badge/Assignments-2-6A1B9A?style=flat-square" alt="Assignments">
+  <img src="https://img.shields.io/badge/Assignments-3-6A1B9A?style=flat-square" alt="Assignments">
 </p>
 
 <p align="center">
@@ -68,10 +68,13 @@ Each lecture folder is named after the lecture it belongs to: `Theory/Lecture-03
 |:---:|---|---|:---:|:---:|
 | **01** | Notes app with localStorage | L07: localStorage, sessionStorage and JSON | [Report](./Theory/ASSIGNMENT_1_notes-app/report.md) | [`Theory/ASSIGNMENT_1_notes-app`](./Theory/ASSIGNMENT_1_notes-app) |
 | **02** | PostgreSQL as SQL + NoSQL: working with JSONB | Unit 2: Database Management | [Report](./Theory/590017543-assignment2.md) | [`Theory/590017543-assignment2.md`](./Theory/590017543-assignment2.md) |
+| **03** | Service discovery in microservices | Unit V, Topic 4: microservices | [Report](./Theory/Assignment-3/report.md) | [`Theory/Assignment-3`](./Theory/Assignment-3) |
 
 **Assignment 01:** add, edit, delete and complete notes that stay saved after a refresh, plus search, categories, JSON import and export, dark mode and drag to reorder. Frontend only, no server needed. [Live app](https://krish252616.github.io/backend-development/Theory/ASSIGNMENT_1_notes-app/) · [Screenshots](./Theory/ASSIGNMENT_1_notes-app/report.md#10-screenshots)
 
 **Assignment 02:** a product catalog with fixed columns and one `jsonb` column, JSONB operators (`->`, `->>`, `@>`, `?`), a GIN index compared on 5 and 200,000 rows, and the same queries in MongoDB. [Index results](./Theory/590017543-assignment2.md#task-6-index-and-compare)
+
+**Assignment 03:** a 12-slide presentation on service discovery (registry, client-side and server-side discovery, Eureka, Consul, Kubernetes DNS, `lb://` routing) and a working prototype in plain Node.js: a Eureka-style registry with heartbeats, eviction and self-preservation, self-registering order and payment services, and an API gateway with round-robin and retries. [Presentation (PDF)](./Theory/Assignment-3/presentation/Service_Discovery_Krish_590017543.pdf) · [Demo video](./Theory/Assignment-3/presentation/demo-video.mp4) · [Test results](./Theory/Assignment-3/report.md#8-output)
 
 ---
 
@@ -114,6 +117,7 @@ backend-development/
 │   │   └── ssr-python/       FastAPI + Jinja2 hello world
 │   ├── ASSIGNMENT_1_notes-app/   Assignment 01: notes app and report
 │   ├── 590017543-assignment2.md  Assignment 02: PostgreSQL JSONB
+│   ├── Assignment-3/             Assignment 03: service discovery presentation, demo video, prototype
 │   └── requirements.txt      Python packages for the Theory projects
 │
 └── .gitignore
@@ -208,6 +212,10 @@ npm start                # then open http://localhost:3000/login
 cd Theory/Lecture-06/cookies-querystrings
 npm install
 npm run cookies          # http://localhost:3000, or: npm run query
+
+# Assignment 03: service discovery prototype (no npm install needed)
+cd Theory/Assignment-3/live-prototype
+node demo.js             # dashboard at http://localhost:9000, gateway at http://localhost:8080/orders/42
 ```
 
 ### 5. Python projects in Theory
